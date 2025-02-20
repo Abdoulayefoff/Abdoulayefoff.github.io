@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todolist en React.js avec GraphQL - Portfolio Abdoulaye</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../docs/style.css">
+    <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .project-header {
             background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
-                        url('../images/todo-bg.jpg') center/cover;
+                        url('https://Abdoulayefoff.github.io/images/todolist.jpg') center/cover;
             color: white;
             padding: 6rem 0;
             margin-bottom: 3rem;
@@ -29,6 +29,7 @@
         .bg-mongo { background: #4db33d; color: #fff; }
         .bg-jwt { background: #d63384; color: #fff; }
     </style>
+    
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
@@ -40,11 +41,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../../../docs/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../docs/projects.html">Projets</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../docs/about.html">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../docs/contact.html">Contact</a></li>
                 </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -222,5 +231,6 @@ npm start
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
 </body>
 </html>
