@@ -40,7 +40,7 @@
         <div class="container text-center py-5">
             <h1 class="display-4 fw-bold mb-4">Mes Réalisations</h1>
             <p class="lead fs-5">Développement Full-Stack & Expertise Sécurité</p>
-            
+
             <!-- Filtres -->
             <div class="filters mt-4">
                 <button class="btn btn-outline-light btn-sm m-1 active" data-filter="all">Tous</button>
@@ -73,7 +73,7 @@
                         <div class="card-body">
                             <h3 class="card-title h5">
                                 <i class="fab fa-react me-2"></i>
-                                Application de gestion de tâches 
+                                Application de gestion de tâches
                             </h3>
                             <div class="card-text">
                                 <ul class="list-unstyled">
@@ -90,7 +90,7 @@
                                 <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io/tree/main" class="btn btn-primary btn-sm">
                                     <i class="fab fa-github me-1"></i> Code source
                                 </a>
-                                <a href="https://Abdoulayefoff.github.io/projets/dev-web/todolist/description.html" class="btn btn-outline-primary btn-sm">
+                                <a href="https://abdoulayefoff.github.io/projets/dev-web/todolist/description.html" class="btn btn-outline-primary btn-sm">
                                     Voir le détail
                                 </a>
                             </div>
@@ -181,7 +181,7 @@
                 <div class="col-lg-4 col-md-6 project-card" data-tech="système">
                     <div class="card h-100 shadow-lg">
                         <div class="card-img-top position-relative">
-                            
+
                             <div class="tech-badges">
                                 <span class="badge bg-react">React</span>
                                 <span class="badge bg-node">Node.js</span>
@@ -258,7 +258,7 @@
             </div>
         </section>
 
-    
+
     </main>
 
     <!-- Footer -->
@@ -284,13 +284,13 @@
         document.querySelectorAll('.filters button').forEach(btn => {
             btn.addEventListener('click', function() {
                 const filter = this.dataset.filter;
-                
+
                 document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 document.querySelectorAll('.project-card').forEach(card => {
-                    card.style.display = (filter === 'all' || card.dataset.tech === filter) 
-                        ? 'block' 
+                    card.style.display = (filter === 'all' || card.dataset.tech === filter)
+                        ? 'block'
                         : 'none';
                 });
             });

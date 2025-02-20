@@ -1,0 +1,197 @@
+:root {
+    --bs-primary-rgb: 46, 204, 113; /* Vert moderne */
+}
+
+body {
+    padding-top: 90px; /* Compensation hauteur navbar fixe */
+    font-family: 'Arial', sans-serif;
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('images/hero-bg.jpg') center/cover;
+    color: white;
+    padding: 100px 0;
+}
+
+.card {
+    transition: transform 0.3s;
+  
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-badge {
+    font-size: 0.9rem;
+    margin: 2px;
+}
+
+.profile-pic {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #343a40;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #023016;
+}
+
+/* Animation pour l'apparition progressive */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Applique l'animation sur les sections */
+section {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animation pour les boutons et cartes */
+.card, .btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajoute une animation de fade-in aux éléments de la navbar au survol */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--bs-primary);
+}
+
+/* Animation de fade-in lorsque l'élément devient visible */
+section.animate {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/*  dark      modif*/
+:root {
+    --bs-primary-rgb: 46, 204, 113;
+    --animation-timing: 0.3s ease-in-out;
+    --bg-react: #61dafb;
+    --bg-node: #68a063;
+    --bg-jwt: #d63aff;
+    --bg-graphql: #b99b14;
+    --bg-fetch: #033464;
+    --bg-php: #787cb5;
+    --bg-mysql: #00758f;
+    --bg-java: #5382a1;
+    --bg-oop: #ff8c00;
+    --bg-critical: #dc3545;
+    --bg-high: #ff6b6b;
+}
+
+
+
+
+.project-card .card {
+    transition: transform var(--animation-timing), box-shadow var(--animation-timing);
+}
+
+.project-card .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tech-badges .badge {
+    font-size: 0.85rem;
+    margin: 2px;
+}
+
+.bg-react { background-color: var(--bg-react); }
+.bg-node { background-color: var(--bg-node); }
+.bg-jwt { background-color: var(--bg-jwt); }
+.bg-graphql { background-color: var(--bg-graphql); }
+.bg-fetch { background-color: var(--bg-fetch); }
+.bg-php { background-color: var(--bg-php); }
+.bg-mysql { background-color: var(--bg-mysql); }
+.bg-java { background-color: var(--bg-java); }
+.bg-oop { background-color: var(--bg-oop); }
+.bg-critical { background-color: var(--bg-critical); }
+.bg-high { background-color: var(--bg-high); }
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.dark-mode .card {
+    background-color: #2d2d2d;
+    border-color: #404040;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .card-title,
+.dark-mode .card-text,
+.dark-mode .list-unstyled {
+    color: #f8f9fa !important;
+}
+
+.dark-mode .card-header {
+    background-color: #333333 !important;
+    border-bottom-color: #444444;
+}
+
+.dark-mode .btn-outline-primary,
+.dark-mode .btn-outline-success,
+.dark-mode .btn-outline-danger {
+    border-color: #666666;
+    color: #f8f9fa;
+}
+
+.dark-mode .btn-outline-primary:hover,
+.dark-mode .btn-outline-success:hover,
+.dark-mode .btn-outline-danger:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dark-mode .badge {
+    color: white !important;
+}
+/* .hero-projects {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                url('images/bdg.jpg') center/cover ;
+    padding: 100px 0;
+} */
+
+.dark-mode .bg-react { background-color: #218c8d !important; }
+.dark-mode .bg-node { background-color: #4e8d53 !important; }
+.dark-mode .bg-jwt { background-color: #a832c4 !important; }
+.dark-mode .bg-graphql { background-color: #b99b14 !important; }
+.dark-mode .bg-fetch { background-color: #033464 !important; }
+.dark-mode .bg-php { background-color: #63678b !important; }
+.dark-mode .bg-mysql { background-color: #006279 !important; }
+.dark-mode .bg-java { background-color: #456f8a !important; }
+.dark-mode .bg-oop { background-color: #d67600 !important; }
+
+#darkModeToggle i {
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .hero-projects {
+        padding: 60px 0;
+    }
+}
+
+
