@@ -98,6 +98,11 @@ section.animate {
     --bg-oop: #ff8c00;
     --bg-critical: #dc3545;
     --bg-high: #ff6b6b;
+    --bg-html: #0e0f0f;
+    --bg-css: #013622;
+    --bg-js: #320101;
+    --bg-git: #033464;
+    --bg-mvcr: #41426b;
 }
 
 
@@ -128,6 +133,11 @@ section.animate {
 .bg-oop { background-color: var(--bg-oop); }
 .bg-critical { background-color: var(--bg-critical); }
 .bg-high { background-color: var(--bg-high); }
+.bg-html { background-color: var(--bg-html); }
+.bg-css { background-color: var(--bg-css); }
+.bg-js { background-color: var(--bg-js); }
+.bg-git { background-color: var(--bg-git); }
+.bg-mvcr { background-color: var(--bg-mvcr); }
 
 /* Dark Mode */
 .dark-mode {
@@ -183,6 +193,11 @@ section.animate {
 .dark-mode .bg-mysql { background-color: #006279 !important; }
 .dark-mode .bg-java { background-color: #456f8a !important; }
 .dark-mode .bg-oop { background-color: #d67600 !important; }
+.dark-mode .bg-html { background-color: #0e0f0f !important; }
+.dark-mode .bg-css { background-color: #013622 !important; }
+.dark-mode .bg-js { background-color: #320101 !important; }
+.dark-mode .bg-git { background-color: #033464 !important; }
+.dark-mode .bg-mvcr { background-color: #41426b !important; }
 
 #darkModeToggle i {
     transition: transform 0.3s ease;

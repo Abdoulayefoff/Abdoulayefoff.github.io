@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio sur GitHub Pages - Abdoulaye Fofana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/portfolio-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Portfolio sur GitHub Pages</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-html">HTML5</span>
+                <span class="tech-badge bg-css">CSS Bootstrap</span>
+                <span class="tech-badge bg-js">JavaScript</span>
+                <span class="tech-badge bg-git">GitHub Pages</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-info-circle me-2"></i>Description</h2>
+                    <p class="lead">Portfolio professionnel hébergé sur GitHub Pages pour présenter mes projets et compétences.</p>
+                    <p>Ce projet consiste en la création d’un portfolio en ligne pour présenter mes projets en développement web, cybersécurité,  développement logiciel et Administration système et réseaux. Il est hébergé sur GitHub Pages et permet aux visiteurs d'explorer mes travaux et d’accéder directement aux codes sources via GitHub.</p>
+                </section>
+
+                <!-- Fonctionnalités -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités principales</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-home me-2"></i>Accueil</h3>
+                                    <ul class="list-styled">
+                                        <li>Présentation générale</li>
+                                        <li>Liens vers les projets</li>
+                                        <li>Section contact</li>
+                                        <li>Section À propos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-project-diagram me-2"></i>Projets</h3>
+                                    <ul class="list-styled">
+                                        <li>Catégorisation des projets</li>
+                                        <li>Détails techniques</li>
+                                        <li>Liens vers GitHub</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Technologies utilisées</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h6">Frontend</h3>
+                                    <ul class="list-styled">
+                                        <li>HTML5</li>
+                                        <li>CSS Bootstrap</li>
+                                        <li>JavaScript</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h6">Hébergement</h3>
+                                    <ul class="list-styled">
+                                        <li>GitHub Pages</li>
+                                        <li>Git Actions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Améliorations -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-rocket me-2"></i>Améliorations futures</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">✅ Fonctionnalité de recherche</li>
+                                <li class="mb-2">✅ Optimisation mobile</li>
+                                <li class="mb-2">✅ Témoignages</li>
+                                <li class="mb-2">✅ Blog technique</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- GitHub -->
+                <section class="text-center mt-5">
+                    <a href="https://github.com/abdoulaye/portfolio" 
+                    class="btn btn-primary btn-lg"
+                    target="_blank">
+                        <i class="fab fa-github me-2"></i>Code Source
+                    </a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>

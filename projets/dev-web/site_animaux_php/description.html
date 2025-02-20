@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site pour Animaux en PHP - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/animal-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-php { background: #787cb5; color: white; }
+        .bg-mysql { background: #4db33d; color: white; }
+        .bg-js { background: #f0db4f; color: black; }
+        .bg-mvcr { background: #e44d26; color: white; }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Gestion d'Animaux en PHP/MVCR</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-php">PHP</span>
+                <span class="tech-badge bg-mysql">MySQL</span>
+                <span class="tech-badge bg-js">JavaScript</span>
+                <span class="tech-badge bg-mvcr">MVCR</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-paw me-2"></i>Description</h2>
+                    <p class="lead">
+                        Application Web sécurisée de gestion d'animaux avec architecture MVCR et protection contre les injections SQL/XSS.
+                    </p>
+                    <p>Ce projet consiste en la création d’un site web permettant aux utilisateurs de créer des animaux en fournissant leur nom, âge, espèce et une photo. Une fois l'animal enregistré, il est stocké dans une base de données MySQL et peut être consulté sur une liste d'animaux déjà enregistrés. Le projet suit l’architecture MVCR (Modèle, Vue, Contrôleur, Routeur), où le Routeur gère l’entrée du site, en dirigeant l'utilisateur vers la page appropriée.
+
+                        Le site est sécurisé pour éviter des attaques telles que les injections SQL. Toutes les interactions avec la base de données sont sécurisées par des requêtes préparées avec des paramètres liés afin de protéger contre ces attaques.</p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Projet académique réalisé dans le cadre de ma Licence Informatique.
+                    </div>
+                </section>
+
+                <!-- Fonctionnalités -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-plus-circle me-2"></i>Création</h3>
+                                    <ul class="list-styled">
+                                        <li>Formulaire sécurisé</li>
+                                        <li>Upload de photos</li>
+                                        <li>Validation des entrées</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-database me-2"></i>Gestion des données</h3>
+                                    <ul class="list-styled">
+                                        <li>CRUD complet MySQL</li>
+                                        <li>Stockage des images</li>
+                                        <li>Architecture MVCR</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-gears me-2"></i>Technologies</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h6">Backend</h3>
+                                    <ul class="list-styled">
+                                        <li>PHP 8</li>
+                                        <li>PDO MySQL</li>
+                                        <li>Architecture MVCR</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h6">Frontend</h3>
+                                    <ul class="list-styled">
+                                        <li>HTML5/CSS3</li>
+                                        <li>Bootstrap 5</li>
+                                        <li>JavaScript ES6</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h6">Sécurité</h3>
+                                    <ul class="list-unstyled">
+                                        <li>Requêtes préparées</li>
+                                        <li>Validation XSS</li>
+                                        <li>Contrôle MIME</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Installation -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-terminal me-2"></i>Installation</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <pre class="mb-0"><code>
+# Cloner le dépôt
+git clone https://github.com/abdoulaye/animaux-mvcr.git
+cd animaux-mvcr
+
+# Configurer la base de données
+Crée une base de données animaux avec une table pour stocker les informations des animaux (nom, âge, espèce, photo).
+
+# Démarrer le serveur
+php -S localhost:8000
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sécurité -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-lock me-2"></i>Mesures de Sécurité</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card border-success">
+                                <div class="card-body">
+                                    <h3 class="h5 text-success"><i class="fas fa-database me-2"></i>Protection SQL</h3>
+                                    <ul>
+                                        <li>Protection contre les injections SQL</li>
+                                        <li>Requêtes préparées</li>
+                                        <li>Validation des types</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-danger">
+                                <div class="card-body">
+                                    <h3 class="h5 text-danger"><i class="fas fa-file-upload me-2"></i>Upload sécurisé</h3>
+                                    <ul>
+                                        <li>Vérification MIME</li>
+                                        <li>Sécurisation des fichiers téléchargés</li>
+                                        <li>Gestion des erreurs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Améliorations -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-rocket me-2"></i>Améliorations futures</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">✅ CRUD complet</li>
+                                <li class="mb-2">✅ Améliorer l'interface utilisateur</li>
+                                <li class="mb-2">✅ Authentification</li>
+                                <li class="mb-2">✅ Validation renforcée</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- GitHub -->
+                <section class="text-center mt-5">
+                    <a href="https://github.com/abdoulaye/animaux-mvcr" 
+                    class="btn btn-primary btn-lg"
+                    target="_blank">
+                        <i class="fab fa-github me-2"></i>Code Source
+                    </a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>

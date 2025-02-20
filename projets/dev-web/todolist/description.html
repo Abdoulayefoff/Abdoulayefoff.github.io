@@ -23,28 +23,24 @@
             text-transform: uppercase;
         }
         
-        .bg-react { background: #61dafb; color: #000; }
-        .bg-graphql { background: #e535ab; color: #fff; }
-        .bg-node { background: #68a063; color: #fff; }
-        .bg-mongo { background: #4db33d; color: #fff; }
-        .bg-jwt { background: #d63384; color: #fff; }
+        
     </style>
-    
+
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">Abdoulaye Fofana</a>
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../docs/projects.html">Projets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../docs/about.html">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../docs/contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
                 </ul>
                 <button class="btn btn-outline-light ms-2"
                 onclick="toggleDarkMode()"
@@ -66,7 +62,6 @@
                 <span class="tech-badge bg-react">React</span>
                 <span class="tech-badge bg-graphql">GraphQL</span>
                 <span class="tech-badge bg-node">Node.js</span>
-                <span class="tech-badge bg-mongo">MongoDB</span>
                 <span class="tech-badge bg-jwt">JWT</span>
             </div>
         </div>
@@ -101,9 +96,9 @@
                                 <div class="card-body">
                                     <h3 class="h5"><i class="fas fa-user-shield me-2"></i>Authentification</h3>
                                     <ul class="list-unstyled">
-                                        <li>Inscription/Connexion</li>
-                                        <li>JWT sécurisé</li>
-                                        <li>Déconnexion</li>
+                                        <li>✅ Inscription/Connexion des utilisateurs</li>
+                                        <li>✅ JWT sécurisé</li>
+                                        <li>✅ Déconnexion des utilisateurs pour sécuriser leur session</li>
                                     </ul>
                                 </div>
                             </div>
@@ -113,9 +108,9 @@
                                 <div class="card-body">
                                     <h3 class="h5"><i class="fas fa-tasks me-2"></i>Gestion des tâches</h3>
                                     <ul class="list-unstyled">
-                                        <li>CRUD complet</li>
-                                        <li>Barre de progression</li>
-                                        <li>Filtres et tris</li>
+                                        <li>✅ CRUD complet</li>
+                                        <li>✅ Barre de progression pour visualiser le nombre de tâches complétées</li>
+                                        <li>✅ Filtres et tris</li>
                                     </ul>
                                 </div>
                             </div>
@@ -131,10 +126,10 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h3 class="h6">Frontend</h3>
-                                    <ul class="list-unstyled">
+                                    <ul class="list-styled">
                                         <li>React.js</li>
                                         <li>Apollo Client</li>
-                                        <li>Material-UI</li>
+                                        <li>Tailwind CSS</li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,7 +138,7 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h3 class="h6">Backend</h3>
-                                    <ul class="list-unstyled">
+                                    <ul class="list-styled">
                                         <li>Node.js</li>
                                         <li>GraphQL</li>
                                         <li>Apollo Server</li>
@@ -154,10 +149,9 @@
                         <div class="col">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h6">Base de données</h3>
-                                    <ul class="list-unstyled">
-                                        <li>MongoDB</li>
-                                        <li>Mongoose</li>
+                                    <h3 class="h6">Authentification</h3>
+                                    <ul class="list-styled">
+                                        <li>JSON Web Tokens (JWT)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -171,6 +165,9 @@
                     <div class="card">
                         <div class="card-body">
                             <pre><code>
+#Prérequis
+- Node.js installé
+
 # Cloner le dépôt
 git clone https://github.com/abdoulaye/todolist-react-graphql.git
 cd todolist-react-graphql
@@ -194,10 +191,10 @@ npm start
                     <div class="card">
                         <div class="card-body">
                             <ul class="list-unstyled">
-                                <li class="mb-2">✅ Optimisation des performances</li>
-                                <li class="mb-2">✅ Support hors ligne</li>
-                                <li class="mb-2">✅ Notifications en temps réel</li>
-                                <li class="mb-2">✅ Mode collaboratif</li>
+                                <li class="mb-2">✅ Ajout de filtres et tags pour mieux organiser les tâches</li>
+                                <li class="mb-2">✅ Intégration des notifications</li>
+                                <li class="mb-2">✅ Export/partage d'une liste à des formats variés</li>
+                                <li class="mb-2">✅ Optimisation des performances et de l'interface</li>
                             </ul>
                         </div>
                     </div>
@@ -206,8 +203,8 @@ npm start
                 <!-- Lien GitHub -->
                 <section class="text-center">
                     <a href="https://github.com/abdoulaye/todolist-react-graphql" 
-                       class="btn btn-primary btn-lg"
-                       target="_blank">
+                    class="btn btn-primary btn-lg"
+                    target="_blank">
                         <i class="fab fa-github me-2"></i>Voir le code source
                     </a>
                 </section>
@@ -219,14 +216,15 @@ npm start
     <footer class="bg-dark text-white py-4 mt-auto">
         <div class="container text-center">
             <div class="social-links mb-3">
-                <a href="https://linkedin.com/in/abdoulaye" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin fa-2x"></i>
                 </a>
-                <a href="https://github.com/abdoulaye" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
                     <i class="fab fa-github fa-2x"></i>
                 </a>
             </div>
-            <p class="mb-0">&copy; 2024 Abdoulaye Fofana</p>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
         </div>
     </footer>
 
