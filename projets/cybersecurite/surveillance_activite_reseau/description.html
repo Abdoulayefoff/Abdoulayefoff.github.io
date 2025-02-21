@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveillance Réseau - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/network-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-wireshark { background: #1679BE; color: white; }
+        .bg-tcpip { background: #4B0082; color: white; }
+        .bg-linux { background: #FCC624; color: black; }
+        .bg-suricata { background: #FF4500; color: white; }
+        
+        .timeline {
+            border-left: 3px solid var(--bs-secondary);
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -1.3rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bs-secondary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Surveillance Réseau</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-wireshark">Wireshark</span>
+                <span class="tech-badge bg-tcpip">TCP/IP</span>
+                <span class="tech-badge bg-linux">Linux</span>
+                <span class="tech-badge bg-suricata">Suricata</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-network-wired me-2"></i>Description</h2>
+                    <p class="lead">Surveillance et analyse du trafic réseau pour détecter les activités suspectes.</p>
+                    <p>Ce projet consiste à mettre en place un système de surveillance de l'activité réseau afin de capturer, analyser et identifier les connexions suspectes sur un réseau informatique. L'objectif est de comprendre les flux de données sur un réseau local, d'identifier les comportements anormaux ou malveillants et d'implémenter des stratégies pour améliorer la sécurité du réseau. Pour ce faire, nous utiliserons des outils comme Wireshark, un logiciel d'analyse de paquets réseau, et nous exploiterons les protocoles TCP/IP pour analyser le trafic..</p>
+                </section>
+                <!-- Problème à résoudre -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Problème à résoudre</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-styled">
+                                <li class="mb-2">Intrusions réseau : Détection de connexions non autorisées ou de tentatives d'accès à des ressources protégées.</li>
+                                <li class="mb-2">Attaques par déni de service (DoS) : Identifier des flux inhabituels de données qui pourraient être associés à des attaques par saturation du réseau.</li>
+                                <li class="mb-2">Scan de ports : Repérer des scans de ports, où un attaquant tente de découvrir les services actifs sur une machine.</li>
+                                <li class="mb-2">Exploitation de vulnérabilités réseau : Identifier les tentatives d'exploiter des vulnérabilités de protocole ou de service.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <!-- Méthodologie -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-project-diagram me-2"></i>Méthodologie</h2>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <h3 class="h5">1. Capture du trafic</h3>
+                            <p>Utilisation de Wireshark pour capturer les paquets réseau</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">2. Analyse des protocoles</h3>
+                            <p>Filtrage et analyse des paquets TCP/IP, HTTP, ICMP</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">3. Détection des anomalies</h3>
+                            <p>Identification des scans de ports, attaques DoS, intrusions</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">4. Mise en place d'alertes</h3>
+                            <p>Configuration de Suricata pour la détection en temps réel</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Outils -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Outils Utilisés</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <!-- <img src="../images/wireshark-logo.png" alt="Wireshark" class="img-fluid mb-3" style="height: 50px"> -->
+                                    <h3 class="h6">Wireshark</h3>
+                                    <p>Analyse de paquets réseau</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <!-- <img src="../images/tcpdump-logo.png" alt="TCPdump" class="img-fluid mb-3" style="height: 50px"> -->
+                                    <h3 class="h6">TCPdump</h3>
+                                    <p>Capture de trafic en ligne de commande</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <!-- <img src="../images/suricata-logo.png" alt="Suricata" class="img-fluid mb-3" style="height: 50px"> -->
+                                    <h3 class="h6">Suricata</h3>
+                                    <p>Détection d'intrusions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <p>La surveillance de l'activité réseau est un élément essentiel de la sécurité informatique. En analysant le trafic réseau, les administrateurs peuvent détecter les menaces potentielles, identifier les vulnérabilités et protéger les systèmes contre les attaques. Ce projet a permis de mettre en place un système de surveillance du trafic réseau, d'analyser les protocoles et de détecter les activités suspectes. En combinant des outils comme Wireshark et Suricata, il est possible de renforcer la sécurité du réseau et de protéger les données des utilisateurs.</p>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>
