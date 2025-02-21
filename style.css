@@ -103,6 +103,14 @@ section.animate {
     --bg-js: #320101;
     --bg-git: #033464;
     --bg-mvcr: #41426b;
+    --bg-angular: #000000;
+    --bg-nestjs: #990606;
+    --bg-postgre: #060482;
+    --bg-vuejs: #cf7243;
+    --bg-django: #571b1b;
+
+    
+
 }
 
 
@@ -138,6 +146,11 @@ section.animate {
 .bg-js { background-color: var(--bg-js); }
 .bg-git { background-color: var(--bg-git); }
 .bg-mvcr { background-color: var(--bg-mvcr); }
+.bg-angular { background-color: var(--bg-angular); }
+.bg-nestjs { background-color: var(--bg-nestjs); }
+.bg-postgre { background-color: var(--bg-postgre); }
+.bg-vuejs { background-color: var(--bg-vuejs); }
+.bg-django { background-color: var(--bg-django); }
 
 /* Dark Mode */
 .dark-mode {
@@ -198,6 +211,11 @@ section.animate {
 .dark-mode .bg-js { background-color: #320101 !important; }
 .dark-mode .bg-git { background-color: #033464 !important; }
 .dark-mode .bg-mvcr { background-color: #41426b !important; }
+.dark-mode .bg-angular { background-color: #000000 !important; }
+.dark-mode .bg-nestjs { background-color: #7ea316 !important; }
+.dark-mode .bg-postgre { background-color: #060482 !important; }
+.dark-mode .bg-vuejs { background-color: #cf7243 !important; }
+.dark-mode .bg-django { background-color: #571b1b !important; }
 
 #darkModeToggle i {
     transition: transform 0.3s ease;

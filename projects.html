@@ -7,6 +7,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styles pour le bouton retour en haut */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+        }
+
+        /* Améliorations des animations */
+        .project-card {
+            transition: all 0.3s ease !important;
+        }
+
+        .project-card.hidden {
+            transform: scale(0.95);
+            opacity: 0.5;
+            display: none;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
@@ -48,6 +79,15 @@
                 <button class="btn btn-outline-light btn-sm m-1" data-filter="java">Dev Logiciel</button>
                 <button class="btn btn-outline-light btn-sm m-1" data-filter="security">Sécurité</button>
                 <button class="btn btn-outline-light btn-sm m-1" data-filter="système">Système Réseaux</button>
+            </div>
+            <!-- Barre de recherche ajoutée ici -->
+            <div class="search-bar mt-3 mx-auto" style="max-width: 500px;">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Rechercher un projet..." id="searchInput">
+                    <button class="btn btn-outline-light" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -169,30 +209,70 @@
                                 <a href="https://abdoulayefoff.github.io/projets/dev-web/site_animaux_php/description.html" class="btn btn-outline-primary btn-sm">
                                     Voir le détail
                                 </a>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Site Bibliothèque PHP -->
+                <!-- Site e_commerce -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="web">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-angular">Angular</span>
+                                <span class="badge bg-nestjs">NestJS</span>
+                                <span class="badge bg-jwt">JWT</span>
+                                <span class="badge bg-postgre">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fab fa-angular me-2"></i>
+                                Site E-commerce (Angular + NestJS)
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Inscription et authentification des utilisateurs</li>
+                                    <li class="mb-2">✅ Catalogue de produits</li>
+                                    <li class="mb-2">✅ Ajout au panier</li>
+                                    <li class="mb-2">✅ Sécurisation des informations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io/tree/main" class="btn btn-primary btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev-web/site_e_commerce/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Site Bibliothèque Vuejs -->
                 <div class="col-lg-4 col-md-6 project-card" data-tech="web">
                     <div class="card h-100 shadow-lg">
                         <div class="card-img-top position-relative">
                             <!-- <img src="images/projet-bibliotheque.jpg" class="img-fluid" alt="Bibliothèque PHP" loading="lazy"> -->
                             <div class="tech-badges">
-                                <span class="badge bg-php">PHP</span>
+                                <span class="badge bg-vuejs">VueJs</span>
+                                <span class="badge bg-django">Django</span>
+                                <span class="badge bg-jwt">JWT</span>
                                 <span class="badge bg-mysql">MySQL</span>
                             </div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title h5">
-                                <i class="fab fa-php me-2"></i>
-                                Gestion de Bibliothèque
+                                <i class="fab fa-vuejs me-2"></i>
+                                Gestion de Bibliothèque (VueJS)
                             </h3>
                             <div class="card-text">
                                 <ul class="list-unstyled">
-                                    <li class="mb-2">✅ Architecture MVC</li>
-                                    <li class="mb-2">✅ CRUD complet</li>
-                                    <li class="mb-2">✅ Protection XSS/SQLi</li>
+                                    <li class="mb-2">✅ Catalogue de livres (ajout, modification, suppression)</li>
+                                    <li class="mb-2">✅ Recherche avec filtres (titre, auteur, catégorie)</li>
+                                    <li class="mb-2">✅ Système d’authentification (JWT)</li>
                                 </ul>
                             </div>
                         </div>
@@ -201,7 +281,7 @@
                                 <a href="#" class="btn btn-primary btn-sm">
                                     <i class="fab fa-github me-1"></i> Code source
                                 </a>
-                                <a href="projets/bibliotheque.html" class="btn btn-outline-primary btn-sm">
+                                <a href="https://abdoulayefoff.github.io/projets/dev-web/site_bibliotheque/description.html" class="btn btn-outline-primary btn-sm">
                                     Voir le détail
                                 </a>
                             </div>
@@ -352,10 +432,14 @@
             <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
         </div>
     </footer>
+    <!-- Bouton Retour en haut ajouté -->
+    <button id="backToTop" class="btn btn-primary rounded-circle shadow-lg" title="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    <script>
+    <!-- <script>
         // Filtrage des projets
         document.querySelectorAll('.filters button').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -373,6 +457,64 @@
         });
 
         // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease-out';
+            observer.observe(card);
+        });
+    </script> -->
+    <script>
+        // Filtrage combiné et recherche
+        function updateFilters() {
+            const activeFilter = document.querySelector('.filters button.active').dataset.filter;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                const matchesFilter = activeFilter === 'all' || card.dataset.tech === activeFilter;
+                const matchesSearch = card.textContent.toLowerCase().includes(searchTerm);
+                
+                if(matchesFilter && matchesSearch) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.classList.remove('hidden'), 50);
+                } else {
+                    card.style.display = 'none';
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Gestion des événements
+        document.querySelectorAll('.filters button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateFilters();
+            });
+        });
+
+        document.getElementById('searchInput').addEventListener('input', updateFilters);
+
+        // Bouton Retour en haut
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            backToTopButton.classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animation au scroll améliorée
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
