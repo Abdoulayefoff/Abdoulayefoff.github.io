@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mise en Place d’un Serveur SSH - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/ssh-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .timeline {
+            border-left: 3px solid var(--bs-secondary);
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -1.3rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bs-secondary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Mise en Place et Sécurisation d’un Serveur SSH</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-angular">SSH</span>
+                <span class="tech-badge bg-css">OpenSSH</span>
+                <span class="tech-badge bg-critical">fail2ban</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-info-circle me-2"></i>Description</h2>
+                    <p class="lead">Ce projet consiste à installer, configurer et sécuriser un serveur SSH sur une machine Linux pour des connexions distantes sécurisées.</p>
+                    <p>SSH est un protocole essentiel pour l'administration système et réseau, permettant un accès chiffré aux serveurs.</p>
+                </section>
+                
+                <!-- Objectifs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-bullseye me-2"></i>Objectifs du projet</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">Installer et configurer un serveur SSH</li>
+                                <li class="mb-2">Restreindre l’accès au serveur pour renforcer la sécurité</li>
+                                <li class="mb-2">Mettre en place une authentification par clés SSH</li>
+                                <li class="mb-2">Protéger le serveur contre les attaques bruteforce</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Technologies et Outils -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies et Outils Utilisés</h2>
+                    <ul class="list-unstyled">
+                        <li>Système d’exploitation : Linux (Ubuntu)</li>
+                        <li>Protocole : SSH (Secure Shell)</li>
+                        <li>Outils : OpenSSH, Fail2Ban, Firewall (UFW, iptables)</li>
+                        <li>Sécurisation : Clés SSH, pare-feu, limitation des connexions</li>
+                    </ul>
+                </section>
+
+                <!-- Étapes de réalisation -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-clipboard-list me-2"></i>Étapes de réalisation</h2>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <h3 class="h5">1. Installation du serveur SSH</h3>
+                            <p>Installation du serveur SSH et vérification du statut du service.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">2. Configuration et sécurisation</h3>
+                            <p>Modification de la configuration SSH pour renforcer la sécurité.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">3. Authentification par clés SSH</h3>
+                            <p>Génération d’une paire de clés et vérification de la connexion sans mot de passe.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">4. Protection contre les attaques bruteforce</h3>
+                            <p>Installation de Fail2Ban et ajout de règles UFW pour restreindre l’accès.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultat et Perspectives -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Résultat et Perspectives</h2>
+                    <p>À l’issue de ce projet, le serveur SSH est sécurisé contre les attaques, et l’accès est limité aux utilisateurs autorisés avec authentification par clé.</p>
+                    <p>Améliorations possibles :</p>
+                    <ul>
+                        <li>Authentification multi-facteurs (MFA) pour SSH</li>
+                        <li>Journalisation et alerte en cas de connexion suspecte</li>
+                        <li>Mise en place d’un VPN pour masquer l’accès SSH</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>

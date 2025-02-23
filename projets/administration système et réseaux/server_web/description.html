@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation et Configuration d’un Serveur Web - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/server-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-apache { background: #D52B1E; color: white; }
+        .bg-php { background: #4F5B93; color: white; }
+        .bg-mysql { background: #00758F; color: white; }
+        
+        .timeline {
+            border-left: 3px solid var(--bs-secondary);
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -1.3rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bs-secondary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Installation et Configuration d’un Serveur Web</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-apache">Apache</span>
+                <span class="tech-badge bg-php">PHP</span>
+                <span class="tech-badge bg-mysql">MySQL</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-info-circle me-2"></i>Description</h2>
+                    <p class="lead">Ce projet consiste à installer et configurer un serveur web Apache sur une machine Linux, en ajoutant le support de PHP et MySQL pour permettre l’exécution d’applications web dynamiques.</p>
+                    <p>L’objectif est de créer un environnement de développement et d’hébergement web stable et performant.</p>
+                </section>
+                
+                <!-- Objectifs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-bullseye me-2"></i>Objectifs du projet</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">Installer et configurer un serveur Apache sous Linux</li>
+                                <li class="mb-2">Ajouter le support de PHP pour le traitement des pages dynamiques</li>
+                                <li class="mb-2">Installer et configurer MySQL pour la gestion des bases de données</li>
+                                <li class="mb-2">Vérifier le bon fonctionnement du serveur avec un site web test</li>
+                                <li class="mb-2">Optimiser et sécuriser les configurations pour de meilleures performances</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Technologies et Outils -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies et Outils Utilisés</h2>
+                    <ul class="list-unstyled">
+                        <li>Système d’exploitation : Linux (Ubuntu)</li>
+                        <li>Serveur web : Apache</li>
+                        <li>Langage backend : PHP</li>
+                        <li>Base de données : MySQL/MariaDB</li>
+                        <li>Outils complémentaires : Terminal Linux, commandes Shell</li>
+                    </ul>
+                </section>
+
+                <!-- Étapes de réalisation -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-clipboard-list me-2"></i>Étapes de réalisation</h2>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <h3 class="h5">1. Installation du serveur Apache</h3>
+                            <p>Mise à jour des paquets et installation d’Apache.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">2. Ajout du support PHP</h3>
+                            <p>Installation de PHP et vérification avec un fichier phpinfo().</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">3. Installation et configuration de MySQL</h3>
+                            <p>Installation de MySQL et sécurisation de l'installation.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">4. Déploiement et test</h3>
+                            <p>Déploiement d’un site web simple en PHP et vérification via navigateur.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">5. Optimisation et sécurisation</h3>
+                            <p>Configuration des permissions et activation du pare-feu.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultat et Perspectives -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Résultat et Perspectives</h2>
+                    <p>À l’issue du projet, le serveur web est fonctionnel, sécurisé et prêt à héberger des sites dynamiques. Il peut être amélioré avec :</p>
+                    <ul>
+                        <li>L’activation du HTTPS via Let’s Encrypt</li>
+                        <li>La mise en place d’une architecture multi-sites</li>
+                        <li>L’ajout d’un système de logs et monitoring pour suivre les performances</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>

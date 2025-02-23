@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiffrement et Déchiffrement des Données - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/security-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-aes { background: #2E86C1; color: white; }
+        .bg-rsa { background: #28B463; color: white; }
+        .bg-openssl { background: #7D3C98; color: white; }
+        .bg-pycrypto { background: #D35400; color: white; }
+        
+        .timeline {
+            border-left: 3px solid var(--bs-secondary);
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -1.3rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bs-secondary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Chiffrement et Déchiffrement des Données</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-aes">AES-256</span>
+                <span class="tech-badge bg-rsa">RSA-2048</span>
+                <span class="tech-badge bg-openssl">OpenSSL</span>
+                <span class="tech-badge bg-pycrypto">PyCryptodome</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-shield-alt me-2"></i>Description</h2>
+                    <p class="lead">Implémentation d'algorithmes cryptographiques classiques et modernes.</p>
+                    <p>Ce projet consiste à développer une application de chiffrement/déchiffrement de données en utilisant différentes techniques cryptographiques. L'objectif est de comprendre et d'appliquer les concepts de cryptographie pour sécuriser les communications et protéger les données sensibles.</p>
+                    <div>
+                    <p class="lead"> 1. Chiffrement Symétrique (AES) :</p>
+                    <ul class="list-styled">
+                        <li>Le chiffrement symétrique utilise une seule clé pour le chiffrement et le déchiffrement des données.</li>
+                        <li>L'algorithme AES est implémenté pour chiffrer des données à l'aide d'une clé de 128 bits.</li>
+                        <li>Le programme propose une interface où l'utilisateur peut saisir un texte en clair, choisir une clé et voir le texte chiffré.</li>
+                        <li>Les données chiffrées peuvent ensuite être déchiffrées à l'aide de la même clé.</li>
+                    </ul>
+                    </div>
+                    <div>
+                        <p class="lead">2. Chiffrement Asymétrique (RSA) :</p>
+                        <ul class="list-styled">
+                            <li>RSA est utilisé pour le chiffrement asymétrique, où une paire de clés publique/privée est générée.</li>
+                            <li>Les utilisateurs peuvent envoyer un message chiffré à un destinataire en utilisant sa clé publique, et le destinataire peut le déchiffrer avec sa clé privée.</li>
+                            <li>Le projet implémente également la signature numérique, permettant de signer un message et de le vérifier à l'aide de la clé publique.</li>
+                        </ul>
+                    </div>
+                    
+                </section>
+                
+                <!-- Problème à résoudre -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Problème à résoudre</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-styled">
+                                <li class="mb-2">Implémenter le chiffrement symétrique (AES) et asymétrique (RSA)</li>
+                                <li class="mb-2">Générer et gérer des paires de clés cryptographiques</li>
+                                <li class="mb-2">Assurer l'intégrité des données via le hachage (SHA-256)</li>
+                                <li class="mb-2">Simuler des communications sécurisées avec SSL/TLS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <!-- Méthodologie -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-project-diagram me-2"></i>Méthodologie</h2>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <h3 class="h5">1. Recherche théorique </h3>
+                            <p>Analyse des algorithmes AES, RSA, DES et étude des standards de sécurité modernes.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">2. Développement des modules</h3>
+                            <p>Implémentation en Python avec PyCryptodome pour le chiffrement symétrique/asymétrique et utilisation d'OpenSSL pour simuler des échanges sécurisés.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">3. Tests de validation</h3>
+                            <p> Vérification du chiffrement/déchiffrement et tests d'intégrité des données.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Outils -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Outils Utilisés</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <!-- <img src="../../../images/k.jpeg" alt="Kali Linux" class="img-fluid mb-3" style="height: 50px"> -->
+                                    <h3 class="h6">Langage de programmation</h3>
+                                    <p>Python</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <!-- <img src="../../../images/b.png" alt="Burp Suite" class="img-fluid mb-3" style="height: 50px"> -->
+                                    <h3 class="h6">Algorithmes de chiffrement</h3>
+                                    <p>AES (Advanced Encryption Standard), RSA (Rivest-Shamir-Adleman)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <!-- <img src="../../../images/o.png" alt="OWASP ZAP" class="img-fluid mb-3" style="height: 50px"> -->
+                                    <h3 class="h6">Outils</h3>
+                                    <p>OpenSSL, PyCryptodome (bibliothèque Python)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Améliorations possibles -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-lock me-2"></i>Améliorations possibles</h2>
+                        <div class="col-md-6">
+                            <div class="card border-danger h-100">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Implémentation d'autres algorithmes de chiffrement comme le chiffrement elliptique (ECC).</li>
+                                        <li>Service web sécurisé permettant à des utilisateurs externes de chiffrer/déchiffrer des messages via une interface web. </li>
+                                        <li>Ajout d'une authentification par certificat</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <p>Ce projet permet de comprendre l'importance du chiffrement dans la cybersécurité, en particulier pour assurer la confidentialité et l'intégrité des données échangées sur des réseaux non sécurisés. Il donne également un aperçu de l'implémentation pratique des différents algorithmes de cryptographie et de leur rôle dans la protection des informations.</p>
+                </section>
+                </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>
