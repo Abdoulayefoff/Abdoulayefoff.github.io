@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse des Algorithmes de Tri - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/algo-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-quicksort { background: #2E86C1; color: white; }
+        .bg-mergesort { background: #28B463; color: white; }
+        .bg-bubblesort { background: #7D3C98; color: white; }
+        .bg-java { background: #D35400; color: white; }
+        
+        .timeline {
+            border-left: 3px solid var(--bs-secondary);
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -1.3rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bs-secondary);
+            border-radius: 50%;
+        }
+        
+        .algorithm-card {
+            transition: transform 0.3s;
+        }
+        
+        .algorithm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Analyse des Algorithmes de Tri</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-quicksort">QuickSort</span>
+                <span class="tech-badge bg-mergesort">MergeSort</span>
+                <span class="tech-badge bg-bubblesort">BubbleSort</span>
+                <span class="tech-badge bg-java">Java</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-sort-amount-down me-2"></i>Description</h2>
+                    <p class="lead">Analyse expérimentale de l'impact du désordre sur les performances des algorithmes de tri.</p>
+                    <p>Ce projet universitaire réalisé dans le cadre de la Licence Informatique à l'Université de Caen Normandie vise à comprendre comment la quantité et la répartition du désordre influencent l'efficacité des algorithmes de tri en termes de comparaisons, d'échanges et de temps d'exécution.</p>
+                    
+                    <div>
+                        <p class="lead">1. Générateurs de données :</p>
+                        <ul class="list-styled">
+                            <li><strong>Distribution uniforme :</strong> Toutes les valeurs ont la même probabilité d'apparaître</li>
+                            <li><strong>Distribution normale :</strong> Valeurs centrées autour d'une moyenne avec un écart-type</li>
+                            <li><strong>Désordre aléatoire :</strong> Échanges aléatoires entre positions quelconques</li>
+                            <li><strong>Désordre local :</strong> Échanges uniquement entre éléments voisins</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <p class="lead">2. Générateur de séries :</p>
+                        <ul class="list-styled">
+                            <li><strong>Schéma répétitif :</strong> Blocs de valeurs identiques (ex: 1 1 1 2 2 2)</li>
+                            <li><strong>Schéma séquentiel :</strong> Répétition cyclique d'une séquence (ex: 1 2 3 1 2 3)</li>
+                            <li><strong>Schéma mélangé :</strong> Répartition aléatoire des valeurs</li>
+                            <li><strong>Calcul d'entropie :</strong> Mesure du niveau de désorganisation des données</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Objectifs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-bullseye me-2"></i>Objectifs</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-styled">
+                                <li class="mb-2">Comparer les performances des algorithmes de tri sur différents types de données</li>
+                                <li class="mb-2">Mesurer l'impact du désordre initial sur le temps d'exécution</li>
+                                <li class="mb-2">Analyser le nombre de comparaisons et d'échanges effectués</li>
+                                <li class="mb-2">Étudier la relation entre entropie et complexité algorithmique</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Algorithmes implémentés -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-project-diagram me-2"></i>Algorithmes Implémentés</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 algorithm-card">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-bolt me-2"></i>QuickSort</h3>
+                                    <p>Algorithme diviser-pour-régner avec complexité O(n log n) en moyenne</p>
+                                    <span class="badge bg-primary">Partitionnement</span>
+                                    <span class="badge bg-primary">Récursivité</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 algorithm-card">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-merge me-2"></i>MergeSort</h3>
+                                    <p>Tri par fusion avec complexité O(n log n) garantie</p>
+                                    <span class="badge bg-primary">Diviser-pour-régner</span>
+                                    <span class="badge bg-primary">Stable</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 algorithm-card">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-sort me-2"></i>BubbleSort</h3>
+                                    <p>Tri à bulles avec complexité O(n²)</p>
+                                    <span class="badge bg-primary">Simple</span>
+                                    <span class="badge bg-primary">Comparaisons adjacentes</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 algorithm-card">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-edit me-2"></i>InsertionSort</h3>
+                                    <p>Tri par insertion avec complexité O(n²)</p>
+                                    <span class="badge bg-primary">Efficient sur petits jeux</span>
+                                    <span class="badge bg-primary">Partiellement triés</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Méthodologie -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-cogs me-2"></i>Méthodologie</h2>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <h3 class="h5">1. Conception modulaire</h3>
+                            <p>Architecture en packages Java (generator, distribution, désordre, sorting) avec diagramme UML</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">2. Génération des données</h3>
+                            <p>Création de jeux de tests variés selon différentes distributions et niveaux de désordre</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">3. Expérimentations</h3>
+                            <p>Mesure des performances (temps, comparaisons, échanges) pour chaque algorithme</p>
+                        </div>
+                        <div class="timeline-step">
+                            <h3 class="h5">4. Analyse des résultats</h3>
+                            <p>Comparaison des algorithmes et visualisation via des graphiques Python/Matplotlib</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-chart-bar me-2"></i>Résultats Clés</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-styled">
+                                <li class="mb-2"><strong>Distribution uniforme :</strong> QuickSort et MergeSort montrent les meilleures performances</li>
+                                <li class="mb-2"><strong>Distribution normale :</strong> InsertionSort plus performant qu'en distribution uniforme</li>
+                                <li class="mb-2"><strong>Données séquentielles :</strong> Algorithmes adaptatifs profitent de la structure préexistante</li>
+                                <li class="mb-2"><strong>Données mélangées :</strong> QuickSort et MergeSort restent robustes face au chaos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Outils -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies Utilisées</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h3 class="h6">Langage principal</h3>
+                                    <p>Java 11</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h3 class="h6">Visualisation</h3>
+                                    <p>Python, Matplotlib</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h3 class="h6">Automatisation</h3>
+                                    <p>Scripts Bash, JSON</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Difficultés et améliorations -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-exclamation-triangle me-2"></i>Défis & Perspectives</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card border-danger h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Difficultés rencontrées</h3>
+                                    <ul>
+                                        <li>Génération de séries selon une entropie cible</li>
+                                        <li>Optimisation des mesures de performance</li>
+                                        <li>Gestion des très grands jeux de données</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-success h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Améliorations possibles</h3>
+                                    <ul>
+                                        <li>Intégration d'algorithmes hybrides</li>
+                                        <li>Analyse de la consommation mémoire</li>
+                                        <li>Interface graphique plus interactive</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <p>Ce projet a permis une analyse approfondie des algorithmes de tri et de leur comportement face à différents types de données. L'approche modulaire et l'automatisation des tests ont facilité les comparaisons objectives. Les résultats confirment l'importance de choisir l'algorithme adapté à la nature des données à trier, et ouvrent des perspectives intéressantes pour l'optimisation des tris hybrides.</p>
+                    <div class="mt-4">
+                        <a href="Projet2_algotri_b1.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-file-pdf me-2"></i>Télécharger le rapport complet
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>
