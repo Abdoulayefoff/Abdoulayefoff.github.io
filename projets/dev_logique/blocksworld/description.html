@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlocksWorld IA - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/ai-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-java { background: #5382A1; color: white; }
+        .bg-ai { background: #FF6D00; color: white; }
+        .bg-csp { background: #6A1B9A; color: white; }
+        .bg-planning { background: #0277BD; color: white; }
+        
+        .feature-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .constraint-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">BlocksWorld - Intelligence Artificielle</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-java">Java</span>
+                <span class="tech-badge bg-ai">IA</span>
+                <span class="tech-badge bg-csp">CSP</span>
+                <span class="tech-badge bg-planning">Planification</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-cubes me-2"></i>Description</h2>
+                    <p class="lead">Modélisation et résolution du problème classique du monde des blocs en Intelligence Artificielle.</p>
+                    <p>Ce projet universitaire réalisé dans le cadre du cours "Aide à la Décision et Intelligence Artificielle" à l'Université de Caen Normandie aborde quatre aspects fondamentaux de l'IA : la modélisation par contraintes, la planification, la satisfaction de contraintes (CSP) et l'extraction de connaissances.</p>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Le monde des blocs</strong> est un modèle emblématique en IA utilisé pour illustrer des algorithmes de planification. Il consiste en des blocs numérotés organisés en piles, avec des règles spécifiques gouvernant leurs déplacements.
+                    </div>
+                </section>
+                
+                <!-- Fonctionnalités -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités Implémentées</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="constraint-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h3 class="h5">Modélisation des Variables</h3>
+                                    <ul class="list-styled">
+                                        <li>Variables <code>onb</code> (position des blocs)</li>
+                                        <li>Variables <code>fixedb</code> (blocs immobiles)</li>
+                                        <li>Variables <code>freep</code> (piles libres)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="constraint-icon">
+                                        <i class="fas fa-link"></i>
+                                    </div>
+                                    <h3 class="h5">Contraintes</h3>
+                                    <ul class="list-styled">
+                                        <li>Contraintes de différence</li>
+                                        <li>Contraintes d'implication</li>
+                                        <li>Contraintes de régularité</li>
+                                        <li>Contraintes de croissance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="constraint-icon">
+                                        <i class="fas fa-route"></i>
+                                    </div>
+                                    <h3 class="h5">Planification</h3>
+                                    <ul class="list-styled">
+                                        <li>Actions de déplacement</li>
+                                        <li>Algorithmes BFS, DFS, A*</li>
+                                        <li>Heuristiques personnalisées</li>
+                                        <li>Visualisation des plans</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="constraint-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <h3 class="h5">Extraction de Connaissances</h3>
+                                    <ul class="list-styled">
+                                        <li>Variables relationnelles</li>
+                                        <li>Algorithme Apriori</li>
+                                        <li>Règles d'association</li>
+                                        <li>Base de 10,000 transactions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Détails Techniques -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-microscope me-2"></i>Détails Techniques</h2>
+                    
+                    <div class="accordion" id="technicalAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    <i class="fas fa-cube me-2"></i> Modélisation des Variables
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    <p>La classe <code>BlocksVariable</code> gère trois types de variables :</p>
+                                    <ul>
+                                        <li><strong>onb</strong> : Position d'un bloc (sur pile ou autre bloc)</li>
+                                        <li><strong>fixedb</strong> : Indique si un bloc est fixé (non mobile)</li>
+                                        <li><strong>freep</strong> : Indique si une pile est libre (vide)</li>
+                                    </ul>
+                                    <p>Méthodes clés : <code>buildOnbVariables()</code>, <code>buildfixedbVar()</code>, <code>buildfreepVar()</code></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <i class="fas fa-lock me-2"></i> Système de Contraintes
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    <p>Implémentation de quatre types de contraintes :</p>
+                                    <ol>
+                                        <li><strong>Différence</strong> : Empêche deux blocs d'avoir la même position</li>
+                                        <li><strong>Implication</strong> : Si bloc A sur bloc B ⇒ B devient fixe</li>
+                                        <li><strong>Régularité</strong> : Garantit une disposition régulière des blocs</li>
+                                        <li><strong>Croissance</strong> : Impose une structure croissante</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <i class="fas fa-robot me-2"></i> Planification Automatisée
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    <p>Actions implémentées :</p>
+                                    <ul>
+                                        <li>Déplacement bloc → bloc</li>
+                                        <li>Déplacement bloc → pile</li>
+                                        <li>Déplacement pile → bloc</li>
+                                        <li>Déplacement pile → pile</li>
+                                    </ul>
+                                    <p>Algorithmes testés : BFS, DFS, Dijkstra, A* avec heuristiques personnalisées</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-chart-line me-2"></i>Résultats Obtenus</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Succès</h3>
+                                    <ul>
+                                        <li>Modélisation complète du problème avec 8 blocs et 3 piles</li>
+                                        <li>Résolution efficace avec différents solveurs CSP</li>
+                                        <li>Planification optimale avec A* (moins de 2s pour 4 blocs)</li>
+                                        <li>Extraction de règles avec 95% de confiance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Défis</h3>
+                                    <ul>
+                                        <li>Complexité exponentielle pour plus de 8 blocs</li>
+                                        <li>Visualisation des plans très longs</li>
+                                        <li>Optimisation des heuristiques pour A*</li>
+                                        <li>Gestion de la mémoire pour 10,000 transactions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies Utilisées</h2>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-java fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Java 11</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chess fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Algorithmes IA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-puzzle-piece fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">CSP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-database fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Data Mining</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-graduation-cap me-2"></i>Conclusion</h2>
+                    <p>Ce projet complet m'a permis d'acquérir une compréhension approfondie des concepts clés en Intelligence Artificielle, notamment la modélisation par contraintes, la planification automatisée et l'extraction de connaissances. La mise en pratique des algorithmes théoriques sur un problème concret comme le BlocksWorld a renforcé mes compétences en résolution de problèmes complexes.</p>
+                    <div class="mt-4">
+                        <a href="Rapport.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-file-pdf me-2"></i>Télécharger le rapport complet
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>
