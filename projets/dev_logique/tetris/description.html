@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu d'Assemblage - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/shapes-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-java { background: #5382A1; color: white; }
+        .bg-mvc { background: #FF6D00; color: white; }
+        .bg-patterns { background: #6A1B9A; color: white; }
+        .bg-oop { background: #0277BD; color: white; }
+        
+        .feature-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .design-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .diagram {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 1rem 0;
+            max-width: 100%;
+        }
+        
+        .pattern-card {
+            border-left: 4px solid var(--bs-primary);
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Jeu d'Assemblage de Formes</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-java">Java</span>
+                <span class="tech-badge bg-mvc">MVC</span>
+                <span class="tech-badge bg-patterns">Design Patterns</span>
+                <span class="tech-badge bg-oop">POO</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-puzzle-piece me-2"></i>Description</h2>
+                    <p class="lead">Implémentation d'un jeu d'assemblage de formes avec architecture MVC et design patterns.</p>
+                    <p>Ce projet universitaire réalisé dans le cadre du cours "Méthode de Conception" à l'Université de Caen Normandie consiste en la création d'un jeu où le joueur doit assembler différentes formes pour occuper le moins d'espace possible, avec une architecture modulaire et l'utilisation de plusieurs design patterns.</p>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Principe du jeu</strong> : Inspiré du Tetris, le joueur doit assembler des pièces en les faisant pivoter et déplacer pour minimiser l'espace occupé. Le score est calculé en fonction du plus petit rectangle englobant toutes les pièces.
+                    </div>
+                </section>
+                
+                <!-- Applications -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-layer-group me-2"></i>Applications du Projet</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="design-icon">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h3 class="h5">JeuxAssemblageMVC</h3>
+                                    <p>Application principale implémentant le jeu avec interface graphique et ligne de commande, utilisant la librairie PiecePuzzle.</p>
+                                    <p class="text-muted"><small>Structure MVC complète avec observers</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="design-icon">
+                                        <i class="fas fa-box-open"></i>
+                                    </div>
+                                    <h3 class="h5">PiecePuzzle</h3>
+                                    <p>Librairie contenant les composants de base du jeu : pièces, plateau, et mécanismes fondamentaux.</p>
+                                    <p class="text-muted"><small>Génération aléatoire des pièces</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture MVC -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-sitemap me-2"></i>Architecture MVC</h2>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="h5">Organisation Modèle-Vue-Contrôleur</h3>
+                            <p>Le projet utilise le pattern Observer pour implémenter l'architecture MVC :</p>
+                            <ul>
+                                <li><strong>Modèle (Plateau)</strong> : Gère la logique métier du jeu</li>
+                                <li><strong>Vue (BoardView)</strong> : Affiche l'état du plateau graphiquement</li>
+                                <li><strong>Contrôleur</strong> : Gère les interactions utilisateur</li>
+                            </ul>
+                            <p>La classe <code>AbstractListenableModel</code> agit comme observable, tandis que <code>BoardView</code> implémente <code>ListeningModel</code> comme observateur.</p>
+                        </div>
+                    </div>
+                    <img src="../images/mvc-diagram.png" alt="Diagramme MVC" class="diagram">
+                </section>
+
+                <!-- Design Patterns -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-shapes me-2"></i>Design Patterns Implémentés</h2>
+                    
+                    <div class="card pattern-card mb-4">
+                        <div class="card-body">
+                            <h3 class="h5"><i class="fas fa-chess me-2 text-primary"></i>Pattern Strategy</h3>
+                            <p>Utilisé pour les différentes stratégies de placement des pièces :</p>
+                            <ul>
+                                <li><code>ArbitraryStrategy</code> : Configuration prédéfinie avec coordonnées fixes</li>
+                                <li><code>RandomStrategy</code> : Placement aléatoire des pièces</li>
+                                <li>Interface <code>PlacementStrategy</code> commune</li>
+                            </ul>
+                            <p>Permet de changer facilement de stratégie à l'exécution.</p>
+                        </div>
+                    </div>
+                    <img src="../images/strategy-diagram.png" alt="Diagramme Strategy" class="diagram">
+                    
+                    <div class="card pattern-card mb-4">
+                        <div class="card-body">
+                            <h3 class="h5"><i class="fas fa-industry me-2 text-primary"></i>Pattern Factory</h3>
+                            <p>La classe <code>PieceFactory</code> centralise la création des pièces :</p>
+                            <ul>
+                                <li>Encapsule les détails de construction</li>
+                                <li>Permet création aléatoire ou configurée</li>
+                                <li>Méthodes fluides pour personnalisation</li>
+                                <li>Facilite l'ajout de nouveaux types de pièces</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="../images/factory-diagram.png" alt="Diagramme Factory" class="diagram">
+                    
+                    <div class="card pattern-card mb-4">
+                        <div class="card-body">
+                            <h3 class="h5"><i class="fas fa-link me-2 text-primary"></i>Chain of Responsibility</h3>
+                            <p>Gère la validation du placement des pièces :</p>
+                            <ul>
+                                <li><code>AbstractValidator</code> : Classe de base pour la chaîne</li>
+                                <li><code>OverflowValidator</code> : Vérifie les débordements</li>
+                                <li><code>OverlappingValidator</code> : Détecte les chevauchements</li>
+                                <li>Méthode <code>buildChain</code> pour construction flexible</li>
+                            </ul>
+                            <p>Permet d'ajouter facilement de nouveaux validateurs.</p>
+                        </div>
+                    </div>
+                    <img src="../images/chain-diagram.png" alt="Diagramme Chain of Responsibility" class="diagram">
+                </section>
+
+                <!-- Fonctionnalités -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités du Jeu</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-user me-2"></i>Mode Joueur</h3>
+                                    <ul>
+                                        <li>Déplacement des pièces dans l'aire de jeu</li>
+                                        <li>Rotation des pièces pour optimisation</li>
+                                        <li>Calcul du score basé sur l'espace occupé</li>
+                                        <li>Limite d'actions configurables</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-robot me-2"></i>Mode Automatique</h3>
+                                    <ul>
+                                        <li>Joueur robot avec différentes stratégies</li>
+                                        <li>Configuration via pattern Strategy</li>
+                                        <li>Comparaison des performances</li>
+                                        <li>Extensible à de nouvelles stratégies</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-shapes me-2"></i>Gestion des Pièces</h3>
+                                    <ul>
+                                        <li>Génération aléatoire ou configurée</li>
+                                        <li>Factory Method pour création flexible</li>
+                                        <li>Divers types de formes disponibles</li>
+                                        <li>Système de validation robuste</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-desktop me-2"></i>Interfaces</h3>
+                                    <ul>
+                                        <li>Interface graphique complète</li>
+                                        <li>Version ligne de commande</li>
+                                        <li>Même modèle pour les deux interfaces</li>
+                                        <li>Observers pour mise à jour automatique</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies Utilisées</h2>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-java fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Java</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-project-diagram fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">MVC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-puzzle-piece fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Design Patterns</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-object-group fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">POO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-graduation-cap me-2"></i>Conclusion</h2>
+                    <p>Ce projet a été une opportunité précieuse pour approfondir notre compréhension des concepts de conception logicielle, notamment l'architecture MVC et les design patterns. La mise en pratique de ces principes sur un jeu concret nous a permis de consolider nos compétences en programmation orientée objet et en résolution de problèmes complexes.</p>
+                    
+                    <h3 class="h5 mt-4">Perspectives d'Amélioration</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li>Ajout de nouvelles stratégies pour le joueur robot</li>
+                                <li>Implémentation d'un système de sauvegarde</li>
+                                <li>Meilleures visualisations des scores</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li>Nouveaux types de pièces et configurations</li>
+                                <li>Mode multijoueur en réseau</li>
+                                <li>Historique des parties</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="Rapport-Assemblage.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-file-pdf me-2"></i>Télécharger le rapport complet
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>

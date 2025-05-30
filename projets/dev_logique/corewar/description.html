@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreWar - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/corewar-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-java { background: #5382A1; color: white; }
+        .bg-ai { background: #FF6D00; color: white; }
+        .bg-redcode { background: #9C27B0; color: white; }
+        .bg-parallel { background: #0277BD; color: white; }
+        
+        .feature-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .corewar-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">CoreWar - Simulation de Combat de Programmes</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-java">Java</span>
+                <span class="tech-badge bg-ai">Algorithme Génétique</span>
+                <span class="tech-badge bg-redcode">RedCode</span>
+                <span class="tech-badge bg-parallel">Parallélisme</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Description</h2>
+                    <p class="lead">Implémentation d'un simulateur CoreWar avec algorithme génétique pour générer des programmes optimisés.</p>
+                    <p>Ce projet universitaire réalisé dans le cadre de ma licence d'informatique à l'Université de Caen Normandie consiste en la création d'un environnement CoreWar complet, où plusieurs programmes écrits en RedCode (un langage proche de l'assembleur) s'affrontent dans une mémoire virtuelle partagée.</p>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>CoreWar</strong> est un jeu de programmation où plusieurs programmes s'affrontent au sein d'une mémoire virtuelle. Le but est d'être le dernier programme à avoir au moins un processus en vie.
+                    </div>
+                </section>
+                
+                <!-- Fonctionnalités -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités Implémentées</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="corewar-icon">
+                                        <i class="fas fa-memory"></i>
+                                    </div>
+                                    <h3 class="h5">Moteur CoreWar</h3>
+                                    <ul class="list-styled">
+                                        <li>Mémoire virtuelle circulaire</li>
+                                        <li>Support de la norme ICWS-88</li>
+                                        <li>11 instructions RedCode implémentées</li>
+                                        <li>5 modes d'adressage supportés</li>
+                                        <li>Gestion des processus (SPL, DAT)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="corewar-icon">
+                                        <i class="fas fa-dna"></i>
+                                    </div>
+                                    <h3 class="h5">Algorithme Génétique</h3>
+                                    <ul class="list-styled">
+                                        <li>Génération de programmes optimisés</li>
+                                        <li>Méthodes de sélection (élitisme, roue)</li>
+                                        <li>Mécanismes de mutation et fusion</li>
+                                        <li>Benchmark des programmes générés</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="corewar-icon">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <h3 class="h5">Parallélisme</h3>
+                                    <ul class="list-styled">
+                                        <li>Thread pool pour l'évaluation</li>
+                                        <li>Synchronisation avec wait/notify</li>
+                                        <li>Optimisation des temps de calcul</li>
+                                        <li>Gestion des ressources</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="corewar-icon">
+                                        <i class="fas fa-desktop"></i>
+                                    </div>
+                                    <h3 class="h5">Interface Graphique</h3>
+                                    <ul class="list-styled">
+                                        <li>Visualisation de la mémoire</li>
+                                        <li>Affichage des programmes en couleurs</li>
+                                        <li>Têtes de lecture visibles</li>
+                                        <li>Menu de sélection des programmes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Détails Techniques -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-microscope me-2"></i>Détails Techniques</h2>
+                    
+                    <div class="accordion" id="technicalAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    <i class="fas fa-cogs me-2"></i> Architecture CoreWar
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    <p>Le simulateur CoreWar est implémenté en Java avec une architecture modulaire :</p>
+                                    <ul>
+                                        <li><strong>Memory</strong> : Gère la mémoire virtuelle circulaire</li>
+                                        <li><strong>Parser</strong> : Transforme les fichiers RedCode en instructions exécutables</li>
+                                        <li><strong>Interpreter</strong> : Exécute les programmes tour par tour</li>
+                                        <li><strong>Cell</strong> : Représente une case mémoire avec instruction et opérandes</li>
+                                    </ul>
+                                    <p>Le parser effectue deux passes pour gérer les labels et constantes, et vérifie la validité des instructions selon ICWS-88.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <i class="fas fa-robot me-2"></i> Algorithme Génétique
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    <p>L'algorithme génétique implémente :</p>
+                                    <ol>
+                                        <li><strong>Sélection</strong> : Élitisme ou roue stochastique</li>
+                                        <li><strong>Mutation</strong> : Modification aléatoire d'instructions</li>
+                                        <li><strong>Fusion</strong> : Combinaison de deux programmes</li>
+                                        <li><strong>Évaluation</strong> : Duels entre programmes avec scoring</li>
+                                    </ol>
+                                    <p>Le benchmark évalue les programmes sur 6 métriques clés comme le temps de survie, la fréquence d'écriture, etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <i class="fas fa-tasks me-2"></i> Optimisation Parallèle
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    <p>Implémentation d'une thread pool pour accélérer l'évaluation :</p>
+                                    <ul>
+                                        <li>Classe <code>Pool</code> gère la répartition des tâches</li>
+                                        <li>Threads <code>Duel</code> évaluent les programmes en parallèle</li>
+                                        <li>Synchronisation avec <code>wait/notify</code></li>
+                                        <li>Gestion propre de la fin d'exécution</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-chart-line me-2"></i>Résultats Obtenus</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Succès</h3>
+                                    <ul>
+                                        <li>Moteur CoreWar pleinement fonctionnel selon ICWS-88</li>
+                                        <li>Génération de programmes compétitifs en 10 générations</li>
+                                        <li>Interface graphique intuitive pour visualiser les combats</li>
+                                        <li>Accélération significative grâce au parallélisme</li>
+                                        <li>Programmes générés capables de battre des programmes manuels</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Défis</h3>
+                                    <ul>
+                                        <li>Problème de consanguinité dans les premières versions</li>
+                                        <li>Génération aléatoire initiale peu efficace</li>
+                                        <li>Synchronisation délicate des threads</li>
+                                        <li>Optimisation des critères d'évaluation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4 class="h5">Évolution des métriques</h4>
+                        <p>Le benchmark montre une amélioration significative sur les métriques clés après optimisation de l'algorithme génétique :</p>
+                        <ul>
+                            <li>Fréquence d'écriture augmentée</li>
+                            <li>Pourcentage d'occupation mémoire optimisé</li>
+                            <li>Nombre de processus créés et maintenus en vie</li>
+                            <li>Couverture mémoire améliorée</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Interface Graphique -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-desktop me-2"></i>Interface Graphique</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="h5">Menu Principal</h3>
+                            <img src="../images/corewar-menu.png" alt="Menu CoreWar" class="screenshot">
+                            <p>Menu permettant de sélectionner les programmes à faire combattre avec 4 boutons : valider, vider, jouer et quitter.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Visualisation du Combat</h3>
+                            <img src="../images/corewar-game.png" alt="Jeu CoreWar" class="screenshot">
+                            <p>Affichage des cellules mémoire avec les programmes en couleurs et les têtes de lecture.</p>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h3 class="h5">Améliorations Possibles</h3>
+                        <ul>
+                            <li>Affichage des noms des programmes</li>
+                            <li>Contrôle de la vitesse d'exécution</li>
+                            <li>Statistiques en temps réel</li>
+                            <li>Représentation circulaire de la mémoire</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies Utilisées</h2>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-java fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Java</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-dna fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Algorithme Génétique</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-code fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">RedCode</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-parallel fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Parallélisme</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-graduation-cap me-2"></i>Conclusion et Perspectives</h2>
+                    <p>Ce projet complet m'a permis de maîtriser plusieurs concepts avancés en programmation : l'implémentation d'un langage spécifique (RedCode), les algorithmes génétiques, la programmation concurrente et la création d'interfaces graphiques. La résolution des problèmes de synchronisation et l'optimisation de l'algorithme génétique ont particulièrement renforcé mes compétences en résolution de problèmes complexes.</p>
+                    
+                    <h3 class="h5 mt-4">Pistes d'amélioration</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="h6">CoreWar</h4>
+                            <ul>
+                                <li>Support de normes plus récentes (ICWS-94)</li>
+                                <li>Communication par socket pour visualisation distante</li>
+                                <li>Multiples interfaces graphiques connectées</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="h6">Algorithme Génétique</h4>
+                            <ul>
+                                <li>Pondération des scores selon la valeur des adversaires</li>
+                                <li>Optimisation des mutations sur les adresses</li>
+                                <li>Nouvelles méthodes de fusion (bout-à-bout, blocs)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="Rapport-CoreWar.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-file-pdf me-2"></i>Télécharger le rapport complet
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>

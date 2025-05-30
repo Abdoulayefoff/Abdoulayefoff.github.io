@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sokoban - Portfolio Abdoulaye</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/sokoban-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .bg-python { background: #3776AB; color: white; }
+        .bg-pygame { background: #FFD43B; color: #333; }
+        .bg-algo { background: #6A1B9A; color: white; }
+        .bg-oop { background: #0277BD; color: white; }
+        
+        .feature-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .sokoban-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .legend-symbol {
+            font-family: monospace;
+            font-weight: bold;
+            width: 30px;
+            text-align: center;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://abdoulayefoff.github.io/index.html">Abdoulaye Fofana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://abdoulayefoff.github.io/contact.html">Contact</a></li>
+                </ul>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+                <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Sokoban - Jeu de Logique</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-python">Python</span>
+                <span class="tech-badge bg-pygame">Pygame</span>
+                <span class="tech-badge bg-algo">Algorithmes</span>
+                <span class="tech-badge bg-oop">POO</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-puzzle-piece me-2"></i>Description</h2>
+                    <p class="lead">Implémentation d'un jeu Sokoban complet avec 380 niveaux et interface graphique.</p>
+                    <p>Ce projet universitaire réalisé dans le cadre du cours de Conception Logiciel à l'Université de Caen Normandie consiste en la création d'un jeu Sokoban fonctionnel avec système de niveaux, interface graphique et gestion des déplacements.</p>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Le Sokoban</strong> est un jeu de réflexion où le joueur doit déplacer des caisses vers des zones de stockage dans un entrepôt. Le défi consiste à résoudre chaque niveau avec un nombre minimal de mouvements.
+                    </div>
+                </section>
+                
+                <!-- Légende -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-key me-2"></i>Légende des Éléments</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="h5">Symboles et significations</h3>
+                                    <div class="legend-item"><span class="legend-symbol">#</span> Mur</div>
+                                    <div class="legend-item"><span class="legend-symbol">$</span> Caisse</div>
+                                    <div class="legend-item"><span class="legend-symbol">.</span> Destination</div>
+                                    <div class="legend-item"><span class="legend-symbol">*</span> Caisse sur zone de rangement</div>
+                                    <div class="legend-item"><span class="legend-symbol">@</span> Personnage</div>
+                                    <div class="legend-item"><span class="legend-symbol">+</span> Personnage sur zone de rangement</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="h5">Format des niveaux</h3>
+                                    <p>Les niveaux sont stockés dans des fichiers <code>.xsb</code> utilisant cette légende de caractères. Chaque fichier représente un niveau complet du jeu.</p>
+                                    <p>Le jeu comprend 380 niveaux différents, classés par difficulté croissante.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Fonctionnalités -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités Implémentées</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="sokoban-icon">
+                                        <i class="fas fa-chess-board"></i>
+                                    </div>
+                                    <h3 class="h5">Système de Niveaux</h3>
+                                    <ul class="list-styled">
+                                        <li>380 niveaux chargés depuis fichiers .xsb</li>
+                                        <li>Grille dynamique adaptée à chaque niveau</li>
+                                        <li>Vérification de la complétion du niveau</li>
+                                        <li>Passage automatique au niveau suivant</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="sokoban-icon">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h3 class="h5">Contrôles du Jeu</h3>
+                                    <ul class="list-styled">
+                                        <li>Déplacements dans 4 directions (ZQSD)</li>
+                                        <li>Réinitialisation du niveau (touche R)</li>
+                                        <li>Gestion des collisions avec les murs</li>
+                                        <li>Poussée des caisses selon les règles</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="sokoban-icon">
+                                        <i class="fas fa-tv"></i>
+                                    </div>
+                                    <h3 class="h5">Interface Graphique</h3>
+                                    <ul class="list-styled">
+                                        <li>Menu principal avec bouton "Jouer"</li>
+                                        <li>Affichage des éléments avec sprites</li>
+                                        <li>Indication des commandes à l'écran</li>
+                                        <li>Numéro du niveau visible</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <div class="sokoban-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <h3 class="h5">Progression</h3>
+                                    <ul class="list-styled">
+                                        <li>Message de réussite par niveau</li>
+                                        <li>Bouton "Niveau suivant"</li>
+                                        <li>Fluidité optimale des animations</li>
+                                        <li>Chargement instantané des niveaux</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-sitemap me-2"></i>Architecture du Projet</h2>
+                    
+                    <div class="accordion" id="architectureAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    <i class="fas fa-table me-2"></i> Classe Grille
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#architectureAccordion">
+                                <div class="accordion-body">
+                                    <p>Classe générique pour créer et manipuler des grilles :</p>
+                                    <ul>
+                                        <li>Création selon nombre de lignes/colonnes</li>
+                                        <li>Méthodes pour modifier la grille</li>
+                                        <li>Indépendante du jeu Sokoban</li>
+                                        <li>Réutilisable pour d'autres projets</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <i class="fas fa-layer-group me-2"></i> Classe LevelSok
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#architectureAccordion">
+                                <div class="accordion-body">
+                                    <p>Hérite de <code>Grille</code> et implémente la logique du Sokoban :</p>
+                                    <ol>
+                                        <li>Charge un niveau depuis fichier .xsb</li>
+                                        <li>Crée la grille selon la légende</li>
+                                        <li>Gère les déplacements et interactions</li>
+                                        <li>Vérifie la complétion du niveau</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <i class="fas fa-gamepad me-2"></i> Classe Jeu
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#architectureAccordion">
+                                <div class="accordion-body">
+                                    <p>Gère la sélection et le chargement des niveaux :</p>
+                                    <ul>
+                                        <li>Charge les 380 niveaux depuis le dossier</li>
+                                        <li>Trie les fichiers .xsb par ordre numérique</li>
+                                        <li>Active les méthodes de déplacement</li>
+                                        <li>Gère la progression dans les niveaux</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    <i class="fas fa-desktop me-2"></i> Classe JeuPygame
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#architectureAccordion">
+                                <div class="accordion-body">
+                                    <p>Gère l'interface graphique avec Pygame :</p>
+                                    <ul>
+                                        <li>Affiche le menu principal</li>
+                                        <li>Charge et affiche les sprites des éléments</li>
+                                        <li>Gère les événements clavier</li>
+                                        <li>Affiche les messages de réussite</li>
+                                        <li>Permet la navigation entre niveaux</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tools me-2"></i>Technologies Utilisées</h2>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-python fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Python 3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-gamepad fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Pygame</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-folder-open fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Gestion fichiers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-object-group fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Programmation OO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Démonstration -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-play-circle me-2"></i>Démonstration</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="h5">Menu Principal</h3>
+                            <img src="../images/sokoban-menu.png" alt="Menu Sokoban" class="screenshot">
+                            <p>Écran d'accueil avec bouton "Jouer", logo officiel et fond thématique.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Niveau en Cours</h3>
+                            <img src="../images/sokoban-game.png" alt="Jeu Sokoban" class="screenshot">
+                            <p>Niveau 1 affiché avec tous les éléments visuels et indications des commandes.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Niveau Réussi</h3>
+                            <img src="../images/sokoban-success.png" alt="Niveau réussi" class="screenshot">
+                            <p>Message de réussite et bouton pour passer au niveau suivant.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Niveau 2</h3>
+                            <img src="../images/sokoban-level2.png" alt="Niveau 2" class="screenshot">
+                            <p>Exemple du niveau suivant avec une difficulté légèrement accrue.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h3 class="h5">Commandes du Jeu</h3>
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li><strong>Haut</strong> : Touche Z</li>
+                                    <li><strong>Bas</strong> : Touche S</li>
+                                    <li><strong>Gauche</strong> : Touche Q</li>
+                                    <li><strong>Droite</strong> : Touche D</li>
+                                    <li><strong>Réinitialiser</strong> : Touche R</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-graduation-cap me-2"></i>Conclusion et Perspectives</h2>
+                    <p>Ce projet de conception logicielle nous a permis de mettre en pratique les principes de programmation orientée objet, la gestion de fichiers, et la création d'interfaces graphiques avec Pygame. Le Sokoban fonctionnel que nous avons développé comprend 380 niveaux avec une progression fluide et une interface intuitive.</p>
+                    
+                    <h3 class="h5 mt-4">Améliorations Possibles</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li>Sélection directe des niveaux depuis le menu</li>
+                                <li>Système de sauvegarde de la progression</li>
+                                <li>Compteur de mouvements par niveau</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li>Fonction "Annuler" pour revenir en arrière</li>
+                                <li>Éditeur de niveaux intégré</li>
+                                <li>Scores et classements en ligne</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="Rapport-Sokoban.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-file-pdf me-2"></i>Télécharger le rapport complet
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            <p class="mb-2">Disponible pour une alternance de 12/24 mois</p>
+            <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../script.js"></script>
+</body>
+</html>
