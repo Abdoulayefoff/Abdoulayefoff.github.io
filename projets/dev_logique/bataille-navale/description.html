@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlocksWorld IA - Portfolio Abdoulaye</title>
+    <title>Bataille Navale - Portfolio Abdoulaye</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .project-header {
             background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
-                        url('../images/ai-bg.jpg') center/cover;
+                        url('../images/naval-bg.jpg') center/cover;
             color: white;
             padding: 6rem 0;
             margin-bottom: 3rem;
@@ -24,9 +24,9 @@
         }
         
         .bg-java { background: #5382A1; color: white; }
-        .bg-ai { background: #FF6D00; color: white; }
-        .bg-csp { background: #6A1B9A; color: white; }
-        .bg-planning { background: #0277BD; color: white; }
+        .bg-mvc { background: #6A1B9A; color: white; }
+        .bg-algo { background: #0277BD; color: white; }
+        .bg-ui { background: #FF6D00; color: white; }
         
         .feature-card {
             transition: transform 0.3s;
@@ -38,7 +38,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
-        .constraint-icon {
+        .naval-icon {
             font-size: 2rem;
             color: var(--bs-primary);
             margin-bottom: 1rem;
@@ -75,12 +75,12 @@
     <!-- Header -->
     <header class="project-header">
         <div class="container text-center">
-            <h1 class="display-4 fw-bold mb-3">BlocksWorld - Intelligence Artificielle</h1>
+            <h1 class="display-4 fw-bold mb-3">Bataille Navale - Java MVC</h1>
             <div class="tech-badges">
                 <span class="tech-badge bg-java">Java</span>
-                <span class="tech-badge bg-ai">IA</span>
-                <span class="tech-badge bg-csp">CSP</span>
-                <span class="tech-badge bg-planning">Planification</span>
+                <span class="tech-badge bg-mvc">Architecture MVC</span>
+                <span class="tech-badge bg-algo">Algorithmes</span>
+                <span class="tech-badge bg-ui">Interface Graphique</span>
             </div>
         </div>
     </header>
@@ -91,13 +91,13 @@
             <div class="col-lg-8 mx-auto">
                 <!-- Description -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-cubes me-2"></i>Description</h2>
-                    <p class="lead">Modélisation et résolution du problème classique du monde des blocs en Intelligence Artificielle.</p>
-                    <p>Ce projet universitaire réalisé dans le cadre du cours "Aide à la Décision et Intelligence Artificielle" à l'Université de Caen Normandie aborde quatre aspects fondamentaux de l'IA : la modélisation par contraintes, la planification, la satisfaction de contraintes (CSP) et l'extraction de connaissances.</p>
+                    <h2 class="text-primary mb-4"><i class="fas fa-ship me-2"></i>Description</h2>
+                    <p class="lead">Implémentation du jeu classique de Bataille Navale avec une architecture MVC robuste.</p>
+                    <p>Ce projet universitaire réalisé à l'Université de Caen Normandie met en œuvre une conception logicielle solide suivant le pattern Modèle-Vue-Contrôleur, avec une attention particulière portée sur l'optimisation algorithmique et la qualité du code.</p>
                     
                     <div class="alert alert-info mt-4">
                         <i class="fas fa-info-circle me-2"></i>
-                        <strong>Le monde des blocs</strong> est un modèle emblématique en IA utilisé pour illustrer des algorithmes de planification. Il consiste en des blocs numérotés organisés en piles, avec des règles spécifiques gouvernant leurs déplacements.
+                        <strong>La Bataille Navale</strong> est un jeu stratégique où deux joueurs s'affrontent en tentant de couler la flotte adverse. Ce projet inclut une interface graphique et une version en ligne de commande, avec une IA comme adversaire.
                     </div>
                 </section>
                 
@@ -108,14 +108,15 @@
                         <div class="col-md-6">
                             <div class="card feature-card">
                                 <div class="card-body">
-                                    <div class="constraint-icon">
+                                    <div class="naval-icon">
                                         <i class="fas fa-project-diagram"></i>
                                     </div>
-                                    <h3 class="h5">Modélisation des Variables</h3>
+                                    <h3 class="h5">Architecture MVC</h3>
                                     <ul class="list-styled">
-                                        <li>Variables <code>onb</code> (position des blocs)</li>
-                                        <li>Variables <code>fixedb</code> (blocs immobiles)</li>
-                                        <li>Variables <code>freep</code> (piles libres)</li>
+                                        <li>Modèle totalement indépendant de la vue</li>
+                                        <li>Double interface (graphique et CLI)</li>
+                                        <li>Communication via observateurs</li>
+                                        <li>Packages bien organisés</li>
                                     </ul>
                                 </div>
                             </div>
@@ -123,15 +124,15 @@
                         <div class="col-md-6">
                             <div class="card feature-card">
                                 <div class="card-body">
-                                    <div class="constraint-icon">
-                                        <i class="fas fa-link"></i>
+                                    <div class="naval-icon">
+                                        <i class="fas fa-robot"></i>
                                     </div>
-                                    <h3 class="h5">Contraintes</h3>
+                                    <h3 class="h5">Intelligence Artificielle</h3>
                                     <ul class="list-styled">
-                                        <li>Contraintes de différence</li>
-                                        <li>Contraintes d'implication</li>
-                                        <li>Contraintes de régularité</li>
-                                        <li>Contraintes de croissance</li>
+                                        <li>Joueur IA avec stratégie aléatoire</li>
+                                        <li>Optimisation des tirs (pas de répétition)</li>
+                                        <li>Complexité algorithmique réduite</li>
+                                        <li>Détection des bateaux coulés</li>
                                     </ul>
                                 </div>
                             </div>
@@ -139,15 +140,15 @@
                         <div class="col-md-6">
                             <div class="card feature-card">
                                 <div class="card-body">
-                                    <div class="constraint-icon">
-                                        <i class="fas fa-route"></i>
+                                    <div class="naval-icon">
+                                        <i class="fas fa-bolt"></i>
                                     </div>
-                                    <h3 class="h5">Planification</h3>
+                                    <h3 class="h5">Optimisations</h3>
                                     <ul class="list-styled">
-                                        <li>Actions de déplacement</li>
-                                        <li>Algorithmes BFS, DFS, A*</li>
-                                        <li>Heuristiques personnalisées</li>
-                                        <li>Visualisation des plans</li>
+                                        <li>Structure de données efficace</li>
+                                        <li>Accès direct aux cases (O(1))</li>
+                                        <li>Gestion mémoire optimisée</li>
+                                        <li>Tests unitaires</li>
                                     </ul>
                                 </div>
                             </div>
@@ -155,15 +156,15 @@
                         <div class="col-md-6">
                             <div class="card feature-card">
                                 <div class="card-body">
-                                    <div class="constraint-icon">
-                                        <i class="fas fa-brain"></i>
+                                    <div class="naval-icon">
+                                        <i class="fas fa-tv"></i>
                                     </div>
-                                    <h3 class="h5">Extraction de Connaissances</h3>
+                                    <h3 class="h5">Interface Graphique</h3>
                                     <ul class="list-styled">
-                                        <li>Variables relationnelles</li>
-                                        <li>Algorithme Apriori</li>
-                                        <li>Règles d'association</li>
-                                        <li>Base de 10,000 transactions</li>
+                                        <li>Grilles interactives</li>
+                                        <li>Feedback visuel (tirs touchés/ratés)</li>
+                                        <li>Affichage des bateaux coulés</li>
+                                        <li>Design personnalisé</li>
                                     </ul>
                                 </div>
                             </div>
@@ -179,18 +180,18 @@
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                    <i class="fas fa-cube me-2"></i> Modélisation des Variables
+                                    <i class="fas fa-sitemap me-2"></i> Architecture MVC
                                 </button>
                             </h3>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#technicalAccordion">
                                 <div class="accordion-body">
-                                    <p>La classe <code>BlocksVariable</code> gère trois types de variables :</p>
+                                    <p>Structure modulaire respectant strictement le pattern MVC :</p>
                                     <ul>
-                                        <li><strong>onb</strong> : Position d'un bloc (sur pile ou autre bloc)</li>
-                                        <li><strong>fixedb</strong> : Indique si un bloc est fixé (non mobile)</li>
-                                        <li><strong>freep</strong> : Indique si une pile est libre (vide)</li>
+                                        <li><strong>Modèle</strong> : Gestion des grilles, flottes, règles du jeu (totalement indépendant de l'UI)</li>
+                                        <li><strong>Vue</strong> : Interface graphique (Swing/JavaFX) et interface texte (CLI)</li>
+                                        <li><strong>Contrôleur</strong> : Médiateur entre modèle et vues, gestion des événements</li>
                                     </ul>
-                                    <p>Méthodes clés : <code>buildOnbVariables()</code>, <code>buildfixedbVar()</code>, <code>buildfreepVar()</code></p>
+                                    <p>Méthodes clés : <code>GameModel</code>, <code>GameView</code>, <code>GameController</code></p>
                                 </div>
                             </div>
                         </div>
@@ -198,17 +199,17 @@
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                    <i class="fas fa-lock me-2"></i> Système de Contraintes
+                                    <i class="fas fa-brain me-2"></i> Algorithmes Clés
                                 </button>
                             </h3>
                             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
                                 <div class="accordion-body">
-                                    <p>Implémentation de quatre types de contraintes :</p>
+                                    <p>Optimisations algorithmiques majeures :</p>
                                     <ol>
-                                        <li><strong>Différence</strong> : Empêche deux blocs d'avoir la même position</li>
-                                        <li><strong>Implication</strong> : Si bloc A sur bloc B ⇒ B devient fixe</li>
-                                        <li><strong>Régularité</strong> : Garantit une disposition régulière des blocs</li>
-                                        <li><strong>Croissance</strong> : Impose une structure croissante</li>
+                                        <li><strong>Détection des impacts</strong> : Utilisation d'un tableau 2D pour accès direct (O(1))</li>
+                                        <li><strong>Gestion des tirs IA</strong> : Mémorisation des cases déjà testées</li>
+                                        <li><strong>Vérification des bateaux coulés</strong> : Algorithme optimisé en O(n)</li>
+                                        <li><strong>Placement des bateaux</strong> : Validation des positions sans chevauchement</li>
                                     </ol>
                                 </div>
                             </div>
@@ -217,19 +218,19 @@
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                    <i class="fas fa-robot me-2"></i> Planification Automatisée
+                                    <i class="fas fa-code me-2"></i> Qualité du Code
                                 </button>
                             </h3>
                             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
                                 <div class="accordion-body">
-                                    <p>Actions implémentées :</p>
+                                    <p>Pratiques de développement exemplaires :</p>
                                     <ul>
-                                        <li>Déplacement bloc → bloc</li>
-                                        <li>Déplacement bloc → pile</li>
-                                        <li>Déplacement pile → bloc</li>
-                                        <li>Déplacement pile → pile</li>
+                                        <li>Documentation Javadoc complète</li>
+                                        <li>Tests unitaires pour les fonctions critiques</li>
+                                        <li>Gestion d'erreurs robuste</li>
+                                        <li>Code découpé en méthodes courtes et spécialisées</li>
+                                        <li>Nommage clair et cohérent</li>
                                     </ul>
-                                    <p>Algorithmes testés : BFS, DFS, Dijkstra, A* avec heuristiques personnalisées</p>
                                 </div>
                             </div>
                         </div>
@@ -245,10 +246,11 @@
                                 <div class="card-body">
                                     <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Succès</h3>
                                     <ul>
-                                        <li>Modélisation complète du problème avec 8 blocs et 3 piles</li>
-                                        <li>Résolution efficace avec différents solveurs CSP</li>
-                                        <li>Planification optimale avec A* (moins de 2s pour 4 blocs)</li>
-                                        <li>Extraction de règles avec 95% de confiance</li>
+                                        <li>Architecture MVC parfaitement respectée</li>
+                                        <li>Performances algorithmiques optimales</li>
+                                        <li>Double interface fonctionnelle (GUI + CLI)</li>
+                                        <li>Code maintenable et documenté</li>
+                                        <li>Rapport technique détaillé (7 pages)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -258,10 +260,10 @@
                                 <div class="card-body">
                                     <h3 class="h5"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Défis</h3>
                                     <ul>
-                                        <li>Complexité exponentielle pour plus de 8 blocs</li>
-                                        <li>Visualisation des plans très longs</li>
-                                        <li>Optimisation des heuristiques pour A*</li>
-                                        <li>Gestion de la mémoire pour 10,000 transactions</li>
+                                        <li>Synchronisation modèle/vue</li>
+                                        <li>Gestion des événements concurrents</li>
+                                        <li>Optimisation de l'IA (niveaux de difficulté)</li>
+                                        <li>Tests sur différentes tailles de grille</li>
                                     </ul>
                                 </div>
                             </div>
@@ -284,24 +286,24 @@
                         <div class="col-6 col-md-3">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
+                                    <i class="fas fa-sitemap fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">MVC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
                                     <i class="fas fa-chess fa-3x text-primary mb-2"></i>
-                                    <p class="mb-0">Algorithmes IA</p>
+                                    <p class="mb-0">Algorithmes</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
-                                    <i class="fas fa-puzzle-piece fa-3x text-primary mb-2"></i>
-                                    <p class="mb-0">CSP</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3">
-                            <div class="card bg-light">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-database fa-3x text-primary mb-2"></i>
-                                    <p class="mb-0">Data Mining</p>
+                                    <i class="fas fa-desktop fa-3x text-primary mb-2"></i>
+                                    <p class="mb-0">Swing/JavaFX</p>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +313,7 @@
                 <!-- Conclusion -->
                 <section class="mb-5">
                     <h2 class="text-primary mb-4"><i class="fas fa-graduation-cap me-2"></i>Conclusion</h2>
-                    <p>Ce projet complet m'a permis d'acquérir une compréhension approfondie des concepts clés en Intelligence Artificielle, notamment la modélisation par contraintes, la planification automatisée et l'extraction de connaissances. La mise en pratique des algorithmes théoriques sur un problème concret comme le BlocksWorld a renforcé mes compétences en résolution de problèmes complexes.</p>
+                    <p>Ce projet m'a permis de consolider mes compétences en conception logicielle, particulièrement dans l'implémentation d'architectures MVC robustes. La double contrainte d'optimisation algorithmique et de qualité du code a été un excellent exercice pour améliorer mes pratiques de développement. La gestion d'un projet en équipe selon des exigences précises (dépôt SVN, documentation, livrables) a également renforcé mes compétences en gestion de projet.</p>
                 </section>
                 <!-- GitHub -->
                 <section class="text-center mt-5">
