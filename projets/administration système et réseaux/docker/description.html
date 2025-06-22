@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 03 - Déploiement WordPress avec Docker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styles du premier fichier */
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/docker-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        .bg-docker { background: #2496ED; color: white; }
+        .bg-wordpress { background: #21759B; color: white; }
+        .bg-nginx { background: #009639; color: white; }
+        .bg-mariadb { background: #003545; color: white; }
+        .docker-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-bottom: 1rem;
+        }
+
+        /* Styles du deuxième fichier */
+        .method-card {
+            border-left: 4px solid #2496ed;
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .method-icon {
+            font-size: 1.5rem;
+            color: #2496ed;
+            margin-right: 10px;
+        }
+        .yaml-key { color: #d63384; font-weight: bold; }
+        .yaml-value { color: #20c997; }
+        .yaml-string { color: #6f42c1; }
+        .config-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Consolas', monospace;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Exercice 03 - Déploiement WordPress avec Docker</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-docker">Docker</span>
+                <span class="tech-badge bg-wordpress">WordPress</span>
+                <span class="tech-badge bg-nginx">NGINX</span>
+                <span class="tech-badge bg-mariadb">MariaDB</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fab fa-docker me-2"></i>Introduction</h2>
+                    <p class="lead">Cet exercice évalue les compétences en conteneurisation avec Docker pour déployer une application web complexe.</p>
+                    <p>L'objectif est de créer une stack complète WordPress avec NGINX comme reverse proxy et MariaDB comme base de données, en utilisant Docker Compose pour l'orchestration.</p>
+                </section>
+
+                <!-- Description de l'exercice -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-cogs me-2"></i>Description de l'exercice</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="docker-icon">
+                                        <i class="fab fa-wordpress"></i>
+                                    </div>
+                                    <h3 class="h5">WordPress</h3>
+                                    <ul class="list-unstyled">
+                                        <li>Dernière version</li>
+                                        <li>Connecté à MariaDB</li>
+                                        <li>Servi via NGINX</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="docker-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <h3 class="h5">MariaDB</h3>
+                                    <ul class="list-unstyled">
+                                        <li>Base de données</li>
+                                        <li>Configuration sécurisée</li>
+                                        <li>Persistance des données</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="docker-icon">
+                                        <i class="fas fa-server"></i>
+                                    </div>
+                                    <h3 class="h5">NGINX</h3>
+                                    <ul class="list-unstyled">
+                                        <li>Reverse Proxy</li>
+                                        <li>Configuration optimisée</li>
+                                        <li>Service web</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Objectifs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-bullseye me-2"></i>Objectifs</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li class="mb-2">Maîtriser l'orchestration multi-conteneurs avec Docker Compose</li>
+                                <li class="mb-2">Configurer un environnement WordPress complet</li>
+                                <li class="mb-2">Implémenter la persistance des données avec des volumes</li>
+                                <li class="mb-2">Optimiser la configuration NGINX pour WordPress</li>
+                                <li class="mb-2">Documenter l'architecture et le déploiement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Volumes -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-hdd me-2"></i>Gestion des Données</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="h5">Volume Partagé</h3>
+                            <p>Spécifications requises :</p>
+                            <ul>
+                                <li>Volume commun pour les données et configurations</li>
+                                <li>Persistance des données WordPress</li>
+                                <li>Persistance de la base de données MariaDB</li>
+                                <li>Configuration NGINX externalisée</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Méthodologie -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-cogs me-2"></i>Méthode de Résolution</h2>
+                    
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-folder-open method-icon"></i>Étape 1 : Structure des Fichiers</h3>
+                            <ol>
+                                <li class="mb-2">Créer l'arborescence :
+                                    <div class="config-block">
+                                        wordpress/<br>
+                                        ├── docker-compose.yml<br>
+                                        ├── nginx/<br>
+                                        │   └── nginx.conf<br>
+                                        ├── db-data/ <span class="text-muted">(volume)</span><br>
+                                        └── wp-data/ <span class="text-muted">(volume)</span>
+                                    </div>
+                                </li>
+                                <li>Configurer les droits :
+                                    <div class="config-block">
+                                        chmod -R 755 wp-data
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-file-code method-icon"></i>Étape 2 : Configuration Docker Compose</h3>
+                            <ol>
+                                <li class="mb-2">Rédiger le <code>docker-compose.yml</code> :
+                                    <div class="config-block">
+                                        <span class="yaml-key">version</span>: <span class="yaml-string">'3.8'</span><br><br>
+                                        <span class="yaml-key">services</span>:<br>
+                                        &nbsp;&nbsp;<span class="yaml-key">db</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">image</span>: <span class="yaml-string">mariadb:latest</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">volumes</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">./db-data:/var/lib/mysql</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">environment</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">MYSQL_ROOT_PASSWORD</span>: <span class="yaml-string">rootpass</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">MYSQL_DATABASE</span>: <span class="yaml-string">wordpress</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">MYSQL_USER</span>: <span class="yaml-string">wpuser</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">MYSQL_PASSWORD</span>: <span class="yaml-string">wppass</span><br><br>
+                                        &nbsp;&nbsp;<span class="yaml-key">wordpress</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">depends_on</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">db</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">image</span>: <span class="yaml-string">wordpress:latest</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">volumes</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">./wp-data:/var/www/html</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">environment</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">WORDPRESS_DB_HOST</span>: <span class="yaml-string">db:3306</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">WORDPRESS_DB_USER</span>: <span class="yaml-string">wpuser</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">WORDPRESS_DB_PASSWORD</span>: <span class="yaml-string">wppass</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">WORDPRESS_DB_NAME</span>: <span class="yaml-string">wordpress</span><br><br>
+                                        &nbsp;&nbsp;<span class="yaml-key">nginx</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">image</span>: <span class="yaml-string">nginx:latest</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">ports</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">"80:80"</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">volumes</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">./nginx/nginx.conf:/etc/nginx/nginx.conf</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">./wp-data:/var/www/html</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">depends_on</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yaml-string">wordpress</span>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-cog method-icon"></i>Étape 3 : Configuration NGINX</h3>
+                            <ol>
+                                <li class="mb-2">Créer <code>nginx/nginx.conf</code> :
+                                    <div class="config-block">
+                                        <span class="text-muted"># Configuration de base pour WordPress</span><br>
+                                        events {}<br>
+                                        http {<br>
+                                        &nbsp;&nbsp;server {<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;listen 80;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;root /var/www/html;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;index index.php;<br><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;location / {<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri $uri/ /index.php?$args;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;location ~ \.php$ {<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fastcgi_pass wordpress:9000;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include fastcgi_params;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                        &nbsp;&nbsp;}<br>
+                                        }
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-rocket method-icon"></i>Étape 4 : Déploiement et Test</h3>
+                            <ol>
+                                <li class="mb-2">Lancer les conteneurs :
+                                    <div class="config-block">
+                                        docker-compose up -d
+                                    </div>
+                                </li>
+                                <li>Vérifier l'état :
+                                    <div class="config-block">
+                                        docker-compose ps
+                                    </div>
+                                </li>
+                                <li>Accéder à WordPress : <code>http://localhost</code></li>
+                                <li>Compléter l'installation via l'interface web</li>
+                                <li>Vérifier la persistance après redémarrage</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Défis et Perspectives -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-exclamation-triangle me-2"></i>Défis et Perspectives</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-danger h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Défis rencontrés</h3>
+                                    <ul>
+                                        <li>Gestion des permissions des volumes</li>
+                                        <li>Configuration des dépendances entre services</li>
+                                        <li>Optimisation des performances PHP</li>
+                                        <li>Gestion des variables d'environnement sensibles</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-success h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Améliorations possibles</h3>
+                                    <ul>
+                                        <li>Ajout de phpMyAdmin pour la gestion de la base</li>
+                                        <li>Mise en place de certificats SSL avec Let's Encrypt</li>
+                                        <li>Configuration de cache avec Redis</li>
+                                        <li>Automatisation du déploiement avec CI/CD</li>
+                                        <li>Monitoring avec Prometheus et Grafana</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Résultats Attendus</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="h5">Livrables</h3>
+                            <ul>
+                                <li>Fichier <code>Readme.md</code> complet</li>
+                                <li>Fichier <code>docker-compose.yaml</code> fonctionnel</li>
+                                <li>Configuration NGINX optimisée</li>
+                                <li>Documentation du processus</li>
+                                <li>Captures d'écran des tests</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Validation</h3>
+                            <ul>
+                                <li>WordPress accessible via NGINX sur le port 80</li>
+                                <li>Base de données MariaDB fonctionnelle</li>
+                                <li>Persistance des données après redémarrage</li>
+                                <li>Installation WordPress complète</li>
+                                <li>Performance acceptable du site</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Screenshots -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-camera me-2"></i>Captures d'Écran</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../images/docker-1.png" alt="Docker Compose" class="screenshot">
+                            <p>Configuration Docker Compose</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/docker-2.png" alt="Conteneurs en cours" class="screenshot">
+                            <p>Conteneurs en cours d'exécution</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/docker-3.png" alt="WordPress installé" class="screenshot">
+                            <p>WordPress correctement installé</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/docker-4.png" alt="Configuration NGINX" class="screenshot">
+                            <p>Fichier de configuration NGINX</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Cet exercice de déploiement WordPress avec Docker a permis de valider plusieurs compétences clés en conteneurisation et orchestration :</p>
+                            <ul>
+                                <li>Maîtrise de Docker Compose pour les applications multi-conteneurs</li>
+                                <li>Configuration d'une stack LEMP (Linux, Nginx, MariaDB, PHP)</li>
+                                <li>Gestion des volumes pour la persistance des données</li>
+                                <li>Optimisation des configurations pour un environnement de production</li>
+                                <li>Dépannage des problèmes courants dans les environnements conteneurisés</li>
+                            </ul>
+                            <p>Les défis rencontrés, notamment dans la gestion des dépendances entre services et la configuration des volumes, ont renforcé la compréhension des bonnes pratiques en matière de conteneurisation. Les perspectives d'amélioration montrent comment cette solution de base pourrait être transformée en une architecture de production robuste.</p>
+                            <p>Ce type de déploiement est aujourd'hui essentiel dans les environnements DevOps, permettant des déploiements rapides, reproductibles et isolés, tout en facilitant la mise à l'échelle horizontale des applications.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>

@@ -116,7 +116,9 @@ section.animate {
     --bg-swing: #65bc65;
     --bg-pygame: #241919;
     --bg-mvcr: #47835e;
-    
+    --bg-symfony: #53210d;
+    --bg-doctrine:#7952B3;
+    --bg-twig:#3D8FCC;
 
 }
 
@@ -166,6 +168,10 @@ section.animate {
 .bg-swing { background-color: var(--bg-swing); }
 .bg-pygame { background-color: #241919; }
 .bg-mvcr { background-color: #47835e; }
+.bg-symfony { background-color: var(--bg-symfony); }
+.bg-doctrine { background-color: var(--bg-doctrine); }
+.bg-twig { background-color: var(--bg-twig); }
+
 
 /* Dark Mode */
 .dark-mode {
@@ -239,6 +245,9 @@ section.animate {
 .dark-mode .bg-swing { background-color: #65bc65 !important; }
 .dark-mode .bg-pygame { background-color: #241919 !important; }
 .dark-mode .bg-mvcr { background-color: #47835e !important; }
+.dark-mode .bg-symfony { background-color: #53210d !important; }
+.dark-mode .bg-doctrine { background-color: #7952B3 !important; }
+.dark-mode .bg-twig { background-color: #3D8FCC !important; }
 
 #darkModeToggle i {
     transition: transform 0.3s ease;

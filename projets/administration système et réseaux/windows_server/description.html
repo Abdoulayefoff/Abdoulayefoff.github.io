@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Directory avec PowerShell</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styles du premier fichier */
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/ad-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        .bg-windows { background: #0078D7; color: white; }
+        .bg-powershell { background: #012456; color: white; }
+        .bg-ad { background: #6A1B9A; color: white; }
+        .bg-scripting { background: #0277BD; color: white; }
+        .ad-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+        .table-users {
+            font-size: 0.9rem;
+        }
+
+        /* Styles du deuxième fichier */
+        .method-card {
+            border-left: 4px solid #6f42c1;
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .powershell-icon {
+            font-size: 1.5rem;
+            color: #6f42c1;
+            margin-right: 10px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Consolas', monospace;
+            margin-bottom: 15px;
+        }
+        .code-keyword { color: #569cd6; }
+        .code-cmdlet { color: #4ec9b0; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; }
+        .code-parameter { color: #9cdcfe; }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Active Directory avec PowerShell</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-windows">Windows Server</span>
+                <span class="tech-badge bg-powershell">PowerShell</span>
+                <span class="tech-badge bg-ad">Active Directory</span>
+                <span class="tech-badge bg-scripting">Scripting</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-users-cog me-2"></i>Introduction</h2>
+                    <p class="lead">Cet exercice évalue les compétences en administration Windows Server et en automatisation via PowerShell pour la gestion d'Active Directory.</p>
+                    <p>L'objectif est de créer un domaine Active Directory "abdoulaye.io" et d'automatiser la création d'utilisateurs à partir d'un fichier CSV, avec gestion des groupes et politique de mot de passe.</p>
+                </section>
+
+                <!-- Description de l'exercice -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-tasks me-2"></i>Description de l'exercice</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="ad-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h3 class="h5">Configuration AD</h3>
+                                    <ul>
+                                        <li>Créer l'AD "abdoulaye.io"</li>
+                                        <li>Configurer les paramètres de base</li>
+                                        <li>Vérifier le bon fonctionnement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="ad-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <h3 class="h5">Gestion Utilisateurs</h3>
+                                    <ul>
+                                        <li>Créer 17 utilisateurs depuis CSV</li>
+                                        <li>Définir le mot de passe "Azerty_2025!"</li>
+                                        <li>Forcer le changement à 1ère connexion</li>
+                                        <li>Affecter aux groupes appropriés</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Objectifs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-bullseye me-2"></i>Objectifs</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li class="mb-2">Maîtriser l'installation et la configuration d'Active Directory</li>
+                                <li class="mb-2">Développer des scripts PowerShell automatisant des tâches AD</li>
+                                <li class="mb-2">Gérer les utilisateurs et groupes de manière dynamique</li>
+                                <li class="mb-2">Implémenter des politiques de sécurité de base</li>
+                                <li class="mb-2">Documenter le processus et les résultats</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Données Utilisateurs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-file-csv me-2"></i>Données Utilisateurs</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-users">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Groupes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>MARTIN</td><td>CÉLINE</td><td>Logistique</td></tr>
+                                <tr><td>DUBOIS</td><td>ÉLODIE</td><td>Logistique</td></tr>
+                                <tr><td>LEROUX</td><td>SOPHIE</td><td>RH, Juridique</td></tr>
+                                <tr><td>MOREAU</td><td>CLAUDINE</td><td>RH, Juridique</td></tr>
+                                <tr><td>FOURNIER</td><td>JULIEN</td><td>Maintenance, Sécurité</td></tr>
+                                <tr><td>GIROUX</td><td>NADIA</td><td>Superviseur, RH, Juridique</td></tr>
+                                <tr><td>LEFEVRE</td><td>MARINE</td><td>Finance, Administration</td></tr>
+                                <tr><td>MERCIER</td><td>PIERRE</td><td>Directeur Général, RH, Maintenance, Administration, Logistique, Sécurité</td></tr>
+                                <tr><td>ROUSSEAU</td><td>LAURE</td><td>Chef de Service, RH, Sécurité</td></tr>
+                                <tr><td>BERTRAND</td><td>ANNE</td><td>Médecin Chef, RH, Juridique</td></tr>
+                                <tr><td>MORIN</td><td>VALÉRIE</td><td>Psychologue en Chef, RH, Juridique</td></tr>
+                                <tr><td>LAURENT</td><td>CORALIE</td><td>Maintenance, Sécurité</td></tr>
+                                <tr><td>RIVIERE</td><td>JULIE</td><td>Assistante, Administration</td></tr>
+                                <tr><td>DUVAL</td><td>LUCIE</td><td>Infirmière, Juridique</td></tr>
+                                <tr><td>LEMAIRE</td><td>AMANDINE</td><td>Infirmière, Juridique</td></tr>
+                                <tr><td>GARNIER</td><td>THOMAS</td><td>Technicien, RH</td></tr>
+                                <tr><td>CHEVALIER</td><td>CAMILLE</td><td>Logistique, RH, Sécurité, Administration</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-3">Un utilisateur peut appartenir à plusieurs groupes (jusqu'à 6 groupes différents).</p>
+                </section>
+
+                <!-- Méthodologie -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-cogs me-2"></i>Méthode de Résolution</h2>
+                    
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-server powershell-icon"></i>Étape 1 : Installation de l'AD</h3>
+                            <ol>
+                                <li class="mb-2">Installer les rôles nécessaires :
+                                    <div class="code-block">
+                                        <span class="code-cmdlet">Install-WindowsFeature</span> <span class="code-parameter">-Name</span> <span class="code-string">AD-Domain-Services</span> <span class="code-parameter">-IncludeManagementTools</span>
+                                    </div>
+                                </li>
+                                <li>Promouvoir le serveur en contrôleur de domaine :
+                                    <div class="code-block">
+                                        <span class="code-cmdlet">Install-ADDSForest</span> <span class="code-parameter">-DomainName</span> <span class="code-string">"abdoulaye.io"</span> <span class="code-parameter">-InstallDNS</span>
+                                    </div>
+                                </li>
+                                <li>Redémarrer le serveur après configuration</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-users powershell-icon"></i>Étape 2 : Script de Création des Utilisateurs</h3>
+                            <ol>
+                                <li class="mb-2">Préparer le fichier CSV (nom,prénom,groupes)</li>
+                                <li>Créer un script PowerShell qui :
+                                    <ul>
+                                        <li>Lit le fichier CSV :
+                                            <div class="code-block">
+                                                <span class="code-variable">$users</span> = <span class="code-cmdlet">Import-Csv</span> <span class="code-parameter">-Path</span> <span class="code-string">"utilisateurs.csv"</span>
+                                            </div>
+                                        </li>
+                                        <li>Crée chaque utilisateur :
+                                            <div class="code-block">
+                                                <span class="code-cmdlet">New-ADUser</span> <span class="code-parameter">-GivenName</span> <span class="code-variable">$user</span>.prénom <span class="code-parameter">-Surname</span> <span class="code-variable">$user</span>.nom `<br>
+                                                <span class="code-parameter">-Name</span> <span class="code-string">"$($user.prénom) $($user.nom)"</span> `<br>
+                                                <span class="code-parameter">-SamAccountName</span> <span class="code-string">"$($user.prénom[0]).$($user.nom)"</span> `<br>
+                                                <span class="code-parameter">-AccountPassword</span> (<span class="code-cmdlet">ConvertTo-SecureString</span> <span class="code-string">"Azerty_2025!"</span> <span class="code-parameter">-AsPlainText</span> <span class="code-parameter">-Force</span>) `<br>
+                                                <span class="code-parameter">-ChangePasswordAtLogon</span> <span class="code-keyword">$true</span> `<br>
+                                                <span class="code-parameter">-Enabled</span> <span class="code-keyword">$true</span>
+                                            </div>
+                                        </li>
+                                        <li>Gère les groupes (création si nécessaire puis affectation)</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-users-cog powershell-icon"></i>Étape 3 : Gestion des Groupes</h3>
+                            <ol>
+                                <li class="mb-2">Pour chaque ligne du CSV :
+                                    <ul>
+                                        <li>Extraire les groupes (non vides)</li>
+                                        <li>Vérifier l'existence du groupe ou le créer :
+                                            <div class="code-block">
+                                                <span class="code-keyword">if</span> (<span class="code-parameter">-not</span> (<span class="code-cmdlet">Get-ADGroup</span> <span class="code-parameter">-Filter</span> {<span class="code-variable">Name</span> <span class="code-parameter">-eq</span> <span class="code-variable">$groupName</span>})) {<br>
+                                                &nbsp;&nbsp;<span class="code-cmdlet">New-ADGroup</span> <span class="code-parameter">-Name</span> <span class="code-variable">$groupName</span> <span class="code-parameter">-GroupScope</span> <span class="code-string">Global</span><br>
+                                                }
+                                            </div>
+                                        </li>
+                                        <li>Ajouter l'utilisateur aux groupes :
+                                            <div class="code-block">
+                                                <span class="code-cmdlet">Add-ADGroupMember</span> <span class="code-parameter">-Identity</span> <span class="code-variable">$groupName</span> <span class="code-parameter">-Members</span> <span class="code-variable">$user</span>.SamAccountName
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-check-circle powershell-icon"></i>Étape 4 : Validation</h3>
+                            <ol>
+                                <li class="mb-2">Vérifier la création des utilisateurs :
+                                    <div class="code-block">
+                                        <span class="code-cmdlet">Get-ADUser</span> <span class="code-parameter">-Filter</span> * | <span class="code-cmdlet">Format-Table</span> <span class="code-variable">Name</span>,<span class="code-variable">SamAccountName</span>
+                                    </div>
+                                </li>
+                                <li>Vérifier les appartenances aux groupes :
+                                    <div class="code-block">
+                                        <span class="code-cmdlet">Get-ADUser</span> <span class="code-variable">$user</span>.SamAccountName <span class="code-parameter">-Properties</span> <span class="code-variable">MemberOf</span> | <span class="code-cmdlet">Select-Object</span> <span class="code-variable">MemberOf</span>
+                                    </div>
+                                </li>
+                                <li>Tester la connexion avec un compte</li>
+                                <li>Vérifier le changement obligatoire de mot de passe</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Défis et Perspectives -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-exclamation-triangle me-2"></i>Défis et Perspectives</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-danger h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Défis rencontrés</h3>
+                                    <ul>
+                                        <li>Gestion des groupes multiples par utilisateur</li>
+                                        <li>Traitement des champs vides dans le CSV</li>
+                                        <li>Gestion des erreurs lors de la création des comptes</li>
+                                        <li>Optimisation des performances pour de gros volumes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-success h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Améliorations possibles</h3>
+                                    <ul>
+                                        <li>Ajout de logs détaillés</li>
+                                        <li>Gestion des doublons</li>
+                                        <li>Intégration avec Azure AD</li>
+                                        <li>Ajout de MFA (Authentification Multifacteur)</li>
+                                        <li>Création automatique d'unités d'organisation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Résultats Attendus</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="h5">Livrables</h3>
+                            <ul>
+                                <li>Fichier <code>Readme.md</code> expliquant le processus</li>
+                                <li>Scripts PowerShell complets</li>
+                                <li>Documentation des commandes utilisées</li>
+                                <li>Captures d'écran des tests</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Validation</h3>
+                            <ul>
+                                <li>AD correctement configuré</li>
+                                <li>Tous les utilisateurs créés (17 comptes)</li>
+                                <li>Groupes correctement affectés</li>
+                                <li>Politique de mot de passe appliquée</li>
+                                <li>Changement obligatoire à la première connexion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Screenshots -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-camera me-2"></i>Captures d'Écran</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../images/ad-1.png" alt="Configuration AD" class="screenshot">
+                            <p>Création du domaine Active Directory</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/ad-2.png" alt="Script PowerShell" class="screenshot">
+                            <p>Exemple de script PowerShell</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/ad-3.png" alt="Liste utilisateurs" class="screenshot">
+                            <p>Liste des utilisateurs dans AD</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/ad-4.png" alt="Propriétés groupe" class="screenshot">
+                            <p>Vérification des appartenances aux groupes</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Cet exercice complet de gestion d'Active Directory avec PowerShell a permis de valider plusieurs compétences clés en administration système :</p>
+                            <ul>
+                                <li>Maîtrise de l'installation et configuration d'Active Directory</li>
+                                <li>Développement de scripts PowerShell automatisant des tâches complexes</li>
+                                <li>Gestion avancée des utilisateurs et groupes</li>
+                                <li>Implémentation de politiques de sécurité de base</li>
+                                <li>Traitement et manipulation de données CSV</li>
+                            </ul>
+                            <p>Les défis rencontrés, notamment dans la gestion des groupes multiples et le traitement des données CSV, ont mis en lumière l'importance d'une bonne gestion des erreurs et de la robustesse des scripts. Les perspectives d'amélioration montrent comment cet exercice pourrait être étendu pour couvrir des scénarios réels plus complexes.</p>
+                            <p>Cette compétence en automatisation AD est cruciale pour tout administrateur système, permettant de gérer efficacement des centaines voire des milliers de comptes utilisateurs avec cohérence et reproductibilité.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>

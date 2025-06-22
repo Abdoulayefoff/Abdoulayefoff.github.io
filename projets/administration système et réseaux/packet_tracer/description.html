@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Réseau avec Packet Tracer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styles du premier fichier */
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
+                        url('../images/network-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        .bg-cisco { background: #1BA0D7; color: white; }
+        .bg-vlan { background: #6A1B9A; color: white; }
+        .bg-dhcp { background: #0277BD; color: white; }
+        .bg-network { background: #FF6D00; color: white; }
+        .network-icon {
+            font-size: 2rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+        .table-custom {
+            background-color: #f8f9fa;
+        }
+
+        /* Styles du deuxième fichier */
+        .method-card {
+            border-left: 4px solid #0d6efd;
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        .method-icon {
+            font-size: 1.5rem;
+            color: #0d6efd;
+            margin-right: 10px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Configuration Réseau avec Packet Tracer</h1>
+            <div class="tech-badges">
+                <span class="tech-badge bg-cisco">Cisco</span>
+                <span class="tech-badge bg-vlan">VLAN</span>
+                <span class="tech-badge bg-dhcp">DHCP</span>
+                <span class="tech-badge bg-network">Routage</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <!-- Description -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-network-wired me-2"></i>Introduction</h2>
+                    <p class="lead">Cet exercice évalue les compétences en configuration réseau avancée à travers la création d'un environnement multi-VLAN avec gestion DHCP et connectivité Internet.</p>
+                    <p>L'objectif est de configurer un réseau fonctionnel selon des spécifications précises en utilisant Packet Tracer et des équipements Cisco.</p>
+                </section>
+
+                <!-- Matériel -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-server me-2"></i>Description de l'exercice</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="network-icon">
+                                        <i class="fas fa-router"></i>
+                                    </div>
+                                    <h3 class="h5">Équipements</h3>
+                                    <ul>
+                                        <li>1 routeur Cisco 1941</li>
+                                        <li>3 switch PT</li>
+                                        <li>3 points d'accès Wi-Fi PT-AC</li>
+                                        <li>3 PC portables</li>
+                                        <li>6 PC fixes</li>
+                                        <li>3 téléphones IP Cisco 7960</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="network-icon">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <h3 class="h5">Répartition Bureau</h3>
+                                    <ul>
+                                        <li>1 switch</li>
+                                        <li>1 point d'accès Wi-Fi</li>
+                                        <li>1 PC portable</li>
+                                        <li>2 PC fixes</li>
+                                        <li>1 téléphone IP</li>
+                                    </ul>
+                                    <p class="mb-0">Par bureau (3 bureaux au total)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Objectifs -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-bullseye me-2"></i>Objectifs</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li class="mb-2">Maîtriser la configuration VLAN sur switches Cisco</li>
+                                <li class="mb-2">Implémenter un serveur DHCP intégré au routeur</li>
+                                <li class="mb-2">Configurer le routage inter-VLAN</li>
+                                <li class="mb-2">Garantir la connectivité Internet</li>
+                                <li class="mb-2">Documenter la configuration et les tests</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Configuration VLAN -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-ethernet me-2"></i>Configuration VLAN</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-custom">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Port</th>
+                                    <th>Affectation</th>
+                                    <th>VLAN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Port 8</td><td>Administration</td><td>VLAN 30</td></tr>
+                                <tr><td>Ports 6-7</td><td>PC fixes</td><td>VLAN 20</td></tr>
+                                <tr><td>Ports 4-5</td><td>Points d'accès Wi-Fi</td><td>VLAN 10</td></tr>
+                                <tr><td>Ports 2-3</td><td>Téléphones IP (VoIP)</td><td>VLAN 1</td></tr>
+                                <tr><td>Ports 1 et 9</td><td>Uplink (Ethernet/Fibre)</td><td>TRUNK</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Plan Adressage -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-map-marked-alt me-2"></i>Plan d'Adressage</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-custom">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>VLAN</th>
+                                    <th>Usage</th>
+                                    <th>Réseau</th>
+                                    <th>Plage DHCP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>VLAN 1</td><td>VoIP</td><td>192.168.0.0/24</td><td>192.168.0.10–192.168.0.50</td></tr>
+                                <tr><td>VLAN 10</td><td>PC fixes</td><td>192.168.10.0/24</td><td>192.168.10.10–192.168.10.50</td></tr>
+                                <tr><td>VLAN 20</td><td>Wi-Fi</td><td>192.168.20.0/24</td><td>192.168.20.10–192.168.20.50</td></tr>
+                                <tr><td>VLAN 30</td><td>Administration</td><td>192.168.30.0/24</td><td>192.168.30.10–192.168.30.50</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-3">Le routeur 1941 servira de passerelle Internet, de serveur DHCP et de gestionnaire de VLAN.</p>
+                </section>
+
+                <!-- Méthodologie -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-cogs me-2"></i>Méthode de Résolution</h2>
+                    
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-network-wired method-icon"></i>Étape 1 : Préparation de la Topologie</h3>
+                            <ol>
+                                <li class="mb-2">Placer les équipements dans Packet Tracer :
+                                    <ul>
+                                        <li>1 routeur Cisco 1941 au centre</li>
+                                        <li>3 switches connectés au routeur</li>
+                                        <li>3 points d'accès Wi-Fi (1 par switch)</li>
+                                        <li>Répartir les PC et téléphones selon le schéma des bureaux</li>
+                                    </ul>
+                                </li>
+                                <li>Connecter les équipements avec des câbles appropriés (droits pour hôtes, croisés pour inter-switch)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-ethernet method-icon"></i>Étape 2 : Configuration des VLAN sur les Switches</h3>
+                            <ol>
+                                <li class="mb-2">Pour chaque switch :
+                                    <ul>
+                                        <li>Créer les VLAN (1, 10, 20, 30) : <code>vlan 10</code>, <code>name PC_Fixes</code></li>
+                                        <li>Configurer les ports en mode access : <code>interface range fa0/4-5</code>, <code>switchport mode access</code></li>
+                                        <li>Affecter les VLAN aux ports selon le tableau :
+                                            <code>switchport access vlan 10</code>
+                                        </li>
+                                        <li>Configurer les ports uplink (1 et 9) en mode trunk :
+                                            <code>switchport mode trunk</code>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Sauvegarder la config : <code>copy running-config startup-config</code></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-router method-icon"></i>Étape 3 : Configuration du Routeur</h3>
+                            <ol>
+                                <li class="mb-2">Configurer les sous-interfaces pour le routage inter-VLAN :
+                                    <pre>interface GigabitEthernet0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0</pre>
+                                </li>
+                                <li>Répéter pour chaque VLAN avec les bonnes IPs</li>
+                                <li>Activer le DHCP :
+                                    <pre>ip dhcp pool VLAN10
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 8.8.8.8</pre>
+                                </li>
+                                <li>Configurer NAT pour l'accès Internet</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card method-card">
+                        <div class="card-body">
+                            <h3 class="h4"><i class="fas fa-check-circle method-icon"></i>Étape 4 : Tests et Validation</h3>
+                            <ol>
+                                <li class="mb-2">Vérifier la connectivité :
+                                    <ul>
+                                        <li>Ping entre VLAN (doit échouer sans ACL appropriée)</li>
+                                        <li>Ping vers la passerelle depuis chaque hôte</li>
+                                        <li>Ping vers Internet (8.8.8.8)</li>
+                                    </ul>
+                                </li>
+                                <li>Vérifier l'obtention DHCP avec <code>ipconfig /all</code> sur les PC</li>
+                                <li>Capturer les configurations avec <code>show running-config</code></li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Défis et Perspectives -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-exclamation-triangle me-2"></i>Défis et Perspectives</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-danger h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Défis rencontrés</h3>
+                                    <ul>
+                                        <li>Gestion des conflits entre téléphones IP et VLAN 1</li>
+                                        <li>Configuration précise des liens trunk</li>
+                                        <li>Optimisation des ACLs pour la sécurité inter-VLAN</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-success h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Améliorations possibles</h3>
+                                    <ul>
+                                        <li>Implémentation de la sécurité 802.1X</li>
+                                        <li>Ajout de redondance avec HSRP</li>
+                                        <li>Configuration QoS pour la VoIP</li>
+                                        <li>Monitoring avec SNMP</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Résultats Attendus</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="h5">Livrables</h3>
+                            <ul>
+                                <li>Fichier <code>Readme.md</code> expliquant le processus</li>
+                                <li>Fichier Packet Tracer (.pkt)</li>
+                                <li>Exports des configurations des équipements</li>
+                                <li>Captures d'écran des tests</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5">Validation</h3>
+                            <ul>
+                                <li>Connectivité entre tous les VLAN</li>
+                                <li>Accès Internet fonctionnel</li>
+                                <li>Configuration DHCP opérationnelle</li>
+                                <li>Sécurité de base implémentée</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Screenshots -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-camera me-2"></i>Captures d'Écran</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../images/packet-tracer-1.png" alt="Topologie réseau" class="screenshot">
+                            <p>Topologie complète du réseau</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/packet-tracer-2.png" alt="Configuration VLAN" class="screenshot">
+                            <p>Exemple de configuration VLAN</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/packet-tracer-3.png" alt="Test de connectivité" class="screenshot">
+                            <p>Tests de connectivité</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../images/packet-tracer-4.png" alt="Configuration DHCP" class="screenshot">
+                            <p>Configuration du serveur DHCP</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Cet exercice complet de configuration réseau avec Packet Tracer a permis de valider plusieurs compétences clés en administration réseau :</p>
+                            <ul>
+                                <li>Maîtrise de la segmentation réseau via les VLAN</li>
+                                <li>Configuration avancée d'un routeur Cisco (DHCP, routage inter-VLAN, NAT)</li>
+                                <li>Gestion des switches et de la connectivité globale</li>
+                                <li>Diagnostic et résolution des problèmes de connectivité</li>
+                            </ul>
+                            <p>Les défis rencontrés, particulièrement dans la configuration des liens trunk et la gestion des téléphones IP, ont renforcé la compréhension des bonnes pratiques en configuration réseau. Les perspectives d'amélioration montrent que ce laboratoire pourrait être étendu pour couvrir des aspects plus avancés de la sécurité et de la redondance réseau.</p>
+                            <p>Ce type d'exercice est directement transférable à des environnements professionnels réels, où la segmentation réseau et la gestion des VLAN sont des compétences essentielles pour tout administrateur réseau.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
