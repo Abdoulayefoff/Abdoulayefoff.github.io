@@ -1,9 +1,9 @@
-/* :root {
-    --bs-primary-rgb: 46, 204, 113; 
+:root {
+    --bs-primary-rgb: 46, 204, 113; /* Vert moderne */
 }
 
 body {
-    padding-top: 90px; 
+    padding-top: 90px; /* Compensation hauteur navbar fixe */
     font-family: 'Arial', sans-serif;
 }
 
@@ -48,17 +48,18 @@ footer a:hover {
     color: #023016;
 }
 
+/* Animation pour l'apparition progressive */
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
-
+/* Applique l'animation sur les sections */
 section {
     animation: fadeIn 1s ease-out;
 }
 
-
+/* Animation pour les boutons et cartes */
 .card, .btn {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -68,6 +69,7 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Ajoute une animation de fade-in aux éléments de la navbar au survol */
 .navbar-nav .nav-link {
     transition: color 0.3s ease;
 }
@@ -76,12 +78,12 @@ section {
     color: var(--bs-primary);
 }
 
-
+/* Animation de fade-in lorsque l'élément devient visible */
 section.animate {
     animation: fadeIn 1s ease-out forwards;
 }
 
-
+/*  dark      modif*/
 :root {
     --bs-primary-rgb: 46, 204, 113;
     --animation-timing: 0.3s ease-in-out;
@@ -171,7 +173,7 @@ section.animate {
 .bg-twig { background-color: var(--bg-twig); }
 
 
-
+/* Dark Mode */
 .dark-mode {
     background-color: #1a1a1a;
     color: #e0e0e0;
@@ -210,7 +212,11 @@ section.animate {
 .dark-mode .badge {
     color: white !important;
 }
-
+/* .hero-projects {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                url('images/bdg.jpg') center/cover ;
+    padding: 100px 0;
+} */
 
 .dark-mode .bg-react { background-color: #218c8d !important; }
 .dark-mode .bg-node { background-color: #4e8d53 !important; }
@@ -254,376 +260,3 @@ section.animate {
 }
 
 
- */
- :root {
-    --primary-color: #21B799;
-    --secondary-color: #2c3e50;
-    --accent-color: #e74c3c;
-    --light-bg: #f8f9fa;
-    --dark-bg: #343a40;
-    --card-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
-    
-    /* Couleurs des badges */
-    --bg-react: #61dafb;
-    --bg-node: #68a063;
-    --bg-jwt: #d63aff;
-    --bg-graphql: #e10098;
-    --bg-fetch: #033464;
-    --bg-php: #787cb5;
-    --bg-mysql: #00758f;
-    --bg-java: #5382a1;
-    --bg-python: #3776ab;
-    --bg-oop: #ff8c00;
-    --bg-html: #e34f26;
-    --bg-css: #1572b6;
-    --bg-js: #f7df1e;
-    --bg-git: #f05032;
-    --bg-mvcr: #47835e;
-    --bg-angular: #dd0031;
-    --bg-nestjs: #e0234e;
-    --bg-postgre: #336791;
-    --bg-vuejs: #4fc08d;
-    --bg-django: #092e20;
-    --bg-poo: #4b8bbe;
-    --bg-ia: #4a90e2;
-    --bg-csp: #076b45;
-    --bg-redcode: #ff4d4d;
-    --bg-swing: #65bc65;
-    --bg-pygame: #241919;
-    --bg-symfony: #000000;
-    --bg-doctrine: #f56d39;
-    --bg-twig: #3d8fcc;
-    --bg-bootstrap: #7952b3;
-    --bg-apache: #d22128;
-}
-
-body {
-    padding-top: 90px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light-bg);
-    transition: background-color 0.3s ease;
-}
-
-/* Header */
-.hero-projects {
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(33,183,153,0.8) 100%), 
-                url('../images/code-bg.jpg') center/cover;
-    padding: 8rem 0;
-    position: relative;
-    overflow: hidden;
-    animation: gradientBG 15s ease infinite;
-    margin-bottom: 2rem;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero-projects h1 {
-    font-weight: 800;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.hero-projects .lead {
-    font-weight: 300;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-}
-
-/* Filtres */
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 1.5rem 0;
-}
-
-.filters .btn {
-    border-radius: 50px;
-    padding: 0.5rem 1.25rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-width: 2px;
-}
-
-.filters .btn.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Barre de recherche */
-.search-bar .input-group-text {
-    transition: all 0.3s ease;
-}
-
-.search-bar .form-control:focus {
-    box-shadow: none;
-    border-color: #ced4da;
-}
-
-/* Compteur de projets */
-.projects-counter {
-    animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Catégories */
-.project-category {
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.project-category h2 {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.project-category h2 i {
-    margin-right: 0.5rem;
-}
-
-.project-category h2:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: var(--primary-color);
-    border-radius: 3px;
-}
-
-/* Cartes de projets */
-.project-card {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.project-card .card {
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    box-shadow: var(--card-shadow);
-    height: 100%;
-}
-
-.project-card .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
-}
-
-.card-img-top {
-    height: 180px;
-    background: var(--light-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.tech-badges {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    padding: 0 10px;
-}
-
-.tech-badges .badge {
-    font-size: 0.7rem;
-    padding: 0.35em 0.65em;
-    border-radius: 50px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: white;
-}
-
-.card-body {
-    padding: 1.5rem;
-}
-
-.card-title {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-    display: flex;
-    align-items: center;
-}
-
-.card-title i {
-    margin-right: 0.5rem;
-    font-size: 1.2em;
-}
-
-.card-text ul {
-    padding-left: 1.5rem;
-}
-
-.card-text li {
-    position: relative;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.card-text li:before {
-    content: "▹";
-    position: absolute;
-    left: -1.2rem;
-    color: var(--primary-color);
-}
-
-.card-footer {
-    background: transparent;
-    border-top: none;
-    padding: 0 1.5rem 1.5rem;
-}
-
-/* Délai d'animation pour chaque carte */
-.project-card:nth-child(1) { animation-delay: 0.1s; }
-.project-card:nth-child(2) { animation-delay: 0.2s; }
-.project-card:nth-child(3) { animation-delay: 0.3s; }
-.project-card:nth-child(4) { animation-delay: 0.4s; }
-.project-card:nth-child(5) { animation-delay: 0.5s; }
-.project-card:nth-child(6) { animation-delay: 0.6s; }
-
-/* Bouton retour en haut */
-#backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    border: none;
-}
-
-#backToTop.show {
-    opacity: 1;
-}
-
-/* Dark Mode */
-.dark-mode {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-}
-
-.dark-mode .hero-projects {
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(33,183,153,0.6) 100%), 
-                url('../images/code-bg-dark.jpg') center/cover;
-}
-
-.dark-mode .project-card .card {
-    background: linear-gradient(145deg, #2d3748, #1a202c);
-    border-color: #2d3748;
-}
-
-.dark-mode .card-title,
-.dark-mode .card-text,
-.dark-mode .list-unstyled {
-    color: #f8f9fa !important;
-}
-
-.dark-mode .card-img-top {
-    background: var(--dark-bg);
-}
-
-.dark-mode .btn-outline-primary,
-.dark-mode .btn-outline-success,
-.dark-mode .btn-outline-danger {
-    border-color: #666666;
-    color: #f8f9fa;
-}
-
-.dark-mode .btn-outline-primary:hover,
-.dark-mode .btn-outline-success:hover,
-.dark-mode .btn-outline-danger:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-
-/* Couleurs des badges */
-.bg-react { background-color: var(--bg-react) !important; }
-.bg-node { background-color: var(--bg-node) !important; }
-.bg-jwt { background-color: var(--bg-jwt) !important; }
-.bg-graphql { background-color: var(--bg-graphql) !important; }
-.bg-fetch { background-color: var(--bg-fetch) !important; }
-.bg-php { background-color: var(--bg-php) !important; }
-.bg-mysql { background-color: var(--bg-mysql) !important; }
-.bg-java { background-color: var(--bg-java) !important; }
-.bg-python { background-color: var(--bg-python) !important; }
-.bg-oop { background-color: var(--bg-oop) !important; }
-.bg-html { background-color: var(--bg-html) !important; }
-.bg-css { background-color: var(--bg-css) !important; }
-.bg-js { background-color: var(--bg-js) !important; color: #000 !important; }
-.bg-git { background-color: var(--bg-git) !important; }
-.bg-mvcr { background-color: var(--bg-mvcr) !important; }
-.bg-angular { background-color: var(--bg-angular) !important; }
-.bg-nestjs { background-color: var(--bg-nestjs) !important; }
-.bg-postgre { background-color: var(--bg-postgre) !important; }
-.bg-vuejs { background-color: var(--bg-vuejs) !important; }
-.bg-django { background-color: var(--bg-django) !important; }
-.bg-poo { background-color: var(--bg-poo) !important; }
-.bg-ia { background-color: var(--bg-ia) !important; }
-.bg-csp { background-color: var(--bg-csp) !important; }
-.bg-redcode { background-color: var(--bg-redcode) !important; }
-.bg-swing { background-color: var(--bg-swing) !important; }
-.bg-pygame { background-color: var(--bg-pygame) !important; }
-.bg-symfony { background-color: var(--bg-symfony) !important; }
-.bg-doctrine { background-color: var(--bg-doctrine) !important; }
-.bg-twig { background-color: var(--bg-twig) !important; }
-.bg-bootstrap { background-color: var(--bg-bootstrap) !important; }
-.bg-apache { background-color: var(--bg-apache) !important; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-projects {
-        padding: 5rem 0;
-    }
-    
-    .project-card .card {
-        margin-bottom: 1.5rem;
-    }
-    
-    .filters {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .filters .btn {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-}

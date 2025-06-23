@@ -5,8 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Projets - Portfolio Abdoulaye</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/projects.css">
+    <style>
+        /* Styles pour le bouton retour en haut */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+        }
+
+        /* Améliorations des animations */
+        .project-card {
+            transition: all 0.3s ease !important;
+        }
+
+        .project-card.hidden {
+            transform: scale(0.95);
+            opacity: 0.5;
+            display: none;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
@@ -23,58 +54,40 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <button class="btn btn-outline-light ms-2" onclick="toggleDarkMode()" id="darkModeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <button class="btn btn-outline-light ms-2"
+                onclick="toggleDarkMode()"
+                id="darkModeToggle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Basculer le thème">
+            <i class="fas fa-moon"></i>
+        </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-projects text-white py-5">
-        <div class="container text-center py-4">
-            <h1 class="display-4 fw-bold mb-3">Mes Projets</h1>
-            <p class="lead fs-5 mb-4">Découvrez mes réalisations en développement web, logiciel et cybersécurité</p>
+    <header class="hero-projects bg-dark text-white py-5">
+        <div class="container text-center py-5">
+            <h1 class="display-4 fw-bold mb-4">Mes Projets et Réalisations</h1>
+            <p class="lead fs-5">Conception Full-Stack & Expertise en Cybersécurité</p>
 
             <!-- Filtres -->
-            <div class="filters">
-                <button class="btn btn-outline-light active" data-filter="all">
-                    <i class="fas fa-layer-group me-1"></i> Tous
-                </button>
-                <button class="btn btn-outline-light" data-filter="web">
-                    <i class="fas fa-code me-1"></i> Web
-                </button>
-                <button class="btn btn-outline-light" data-filter="java">
-                    <i class="fab fa-java me-1"></i> Logiciel
-                </button>
-                <button class="btn btn-outline-light" data-filter="security">
-                    <i class="fas fa-shield-alt me-1"></i> Sécurité
-                </button>
-                <button class="btn btn-outline-light" data-filter="système">
-                    <i class="fas fa-server me-1"></i> Système
-                </button>
+            <div class="filters mt-4">
+                <button class="btn btn-outline-light btn-sm m-1 active" data-filter="all">Tous</button>
+                <button class="btn btn-outline-light btn-sm m-1" data-filter="web">Web</button>
+                <button class="btn btn-outline-light btn-sm m-1" data-filter="java">Dev Logiciel</button>
+                <button class="btn btn-outline-light btn-sm m-1" data-filter="security">Sécurité</button>
+                <button class="btn btn-outline-light btn-sm m-1" data-filter="système">Système Réseaux</button>
             </div>
-
-            <!-- Barre de recherche -->
-            <div class="search-bar mt-4 mx-auto" style="max-width: 500px;">
-                <div class="input-group shadow-sm">
-                    <span class="input-group-text bg-white border-end-0">
-                        <i class="fas fa-search text-muted"></i>
-                    </span>
-                    <input type="text" class="form-control border-start-0 ps-0" 
-                           placeholder="Rechercher un projet..." id="searchInput">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-filter"></i>
+            <!-- Barre de recherche ajoutée ici -->
+            <div class="search-bar mt-3 mx-auto" style="max-width: 500px;">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Rechercher un projet..." id="searchInput">
+                    <button class="btn btn-outline-light" type="button">
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
-            </div>
-            
-            <!-- Compteur de projets -->
-            <div class="projects-counter mt-3">
-                <span class="badge bg-primary rounded-pill px-3 py-2">
-                    <i class="fas fa-project-diagram me-1"></i>
-                    <span id="visibleProjects">0</span>/<span id="totalProjects">0</span> projets
-                </span>
             </div>
         </div>
     </header>
@@ -83,7 +96,7 @@
     <main class="container py-5">
         <!-- Projets Web -->
         <section class="project-category mb-5">
-            <h2 class="mb-4"><i class="fas fa-code me-2"></i>Développement Web</h2>
+            <h2 class="text-secondary mb-4"><i class="fas fa-code me-2"></i>Développement Web</h2>
             <div class="row g-4">
                 <!-- TodoList React -->
                 <div class="col-lg-4 col-md-6 project-card" data-tech="web">
@@ -124,7 +137,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Portfolio sur github Pages -->
                 <div class="col-lg-4 col-md-6 project-card" data-tech="web">
                     <div class="card h-100 shadow-lg">
@@ -143,10 +155,10 @@
                             </h3>
                             <div class="card-text">
                                 <ul class="list-unstyled">
-                                    <li class="mb-2">✅ Page d'accueil avec présentation</li>
+                                    <li class="mb-2">✅ Page d’accueil avec une présentation générale</li>
                                     <li class="mb-2">✅ Section dédiée aux projets</li>
-                                    <li class="mb-2">✅ Page "À propos"</li>
-                                    <li class="mb-2">✅ Page de contact</li>
+                                    <li class="mb-2">✅ Page "À propos" pour en savoir plus sur moi</li>
+                                    <li class="mb-2">✅ Page de contact pour me joindre facilement</li>
                                 </ul>
                             </div>
                         </div>
@@ -163,6 +175,45 @@
                     </div>
                 </div>
 
+                <!-- Site Animaux PHP -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="web">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-react">PHP</span>
+                                <span class="badge bg-mysql">MySQL</span>
+                                <span class="badge bg-js">JavaScript</span>
+                                <span class="badge bg-mvcr">MVCR</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fab fa-php me-2"></i>
+                                Gestion d'Animaux en PHP/MVCR
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Création d'animaux </li>
+                                    <li class="mb-2">✅ Enregistrement en base de données</li>
+                                    <li class="mb-2">✅ Protection XSS/SQLi</li>
+                                    <li class="mb-2">✅ Affichage des animaux enregistrés </li>
+                                    <li class="mb-2">✅ Architecture MVCR</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io/tree/main" class="btn btn-primary btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev-web/site_animaux_php/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- NoteSync - Prise de notes -->
                 <div class="col-lg-4 col-md-6 project-card" data-tech="web">
                     <div class="card h-100 shadow-lg">
@@ -171,7 +222,7 @@
                                 <span class="badge bg-symfony">Symfony</span>
                                 <span class="badge bg-doctrine">Doctrine</span>
                                 <span class="badge bg-twig">Twig</span>
-                                <span class="badge bg-bootstrap">Bootstrap</span>
+                                <span class="badge bg-css">Bootstrap</span>
                                 <span class="badge bg-mysql">MySQL</span>
                             </div>
                         </div>
@@ -187,6 +238,7 @@
                                     <li class="mb-2">✅ Gestion des utilisateurs</li>
                                     <li class="mb-2">✅ Dates automatiques</li>
                                     <li class="mb-2">✅ Interface responsive</li>
+                                    <li class="mb-2">✅ Système de recherche</li>
                                 </ul>
                             </div>
                         </div>
@@ -202,14 +254,86 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Ajoutez ici vos autres projets web... -->
+                <!-- Site e_commerce -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="web">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-angular">Angular</span>
+                                <span class="badge bg-nestjs">NestJS</span>
+                                <span class="badge bg-jwt">JWT</span>
+                                <span class="badge bg-postgre">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fab fa-angular me-2"></i>
+                                Site E-commerce (Angular + NestJS)
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Inscription et authentification des utilisateurs</li>
+                                    <li class="mb-2">✅ Catalogue de produits</li>
+                                    <li class="mb-2">✅ Ajout au panier</li>
+                                    <li class="mb-2">✅ Sécurisation des informations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io/tree/main" class="btn btn-primary btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev-web/site_e_commerce/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Site Bibliothèque Vuejs -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="web">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <!-- <img src="images/projet-bibliotheque.jpg" class="img-fluid" alt="Bibliothèque PHP" loading="lazy"> -->
+                            <div class="tech-badges">
+                                <span class="badge bg-vuejs">VueJs</span>
+                                <span class="badge bg-django">Django</span>
+                                <span class="badge bg-jwt">JWT</span>
+                                <span class="badge bg-mysql">MySQL</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fab fa-vuejs me-2"></i>
+                                Gestion de Bibliothèque (VueJS)
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Catalogue de livres (ajout, modification, suppression)</li>
+                                    <li class="mb-2">✅ Recherche avec filtres (titre, auteur, catégorie)</li>
+                                    <li class="mb-2">✅ Système d’authentification (JWT)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-primary btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev-web/site_bibliotheque/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- Projets Java -->
         <section class="project-category mb-5">
-            <h2 class="mb-4"><i class="fab fa-java me-2"></i>Développement Logiciel</h2>
+            <h2 class="text-primary mb-4"><i class="fab fa-java me-2"></i>Développement Logiciel Java/Python</h2>
             <div class="row g-4">
                 <!-- Analyse des algos de tri -->
                 <div class="col-lg-4 col-md-6 project-card" data-tech="java">
@@ -228,10 +352,11 @@
                             </h3>
                             <div class="card-text">
                                 <ul class="list-unstyled">
-                                    <li class="mb-2">✅ 5 algorithmes implémentés</li>
-                                    <li class="mb-2">✅ Génération de données variées</li>
-                                    <li class="mb-2">✅ Calcul d'entropie</li>
-                                    <li class="mb-2">✅ Interface graphique</li>
+                                    <li class="mb-2">✅ 5 algorithmes de tri implémentés</li>
+                                    <li class="mb-2">✅ Génération de données avec distributions variées</li>
+                                    <li class="mb-2">✅ Calcul d'entropie pour mesurer le désordre</li>
+                                    <li class="mb-2">✅ Interface graphique de visualisation</li>
+                                    <li class="mb-2">✅ Analyse comparative des performances</li>
                                 </ul>
                             </div>
                         </div>
@@ -247,41 +372,257 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Ajoutez ici vos autres projets Java... -->
-            </div>
-        </section>
-
-        <!-- Administration Système et Réseaux -->
-        <section class="project-category mb-5">
-            <h2 class="mb-4"><i class="fas fa-server me-2"></i>Administration Système</h2>
-            <div class="row g-4">
-                <!-- Serveur Web sous Linux -->
-                <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                <!-- BlocksWord-->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="java">
                     <div class="card h-100 shadow-lg">
                         <div class="card-img-top position-relative">
                             <div class="tech-badges">
-                                <span class="badge bg-apache">Apache</span>
-                                <span class="badge bg-php">PHP</span>
-                                <span class="badge bg-mysql">MySQL</span>
+                                <span class="badge bg-java">Java</span>
+                                <span class="badge bg-ia">IA</span>
+                                <span class="badge bg-csp">CSP</span>
                             </div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title h5">
-                                <i class="fas fa-hdd me-2"></i>
-                                Serveur Web sous Linux
+                                <i class="fas fa-cubes me-2"></i>
+                                BlocksWorld IA
                             </h3>
                             <div class="card-text">
                                 <ul class="list-unstyled">
-                                    <li class="mb-2">✅ Serveur Apache</li>
-                                    <li class="mb-2">✅ Support PHP</li>
-                                    <li class="mb-2">✅ Bases de données</li>
+                                    <li class="mb-2">✅ Modélisation par contraintes</li>
+                                    <li class="mb-2">✅ Algorithmes de planification (DFS, BFS, Djikstra)</li>
+                                    <li class="mb-2">✅ Extraction de connaissances (Apriori)</li>
+                                    <li class="mb-2">✅ Visualisation des solutions</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-footer bg-transparent">
                             <div class="d-grid gap-2">
-                                <a href="https://abdoulayefoff.github.io/projets/administration_systeme/server_web/description.html" class="btn btn-outline-primary btn-sm">
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev_logique/blocksworld/description.html" class="btn btn-outline-success btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Corewar-->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="java">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-java">Java</span>
+                                <span class="badge bg-redcode">RedCode</span>
+                                <span class="badge bg-swing">Swing</span>
+                            
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-gamepad me-2"></i>
+                                CoreWar - Simulation de Combat de Programmes
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Langage RedCode</li>
+                                    <li class="mb-2">✅ Algorithme Génétique</li>
+                                    <li class="mb-2">✅ Simulation de combats entre programmes</li>
+                                    <li class="mb-2">✅ Interface graphique avec Swing</li>
+                                    <li class="mb-2">✅ Analyse des performances des programmes</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev_logique/corewar/description.html" class="btn btn-outline-success btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sokoban-->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="java">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-python">Python</span>
+                                <span class="badge bg-pygame">Pygame</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-gamepad me-2"></i>
+                                Jeu Sokoban en Python
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Implémentation du jeu Sokoban</li>
+                                    <li class="mb-2">✅ Gestion des mouvements et collisions</li>
+                                    <li class="mb-2">✅ Interface graphique avec Pygame</li>
+                                    <li class="mb-2">✅ Niveaux multiples avec sauvegarde</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev_logique/sokoban/description.html" class="btn btn-outline-success btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jeu de tetris-->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="java">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-java">Java</span>
+                                <span class="badge bg-poo">POO</span>
+                                <span class="badge bg-mvc">MVC</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-gamepad me-2"></i>
+                                Jeu de Tetris en Java
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Implémentation du jeu Tetris</li>
+                                    <li class="mb-2">✅ Gestion des pièces et des lignes</li>
+                                    <li class="mb-2">✅ Interface graphique avec Java Swing</li>
+                                    <li class="mb-2">✅ Utilisation de plusieurs design Patterns pour la structure du code</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev_logique/tetris/description.html" class="btn btn-outline-success btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bataille Navale -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="java">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-java">Java</span>
+                                <span class="badge bg-mvc">MVC</span>
+                                <span class="badge bg-algo">Algorithmes</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-anchor me-2"></i>
+                                Jeu de Bataille Navale en Java
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Architecture MVC rigoureuse</li>
+                                    <li class="mb-2">✅ Interface graphique intuitive</li>
+                                    <li class="mb-2">✅ Algorithmes de placement et de tir optimisés</li>
+                                    <li class="mb-2">✅ Gestion des règles du jeu</li>
+                                    <li class="mb-2">✅ Mode joueur contre IA</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://github.com/votre-repo/bataille-navale" class="btn btn-success btn-sm">
+                                    <i class="fab fa-github me-1"></i> Code source
+                                </a>
+                                <a href="https://abdoulayefoff.github.io/projets/dev_logique/bataille-navale/description.html" class="btn btn-outline-success btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Administration Système et Réseaux -->
+        <section class="project-category mb-5">
+            <h2 class="text-info mb-4">
+                <i class="fas fa-server me-2"></i>Administration Système et Réseaux
+            </h2>
+            <div class="row g-4">
+                <!-- Serveur Web sous Linux -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+
+                            <div class="tech-badges">
+                                <span class="badge bg-nestjs">Apache</span>
+                                <span class="badge bg-php">PHP</span>
+                                <span class="badge bg-jwt">MySQL/PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-hdd me-2"></i>
+                                Installation et Configuration d’un Serveur Web sous Linux
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Serveur Apache</li>
+                                    <li class="mb-2">✅ Support de PHP</li>
+                                    <li class="mb-2">✅ Gestion des bases de données</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://abdoulayefoff.github.io/projets/administration système et réseaux/server_web/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Server SSH sous linux -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+
+                            <div class="tech-badges">
+                                <span class="badge bg-angular">SSH</span>
+                                <span class="badge bg-critical">Fail2ban</span>
+                                <span class="badge bg-css">OpenSSH</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-lock me-2"></i>
+                                Installation et Configuration d’un Serveur SSH sous Linux
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Serveur SSH</li>
+                                    <li class="mb-2">✅ Authentification par clés SSH</li>
+                                    <li class="mb-2">✅ Protection contre les attaques bruteforce</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://abdoulayefoff.github.io/projets/administration système et réseaux/server_ssh/description.html" class="btn btn-outline-primary btn-sm">
                                     Voir le détail
                                 </a>
                             </div>
@@ -289,57 +630,257 @@
                     </div>
                 </div>
 
-                <!-- Ajoutez ici vos autres projets système... -->
+                <!-- Configuration Réseau Packet Tracer -->
+              <!--   <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-cisco">Cisco</span>
+                                <span class="badge bg-network">VLAN</span>
+                                <span class="badge bg-dhcp">DHCP</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-network-wired me-2"></i>
+                                Configuration Réseau Packet Tracer
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Configuration multi-VLAN sur 3 switches</li>
+                                    <li class="mb-2">✅ Routage inter-VLAN avec Cisco 1941</li>
+                                    <li class="mb-2">✅ Mise en place du serveur DHCP</li>
+                                    <li class="mb-2">✅ Tests de connectivité complète</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="fab fa-github me-1"></i> Fichiers .pkt
+                                </a>
+                                <a href="packet-tracer.html" class="btn btn-outline-success btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Configuration Réseau Packet Tracer -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Cisco</span>
+                                <span class="badge bg-secondary">VLAN</span>
+                                <span class="badge bg-info">DHCP</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-network-wired me-2"></i>
+                                Configuration Réseau Packet Tracer
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Configuration multi-VLAN sur 3 switches</li>
+                                    <li class="mb-2">✅ Routage inter-VLAN avec Cisco 1941</li>
+                                    <li class="mb-2">✅ Mise en place du serveur DHCP</li>
+                                    <li class="mb-2">✅ Tests de connectivité complète</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://abdoulayefoff.github.io/projets/administration système et réseaux/packet_tracer/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestion Active Directory -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Windows Server</span>
+                                <span class="badge bg-secondary">PowerShell</span>
+                                <span class="badge bg-info">Active Directory</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fas fa-users-cog me-2"></i>
+                                Gestion Active Directory
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Création du domaine abdoulaye.io</li>
+                                    <li class="mb-2">✅ Import des utilisateurs depuis CSV</li>
+                                    <li class="mb-2">✅ Script PowerShell automatisé</li>
+                                    <li class="mb-2">✅ Politique de mots de passe appliquée</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://abdoulayefoff.github.io/projets/administration système et réseaux/windows_server/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Déploiement WordPress avec Docker -->
+                <div class="col-lg-4 col-md-6 project-card" data-tech="système">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-img-top position-relative">
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Docker</span>
+                                <span class="badge bg-secondary">WordPress</span>
+                                <span class="badge bg-info">NGINX</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">
+                                <i class="fab fa-docker me-2"></i>
+                                Docker Déploiement WordPress
+                            </h3>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">✅ Stack avec Docker Compose</li>
+                                    <li class="mb-2">✅ Configuration NGINX optimisée</li>
+                                    <li class="mb-2">✅ Persistance des données</li>
+                                    <li class="mb-2">✅ Dernière version de WordPress</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a href="https://abdoulayefoff.github.io/projets/administration système et réseaux/docker/description.html" class="btn btn-outline-primary btn-sm">
+                                    Voir le détail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- Projets Sécurité -->
         <section class="project-category mb-5">
-            <h2 class="mb-4"><i class="fas fa-shield-alt me-2"></i>Cybersécurité</h2>
+            <h2 class="text-danger mb-4"><i class="fas fa-shield-alt me-2"></i>Cybersécurité</h2>
             <div class="row g-4">
                 <!-- Audit de sécurité -->
                 <div class="col-lg-4 col-md-6 project-card" data-tech="security">
                     <div class="card h-100 shadow-lg border-danger">
                         <div class="card-header bg-danger text-white">
                             <i class="fas fa-shield-alt me-2"></i>
-                            Audit de Sécurité
+                            Audit de Sécurité d'un site web et analyse des vulnérabilités
                         </div>
                         <div class="card-body">
                             <h3 class="card-title h5">
                                 <i class="fas fa-search me-2"></i>
-                                Pentest Web
+                                Pentest Web (Test d'intrusion Web)
                             </h3>
                             <div class="card-text">
+                                <!-- <p class="fw-bold">Méthodologie OWASP :</p> -->
                                 <ul class="list-styled">
                                     <li class="mb-2">✅ Kali Linux</li>
                                     <li class="mb-2">✅ Burp Suite</li>
                                     <li class="mb-2">✅ OWASP ZAP</li>
+                                    <li class="mb-2">✅ Metasploit</li>
                                 </ul>
+                    <!--           <div class="vulnerabilities">
+                                    <span class="badge bg-critical">3 Critical</span>
+                                    <span class="badge bg-high">5 High</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                            <div class="d-grid gap-1">
-                                <a href="https://abdoulayefoff.github.io/projets/cybersecurite/analyse_vulnerabilites/description.html" class="btn btn-outline-danger btn-sm">
-                                    Voir le détail
-                                </a>
-                            </div>
+                        </div> -->
+                        <div class="d-grid gap-1">
+                        <!--  <a href="projets/pentest.html" class="btn btn-outline-danger btn-sm">
+                                <i class="fas fa-file-contract me-1"></i>
+                                Voir le rapport
+                            </a> -->
+                            <a href="https://abdoulayefoff.github.io/projets/cybersecurite/analyse_vulnerabilites/description.html" class="btn btn-outline-danger btn-sm">
+                                Voir le détail
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Ajoutez ici vos autres projets sécurité... -->
+                </div>
             </div>
+            <!-- Surveillance Réseaux -->
+            <div class="col-lg-4 col-md-6 project-card" data-tech="security">
+                <div class="card h-100 shadow-lg border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        Surveillance de l'activité réseau
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title h5">
+                            <i class="fas fa-eye me-2"></i>
+                            Mise en place d'un système de surveillance réseau
+                        </h3>
+                        <div class="card-text">
+                            <ul class="list-styled">
+                                <li class="mb-2">✅ Wireshark</li>
+                                <li class="mb-2">✅ TCP/IP</li>
+                                <li class="mb-2">✅ Linux</li>
+                                <li class="mb-2">✅ Suricata</li>
+                            </ul>
+                    <div class="d-grid gap-1">
+                        <a href="https://abdoulayefoff.github.io/projets/cybersecurite/surveillance_activite_reseau/description.html" class="btn btn-outline-danger btn-sm">
+                            Voir le détail
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Chiffrement Dechiffrement -->
+        <div class="col-lg-4 col-md-6 project-card" data-tech="security">
+            <div class="card h-100 shadow-lg border-danger">
+                <div class="card-header bg-danger text-white">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    Chiffrement et Déchiffrement des Données
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title h5">
+                        <i class="fas fa-key me-2"></i>
+                        Implémentation de Méthodes de Cryptographie
+                    </h3>
+                    <div class="card-text">
+                        <ul class="list-styled">
+                            <li class="mb-2">✅ PyCryptodome</li>
+                            <li class="mb-2">✅ AES-256</li>
+                            <li class="mb-2">✅ RSA-2048</li>
+                            <li class="mb-2">✅ OpenSSL</li>
+                        </ul>
+                <div class="d-grid gap-1">
+                    <a href="https://abdoulayefoff.github.io/projets/cybersecurite/chiffrement-donnees/description.html" class="btn btn-outline-danger btn-sm">
+                        Voir le détail
+                    </a>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
         </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-auto">
         <div class="container text-center">
             <div class="social-links mb-3">
-                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank">
+                <a href="https://www.linkedin.com/in/abdoulaye-fof" class="text-white mx-2" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin fa-2x"></i>
                 </a>
-                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank">
+                <a href="https://github.com/Abdoulayefoff/Abdoulayefoff.github.io" class="text-white mx-2" target="_blank" aria-label="GitHub">
                     <i class="fab fa-github fa-2x"></i>
                 </a>
             </div>
@@ -347,13 +888,157 @@
             <p class="mb-0">&copy; 2025 Abdoulaye Fofana - Tous droits réservés</p>
         </div>
     </footer>
-
-    <!-- Bouton Retour en haut -->
-    <button id="backToTop" class="btn btn-primary rounded-circle shadow-lg">
+    <!-- Bouton Retour en haut ajouté -->
+    <button id="backToTop" class="btn btn-primary rounded-circle shadow-lg" title="Retour en haut">
         <i class="fas fa-arrow-up"></i>
     </button>
-
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/projects.js"></script>
+    <script src="script.js"></script>
+    <!-- <script>
+        // Filtrage des projets
+        document.querySelectorAll('.filters button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+
+                document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.tech === filter)
+                        ? 'block'
+                        : 'none';
+                });
+            });
+        });
+
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease-out';
+            observer.observe(card);
+        });
+    </script> -->
+    <script>
+        // Filtrage combiné et recherche
+        function updateFilters() {
+            const activeFilter = document.querySelector('.filters button.active').dataset.filter;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                const matchesFilter = activeFilter === 'all' || card.dataset.tech === activeFilter;
+                const matchesSearch = card.textContent.toLowerCase().includes(searchTerm);
+                
+                if(matchesFilter && matchesSearch) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.classList.remove('hidden'), 50);
+                } else {
+                    card.style.display = 'none';
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Gestion des événements
+        document.querySelectorAll('.filters button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateFilters();
+            });
+        });
+
+        document.getElementById('searchInput').addEventListener('input', updateFilters);
+
+        // Bouton Retour en haut
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            backToTopButton.classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animation au scroll améliorée
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease-out';
+            observer.observe(card);
+        });
+
+        // Script pour compter et afficher le nombre total de projets
+        document.addEventListener('DOMContentLoaded', function() {
+            // Compter le nombre total de cartes de projet
+            const totalProjects = document.querySelectorAll('.project-card').length;
+            
+            // Créer un élément pour afficher le compteur
+            const counterElement = document.createElement('div');
+            counterElement.className = 'projects-counter';
+            counterElement.innerHTML = `
+                <span class="badge bg-primary rounded-pill">
+                    Total: ${totalProjects} projets
+                </span>
+            `;
+            
+            // Ajouter le compteur dans la section Hero, après les filtres
+            const heroSection = document.querySelector('.hero-projects .container');
+            if (heroSection) {
+                heroSection.appendChild(counterElement);
+            }
+            
+            // Mettre à jour le compteur quand on filtre
+            function updateProjectCounter() {
+                const visibleProjects = document.querySelectorAll('.project-card:not([style*="display: none"])').length;
+                counterElement.innerHTML = `
+                    <span class="badge bg-primary rounded-pill">
+                        Affichés: ${visibleProjects} / Total: ${totalProjects} projets
+                    </span>
+                `;
+            }
+            
+            // Modifier la fonction updateFilters existante pour inclure le compteur
+            const originalUpdateFilters = window.updateFilters;
+            window.updateFilters = function() {
+                originalUpdateFilters();
+                updateProjectCounter();
+            };
+            
+            // Appliquer le style pour le compteur
+            const style = document.createElement('style');
+            style.textContent = `
+                .projects-counter {
+                    margin-top: 1rem;
+                    text-align: center;
+                    animation: fadeIn 0.5s ease-out;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
