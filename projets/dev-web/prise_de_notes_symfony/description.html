@@ -73,6 +73,24 @@
         .terminal .prompt { color: #66D9EF; }
         .terminal .command { color: #A6E22E; }
         .terminal .comment { color: #75715E; }
+
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            padding: 0.3em 0.6em;
+            border-radius: 20px;
+            background-color: #FFC107;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .code-section {
+            margin: 2rem 0;
+            border-left: 4px solid var(--symfony-purple);
+            padding-left: 1rem;
+        }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -121,54 +139,60 @@
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <!-- Introduction -->
-                <section class="mb-5">
+                <section class="mb-5 position-relative">
+                    <span class="status-badge">En cours de développement</span>
                     <h2 class="text-primary mb-4"><i class="fas fa-sticky-note me-2"></i>Introduction</h2>
-                    <p class="lead">Une application web de prise de notes simple et efficace, développée avec Symfony.</p>
-                    <p>NoteSync permet aux utilisateurs de créer, organiser et gérer leurs notes en ligne avec une interface intuitive. Ce projet a été réalisé pour explorer les fondamentaux de Symfony tout en créant une application utile au quotidien.</p>
-                    <a href="https://github.com/votrecompte/notesync" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-github me-2"></i>Voir le code source
-                    </a>
+                    <p class="lead">Une application web de prise de notes simple et efficace, actuellement en développement avec Symfony.</p>
+                    <p>NoteSync est un projet en cours qui vise à créer une application complète de gestion de notes. L'objectif est d'explorer les capacités de Symfony tout en développant une application utile au quotidien.</p>
+                    
+                    <div class="alert alert-warning mt-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Projet en cours :</strong> Cette application est actuellement en développement actif. De nouvelles fonctionnalités sont régulièrement ajoutées et l'interface évolue constamment.
+                    </div>
                 </section>
                 
                 <!-- Fonctionnalités -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités Principales</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités (actuelles et prévues)</h2>
                     <div class="row g-4">
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-user me-2"></i>Gestion Utilisateurs</h3>
+                                    <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Implémentées</h3>
                                     <ul>
-                                        <li>Inscription/Connexion sécurisée</li>
-                                        <li>Profil utilisateur</li>
-                                        <li>Mot de passe chiffré</li>
-                                        <li>Session persistante</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-edit me-2"></i>Gestion des Notes</h3>
-                                    <ul>
-                                        <li>Création/Modification</li>
-                                        <li>Suppression</li>
-                                        <li>Dates automatiques</li>
-                                        <li>Affichage markdown</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-layer-group me-2"></i>Organisation</h3>
-                                    <ul>
-                                        <li>Affichage par date</li>
+                                        <li>Système d'authentification</li>
+                                        <li>CRUD de notes basique</li>
+                                        <li>Association notes-utilisateur</li>
                                         <li>Interface responsive</li>
-                                        <li>Système de recherche</li>
-                                        <li>Prévisualisation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-code-branch text-primary me-2"></i>En développement</h3>
+                                    <ul>
+                                        <li>Système de catégories</li>
+                                        <li>Recherche avancée</li>
+                                        <li>Partage de notes</li>
+                                        <li>Exportation de notes</li>
+                                        <li>Dark mode</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-lightbulb text-warning me-2"></i>Prévues</h3>
+                                    <ul>
+                                        <li>Export PDF/Word</li>
+                                        <li>Intégration avec des services de stockage cloud</li>
+                                        <li>Intégration avec des calendriers</li>
+                                        <li>Application de bureau</li>
+                                        <li>Application mobile</li>>
+                                        <li>Support de l'édition collaborative</li>
                                     </ul>
                                 </div>
                             </div>
@@ -178,9 +202,14 @@
 
                 <!-- Architecture -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-sitemap me-2"></i>Architecture Technique</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-sitemap me-2"></i>Architecture Technique Actuelle</h2>
                     <div class="card">
                         <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                L'architecture évolue au fur et à mesure du développement. Voici l'état actuel du projet.
+                            </div>
+                            
                             <h3 class="h5">Structure du Projet</h3>
                             <div class="terminal">
                                 <div class="mb-2"><span class="prompt">$</span> <span class="command">tree -L 2 src/</span></div>
@@ -196,231 +225,137 @@
                                 <div>└── Security/</div>
                             </div>
                             
-                            <h3 class="h5 mt-4">Modèle de Données</h3>
+                            <!--  <h3 class="h5 mt-4">Modèle de Données Actuel</h3>
                             <img src="../images/notesync-uml.png" alt="Diagramme UML" class="uml-diagram">
-                            <p class="mt-2">Diagramme UML simplifié des entités</p>
+                            <p class="mt-2">Diagramme UML actuel (évolutif)</p> -->
                         </div>
                     </div>
                 </section>
 
-                <!-- Entités -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-database me-2"></i>Entités Principales</h2>
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card note-card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-user me-2"></i>User</h3>
-                                    <div class="code-block">
-                                        <span class="text-primary">// src/Entity/User.php</span><br>
-                                        #[ORM\Entity]<br>
-                                        class User implements UserInterface<br>
-                                        {<br>
-                                        &nbsp;&nbsp;#[ORM\Id]<br>
-                                        &nbsp;&nbsp;#[ORM\GeneratedValue]<br>
-                                        &nbsp;&nbsp;#[ORM\Column]<br>
-                                        &nbsp;&nbsp;private ?int $id = null;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\Column(length: 180, unique: true)]<br>
-                                        &nbsp;&nbsp;private string $email;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\Column]<br>
-                                        &nbsp;&nbsp;private string $password;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\OneToMany(mappedBy: 'user', targetEntity: Note::class)]<br>
-                                        &nbsp;&nbsp;private Collection $notes;<br>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card note-card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-sticky-note me-2"></i>Note</h3>
-                                    <div class="code-block">
-                                        <span class="text-primary">// src/Entity/Note.php</span><br>
-                                        #[ORM\Entity]<br>
-                                        #[ORM\HasLifecycleCallbacks]<br>
-                                        class Note<br>
-                                        {<br>
-                                        &nbsp;&nbsp;#[ORM\Id]<br>
-                                        &nbsp;&nbsp;#[ORM\GeneratedValue]<br>
-                                        &nbsp;&nbsp;#[ORM\Column]<br>
-                                        &nbsp;&nbsp;private ?int $id = null;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\Column(length: 255)]<br>
-                                        &nbsp;&nbsp;private string $title;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\Column(type: 'text')]<br>
-                                        &nbsp;&nbsp;private string $content;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\Column(type: 'datetime')]<br>
-                                        &nbsp;&nbsp;private \DateTimeInterface $createdAt;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\ManyToOne(inversedBy: 'notes')]<br>
-                                        &nbsp;&nbsp;#[ORM\JoinColumn(nullable: false)]<br>
-                                        &nbsp;&nbsp;private User $user;<br><br>
-                                        
-                                        &nbsp;&nbsp;#[ORM\PrePersist]<br>
-                                        &nbsp;&nbsp;public function setCreatedAtValue(): void<br>
-                                        &nbsp;&nbsp;{<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;$this->createdAt = new \DateTimeImmutable();<br>
-                                        &nbsp;&nbsp;}<br>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Code Samples -->
+                <!-- Extrait de code -->
                 <section class="mb-5">
                     <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Extraits de Code</h2>
                     
-                    <h3 class="h5">1. Contrôleur de Notes</h3>
-                    <div class="code-block">
-                        <span class="text-primary">// src/Controller/NoteController.php</span><br>
-                        #[Route('/notes', name: 'app_note_')]<br>
-                        class NoteController extends AbstractController<br>
-                        {<br>
-                        &nbsp;&nbsp;#[Route('/', name: 'index', methods: ['GET'])]<br>
-                        &nbsp;&nbsp;public function index(NoteRepository $noteRepo): Response<br>
-                        &nbsp;&nbsp;{<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;return $this->render('note/index.html.twig', [<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'notes' => $noteRepo->findByUser($this->getUser())<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;]);<br>
-                        &nbsp;&nbsp;}<br><br>
-                        
-                        &nbsp;&nbsp;#[Route('/new', name: 'new', methods: ['GET', 'POST'])]<br>
-                        &nbsp;&nbsp;public function new(Request $request, EntityManagerInterface $em): Response<br>
-                        &nbsp;&nbsp;{<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;$note = new Note();<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;$note->setUser($this->getUser());<br><br>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;$form = $this->createForm(NoteType::class, $note);<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;$form->handleRequest($request);<br><br>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;if ($form->isSubmitted() && $form->isValid()) {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$em->persist($note);<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$em->flush();<br><br>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return $this->redirectToRoute('app_note_index');<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;return $this->render('note/new.html.twig', [<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'form' => $form->createView()<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;]);<br>
-                        &nbsp;&nbsp;}<br>
-                        }
+                    <div class="code-section">
+                        <h3 class="h5">Entité Note</h3>
+                        <p>L'entité principale représentant une note dans l'application :</p>
+                        <div class="code-block">
+                            <span class="text-primary">// src/Entity/Note.php</span><br>
+                            #[ORM\Entity]<br>
+                            class Note<br>
+                            {<br>
+                            &nbsp;&nbsp;#[ORM\Id]<br>
+                            &nbsp;&nbsp;#[ORM\GeneratedValue]<br>
+                            &nbsp;&nbsp;#[ORM\Column]<br>
+                            &nbsp;&nbsp;private ?int $id = null;<br><br>
+                            
+                            &nbsp;&nbsp;#[ORM\Column(length: 255)]<br>
+                            &nbsp;&nbsp;private string $title;<br><br>
+                            
+                            &nbsp;&nbsp;#[ORM\Column(type: 'text')]<br>
+                            &nbsp;&nbsp;private string $content;<br><br>
+                            
+                            &nbsp;&nbsp;#[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'notes')]<br>
+                            &nbsp;&nbsp;private User $author;<br><br>
+                            
+                            &nbsp;&nbsp;// Getters et setters...
+                            }
+                        </div>
                     </div>
-                    
-                    <h3 class="h5 mt-4">2. Repository Personnalisé</h3>
-                    <div class="code-block">
-                        <span class="text-primary">// src/Repository/NoteRepository.php</span><br>
-                        class NoteRepository extends ServiceEntityRepository<br>
-                        {<br>
-                        &nbsp;&nbsp;public function findByUser(User $user): array<br>
-                        &nbsp;&nbsp;{<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;return $this->createQueryBuilder('n')<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->andWhere('n.user = :user')<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->setParameter('user', $user)<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->orderBy('n.createdAt', 'DESC')<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->getQuery()<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->getResult();<br>
-                        &nbsp;&nbsp;}<br>
-                        }
+
+                    <div class="code-section">
+                        <h3 class="h5">Contrôleur des Notes</h3>
+                        <p>Exemple de méthode pour créer une nouvelle note :</p>
+                        <div class="code-block">
+                            <span class="text-primary">// src/Controller/NoteController.php</span><br>
+                            #[Route('/notes/new', name: 'note_new')]<br>
+                            public function new(Request $request): Response<br>
+                            {<br>
+                            &nbsp;&nbsp;$note = new Note();<br>
+                            &nbsp;&nbsp;$form = $this->createForm(NoteType::class, $note);<br><br>
+                            
+                            &nbsp;&nbsp;$form->handleRequest($request);<br>
+                            &nbsp;&nbsp;if ($form->isSubmitted() && $form->isValid()) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;$note->setAuthor($this->getUser());<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;$this->entityManager->persist($note);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;$this->entityManager->flush();<br><br>
+                            
+                            &nbsp;&nbsp;&nbsp;&nbsp;return $this->redirectToRoute('note_index');<br>
+                            &nbsp;&nbsp;}<br><br>
+                            
+                            &nbsp;&nbsp;return $this->render('note/new.html.twig', [<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;'form' => $form->createView()<br>
+                            &nbsp;&nbsp;]);<br>
+                            }
+                        </div>
                     </div>
-                    
-                    <h3 class="h5 mt-4">3. Template Twig</h3>
-                    <div class="code-block">
-                        <span class="text-primary">{# templates/note/index.html.twig #}</span><br>
-                        {% extends 'base.html.twig' %}<br><br>
-                        
-                        {% block body %}<br>
-                        &nbsp;&nbsp;&lt;h1 class="mb-4"&gt;Mes Notes&lt;/h1&gt;<br><br>
-                        
-                        &nbsp;&nbsp;&lt;a href="{{ path('app_note_new') }}" class="btn btn-primary mb-4"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;i class="fas fa-plus"&gt;&lt;/i&gt; Nouvelle Note<br>
-                        &nbsp;&nbsp;&lt;/a&gt;<br><br>
-                        
-                        &nbsp;&nbsp;&lt;div class="row"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;{% for note in notes %}<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-md-4 mb-4"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="card"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5 class="card-title"&gt;{{ note.title }}&lt;/h5&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="card-text"&gt;{{ note.content|slice(0, 100) }}...&lt;/p&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="{{ path('app_note_show', {'id': note.id}) }}" class="btn btn-sm btn-primary"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voir la note<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;{% endfor %}<br>
-                        &nbsp;&nbsp;&lt;/div&gt;<br>
-                        {% endblock %}
+
+                    <div class="code-section">
+                        <h3 class="h5">Template Twig</h3>
+                        <p>Extrait du template pour l'affichage des notes :</p>
+                        <div class="code-block">
+                            <span class="text-primary">{# templates/note/index.html.twig #}</span><br>
+                            {% extends 'base.html.twig' %}<br><br>
+                            
+                            {% block body %}<br>
+                            &nbsp;&nbsp;&lt;div class="container"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1 class="my-4"&gt;Mes Notes&lt;/h1&gt;<br><br>
+                            
+                            &nbsp;&nbsp;&nbsp;&nbsp;{% for note in notes %}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="card mb-3"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5 class="card-title"&gt;{{ note.title }}&lt;/h5&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="card-text"&gt;{{ note.content|slice(0, 150) }}...&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="{{ path('note_show', {'id': note.id}) }}" class="btn btn-primary"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voir plus<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;{% endfor %}<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            {% endblock %}
+                        </div>
                     </div>
                 </section>
 
-                <!-- Déploiement -->
+                <!-- Roadmap -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-server me-2"></i>Installation Locale</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-road me-2"></i>Feuille de Route</h2>
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="h5">Prérequis</h3>
-                            <ul>
-                                <li>PHP 8.2+</li>
-                                <li>Composer</li>
-                                <li>MySQL 5.7+</li>
-                                <li>Node.js (optionnel pour les assets)</li>
-                            </ul>
-                            
-                            <h3 class="h5 mt-4">Commandes Clés</h3>
-                            <div class="terminal">
-                                <div><span class="prompt">$</span> <span class="command">git clone https://github.com/votrecompte/notesync.git</span></div>
-                                <div><span class="prompt">$</span> <span class="command">cd notesync</span></div>
-                                <div><span class="prompt">$</span> <span class="command">composer install</span></div>
-                                <div><span class="prompt">$</span> <span class="command">npm install</span> <span class="comment"># Optionnel</span></div>
-                                <div><span class="prompt">$</span> <span class="command">symfony console doctrine:database:create</span></div>
-                                <div><span class="prompt">$</span> <span class="command">symfony console doctrine:migrations:migrate</span></div>
-                                <div><span class="prompt">$</span> <span class="command">symfony console doctrine:fixtures:load</span> <span class="comment"># Données de test</span></div>
-                                <div><span class="prompt">$</span> <span class="command">symfony serve -d</span></div>
-                            </div>
-                            <p class="mt-3">L'application sera accessible à l'adresse <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Défis et Solutions -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-lightbulb me-2"></i>Défis et Solutions</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card border-danger h-100">
-                                <div class="card-body">
-                                    <h3 class="h5">Défis Rencontrés</h3>
-                                    <ul>
-                                        <li><strong>Sécurité:</strong> Protection des routes et données utilisateur</li>
-                                        <li><strong>Relations:</strong> Gestion des relations entre User et Note</li>
-                                        <li><strong>Dates:</strong> Gestion automatique des dates de création</li>
-                                        <li><strong>Formulaires:</strong> Validation des données saisies</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card border-success h-100">
-                                <div class="card-body">
-                                    <h3 class="h5">Solutions Implémentées</h3>
-                                    <ul>
-                                        <li><strong>Sécurité:</strong> Système d'authentification intégré</li>
-                                        <li><strong>Relations:</strong> Configuration Doctrine ORM</li>
-                                        <li><strong>Dates:</strong> Utilisation des lifecycle callbacks</li>
-                                        <li><strong>Formulaires:</strong> Composants Symfony Form</li>
-                                    </ul>
-                                </div>
+                            <h3 class="h5">Prochaines étapes de développement</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Version</th>
+                                            <th>Fonctionnalités prévues</th>
+                                            <th>Statut</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>0.1.0</td>
+                                            <td>Base fonctionnelle (CRUD notes + auth)</td>
+                                            <td><span class="badge bg-success">Terminé</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.2.0</td>
+                                            <td>Système de catégories</td>
+                                            <td><span class="badge bg-primary">En cours</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.3.0</td>
+                                            <td>Recherche et filtres avancés</td>
+                                            <td><span class="badge bg-secondary">Prévu</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1.0.0</td>
+                                            <td>Version stable avec toutes les fonctionnalités de base</td>
+                                            <td><span class="badge bg-secondary">Prévu</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -428,24 +363,31 @@
 
                 <!-- Conclusion -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>Conclusion</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>État Actuel et Perspectives</h2>
                     <div class="card">
                         <div class="card-body">
-                            <p>NoteSync a été un excellent projet pour découvrir Symfony tout en créant une application utile. À travers ce projet, j'ai pu :</p>
+                            <p>NoteSync est actuellement dans sa phase de développement actif. La version actuelle inclut les fonctionnalités de base :</p>
                             <ul>
-                                <li>Comprendre l'architecture MVC de Symfony</li>
-                                <li>Manipuler Doctrine ORM pour la persistance des données</li>
-                                <li>Créer des formulaires sécurisés</li>
-                                <li>Implémenter un système d'authentification</li>
-                                <li>Développer une interface utilisateur responsive</li>
+                                <li>Système complet d'authentification</li>
+                                <li>Création, lecture, modification et suppression de notes</li>
+                                <li>Interface utilisateur responsive</li>
+                                <li>Association des notes aux utilisateurs</li>
                             </ul>
-                            <p>Ce projet démontre ma capacité à créer une application web fonctionnelle avec Symfony, tout en suivant les bonnes pratiques de développement.</p>
-                            <p>Pour aller plus loin, je pourrais :</p>
+                            
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-code me-2"></i>
+                                <strong>Contribution :</strong> Ce projet est ouvert aux contributions et suggestions d'amélioration.
+                            </div>
+                            
+                            <h3 class="h5 mt-4">Prochaines étapes</h3>
+                            <p>Les développements en cours et à venir incluent :</p>
                             <ul>
-                                <li>Ajouter des catégories pour organiser les notes</li>
-                                <li>Implémenter un système de recherche avancé</li>
-                                <li>Ajouter la possibilité d'exporter les notes en PDF</li>
-                                <li>Développer une API REST pour une application mobile</li>
+                                <li>Implémentation d'un système de catégories pour organiser les notes</li>
+                                <li>Amélioration de l'interface utilisateur avec des thèmes personnalisables</li>
+                                <li>Intégration d'un système de recherche avancé</li>
+                                <li>Ajout de fonctionnalités de partage de notes entre utilisateurs</li>
+                                <li>Exportation des notes en PDF et Word</li>
+                                <li>Intégration avec des services de stockage cloud</li>
                             </ul>
                         </div>
                     </div>

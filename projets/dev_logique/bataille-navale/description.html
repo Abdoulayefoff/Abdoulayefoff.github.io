@@ -92,12 +92,12 @@
                 <!-- Description -->
                 <section class="mb-5">
                     <h2 class="text-primary mb-4"><i class="fas fa-ship me-2"></i>Description</h2>
-                    <p class="lead">Implémentation du jeu classique de Bataille Navale avec une architecture MVC robuste.</p>
-                    <p>Ce projet universitaire réalisé à l'Université de Caen Normandie met en œuvre une conception logicielle solide suivant le pattern Modèle-Vue-Contrôleur, avec une attention particulière portée sur l'optimisation algorithmique et la qualité du code.</p>
+                    <p class="lead">Implémentation complète du jeu de Bataille Navale avec architecture MVC et interface graphique Swing.</p>
+                    <p>Ce projet Java implémente une version complète de la bataille navale avec deux modes de jeu : humain contre IA et IA contre IA. Le système suit une architecture MVC stricte avec une séparation claire des responsabilités.</p>
                     
                     <div class="alert alert-info mt-4">
                         <i class="fas fa-info-circle me-2"></i>
-                        <strong>La Bataille Navale</strong> est un jeu stratégique où deux joueurs s'affrontent en tentant de couler la flotte adverse. Ce projet inclut une interface graphique et une version en ligne de commande, avec une IA comme adversaire.
+                        <strong>Points clés :</strong> Le projet inclut une interface graphique interactive avec des grilles cliquables, un système de tour par tour, une IA basique avec stratégie aléatoire, et une gestion complète des règles du jeu.
                     </div>
                 </section>
                 
@@ -113,10 +113,10 @@
                                     </div>
                                     <h3 class="h5">Architecture MVC</h3>
                                     <ul class="list-styled">
-                                        <li>Modèle totalement indépendant de la vue</li>
-                                        <li>Double interface (graphique et CLI)</li>
-                                        <li>Communication via observateurs</li>
-                                        <li>Packages bien organisés</li>
+                                        <li>Modèle (<code>Battlefield</code>, <code>Area</code>, <code>Boat</code>)</li>
+                                        <li>Vues (<code>BattlefieldView</code>, <code>BattlefieldPanel</code>)</li>
+                                        <li>Pattern Observateur via <code>ModelListener</code></li>
+                                        <li>Communication via <code>fireChange()</code></li>
                                     </ul>
                                 </div>
                             </div>
@@ -127,12 +127,12 @@
                                     <div class="naval-icon">
                                         <i class="fas fa-robot"></i>
                                     </div>
-                                    <h3 class="h5">Intelligence Artificielle</h3>
+                                    <h3 class="h5">Joueurs et IA</h3>
                                     <ul class="list-styled">
-                                        <li>Joueur IA avec stratégie aléatoire</li>
-                                        <li>Optimisation des tirs (pas de répétition)</li>
-                                        <li>Complexité algorithmique réduite</li>
-                                        <li>Détection des bateaux coulés</li>
+                                        <li><code>HumanPlayer</code> pour le joueur humain</li>
+                                        <li><code>RandomPlayer</code> pour l'IA aléatoire</li>
+                                        <li>Interface <code>Player</code> commune</li>
+                                        <li>Gestion des tours et des attaques</li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,12 +143,12 @@
                                     <div class="naval-icon">
                                         <i class="fas fa-bolt"></i>
                                     </div>
-                                    <h3 class="h5">Optimisations</h3>
+                                    <h3 class="h5">Mécaniques de jeu</h3>
                                     <ul class="list-styled">
-                                        <li>Structure de données efficace</li>
-                                        <li>Accès direct aux cases (O(1))</li>
-                                        <li>Gestion mémoire optimisée</li>
-                                        <li>Tests unitaires</li>
+                                        <li>Placement des bateaux (<code>put()</code>)</li>
+                                        <li>Attaques (<code>assault()</code>)</li>
+                                        <li>Détection des coulés (<code>sinkBoat()</code>)</li>
+                                        <li>Fin de partie (<code>isOver()</code>)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -161,10 +161,10 @@
                                     </div>
                                     <h3 class="h5">Interface Graphique</h3>
                                     <ul class="list-styled">
-                                        <li>Grilles interactives</li>
-                                        <li>Feedback visuel (tirs touchés/ratés)</li>
-                                        <li>Affichage des bateaux coulés</li>
-                                        <li>Design personnalisé</li>
+                                        <li>Grilles interactives (<code>AreaPanel</code>)</li>
+                                        <li>Feedback visuel des tirs</li>
+                                        <li>Fenêtre principale (<code>BattlefieldFrame</code>)</li>
+                                        <li>Gestion des événements souris</li>
                                     </ul>
                                 </div>
                             </div>
@@ -180,18 +180,18 @@
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                    <i class="fas fa-sitemap me-2"></i> Architecture MVC
+                                    <i class="fas fa-sitemap me-2"></i> Structure du Code
                                 </button>
                             </h3>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#technicalAccordion">
                                 <div class="accordion-body">
-                                    <p>Structure modulaire respectant strictement le pattern MVC :</p>
+                                    <p>Organisation en packages et classes clés :</p>
                                     <ul>
-                                        <li><strong>Modèle</strong> : Gestion des grilles, flottes, règles du jeu (totalement indépendant de l'UI)</li>
-                                        <li><strong>Vue</strong> : Interface graphique (Swing/JavaFX) et interface texte (CLI)</li>
-                                        <li><strong>Contrôleur</strong> : Médiateur entre modèle et vues, gestion des événements</li>
+                                        <li><strong>Modèle :</strong> <code>Battlefield</code>, <code>Area</code>, <code>Boat</code>, <code>Coord</code>, <code>Obus</code></li>
+                                        <li><strong>Vues :</strong> <code>BattlefieldView</code>, <code>BattlefieldPanel</code>, <code>AreaPanel</code></li>
+                                        <li><strong>Contrôleurs :</strong> <code>BattlefieldFrame</code>, <code>ClosedWindowListener</code></li>
+                                        <li><strong>Joueurs :</strong> <code>Player</code>, <code>HumanPlayer</code>, <code>RandomPlayer</code></li>
                                     </ul>
-                                    <p>Méthodes clés : <code>GameModel</code>, <code>GameView</code>, <code>GameController</code></p>
                                 </div>
                             </div>
                         </div>
@@ -204,12 +204,12 @@
                             </h3>
                             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
                                 <div class="accordion-body">
-                                    <p>Optimisations algorithmiques majeures :</p>
+                                    <p>Fonctionnalités algorithmiques principales :</p>
                                     <ol>
-                                        <li><strong>Détection des impacts</strong> : Utilisation d'un tableau 2D pour accès direct (O(1))</li>
-                                        <li><strong>Gestion des tirs IA</strong> : Mémorisation des cases déjà testées</li>
-                                        <li><strong>Vérification des bateaux coulés</strong> : Algorithme optimisé en O(n)</li>
-                                        <li><strong>Placement des bateaux</strong> : Validation des positions sans chevauchement</li>
+                                        <li><strong>Validation du placement :</strong> <code>isValid()</code> dans <code>Battlefield</code></li>
+                                        <li><strong>Gestion des tirs :</strong> <code>assault()</code> et mise à jour de l'état</li>
+                                        <li><strong>Détection fin de partie :</strong> <code>isOver()</code> vérifiant tous les bateaux</li>
+                                        <li><strong>Stratégie IA :</strong> Sélection aléatoire dans <code>RandomPlayer</code></li>
                                     </ol>
                                 </div>
                             </div>
@@ -218,18 +218,18 @@
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                    <i class="fas fa-code me-2"></i> Qualité du Code
+                                    <i class="fas fa-code me-2"></i> Conception Orientée Objet
                                 </button>
                             </h3>
                             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
                                 <div class="accordion-body">
-                                    <p>Pratiques de développement exemplaires :</p>
+                                    <p>Bonnes pratiques de POO mises en œuvre :</p>
                                     <ul>
-                                        <li>Documentation Javadoc complète</li>
-                                        <li>Tests unitaires pour les fonctions critiques</li>
-                                        <li>Gestion d'erreurs robuste</li>
-                                        <li>Code découpé en méthodes courtes et spécialisées</li>
-                                        <li>Nommage clair et cohérent</li>
+                                        <li>Interface <code>ModelListener</code> pour le pattern Observateur</li>
+                                        <li>Interface <code>Player</code> pour les différents types de joueurs</li>
+                                        <li>Encapsulation stricte avec getters/setters</li>
+                                        <li>Classes spécialisées (<code>Coord</code>, <code>Obus</code>)</li>
+                                        <li>Séparation claire des responsabilités</li>
                                     </ul>
                                 </div>
                             </div>
@@ -246,11 +246,11 @@
                                 <div class="card-body">
                                     <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Succès</h3>
                                     <ul>
-                                        <li>Architecture MVC parfaitement respectée</li>
-                                        <li>Performances algorithmiques optimales</li>
-                                        <li>Double interface fonctionnelle (GUI + CLI)</li>
-                                        <li>Code maintenable et documenté</li>
-                                        <li>Rapport technique détaillé (7 pages)</li>
+                                        <li>Implémentation complète des règles du jeu</li>
+                                        <li>Interface graphique fonctionnelle avec Swing</li>
+                                        <li>Système de tour par tour opérationnel</li>
+                                        <li>IA basique mais fonctionnelle</li>
+                                        <li>Code bien structuré et documenté</li>
                                     </ul>
                                 </div>
                             </div>
@@ -260,10 +260,10 @@
                                 <div class="card-body">
                                     <h3 class="h5"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Défis</h3>
                                     <ul>
-                                        <li>Synchronisation modèle/vue</li>
-                                        <li>Gestion des événements concurrents</li>
-                                        <li>Optimisation de l'IA (niveaux de difficulté)</li>
-                                        <li>Tests sur différentes tailles de grille</li>
+                                        <li>Gestion des événements dans <code>AreaPanel</code></li>
+                                        <li>Synchronisation modèle/vue via <code>modelUpdated</code></li>
+                                        <li>Placement aléatoire des bateaux pour l'IA</li>
+                                        <li>Affichage correct des états de jeu</li>
                                     </ul>
                                 </div>
                             </div>
@@ -279,7 +279,7 @@
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <i class="fab fa-java fa-3x text-primary mb-2"></i>
-                                    <p class="mb-0">Java 11</p>
+                                    <p class="mb-0">Java 8+</p>
                                 </div>
                             </div>
                         </div>
@@ -303,7 +303,7 @@
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <i class="fas fa-desktop fa-3x text-primary mb-2"></i>
-                                    <p class="mb-0">Swing/JavaFX</p>
+                                    <p class="mb-0">Swing</p>
                                 </div>
                             </div>
                         </div>
@@ -313,11 +313,11 @@
                 <!-- Conclusion -->
                 <section class="mb-5">
                     <h2 class="text-primary mb-4"><i class="fas fa-graduation-cap me-2"></i>Conclusion</h2>
-                    <p>Ce projet m'a permis de consolider mes compétences en conception logicielle, particulièrement dans l'implémentation d'architectures MVC robustes. La double contrainte d'optimisation algorithmique et de qualité du code a été un excellent exercice pour améliorer mes pratiques de développement. La gestion d'un projet en équipe selon des exigences précises (dépôt SVN, documentation, livrables) a également renforcé mes compétences en gestion de projet.</p>
+                    <p>Ce projet de bataille navale a été une excellente opportunité pour mettre en pratique les concepts de programmation orientée objet et d'architecture MVC. L'implémentation des différentes vues (texte et graphique) a renforcé ma compréhension du pattern Observateur. La gestion des règles du jeu et de l'IA, bien que basique, a constitué un défi algorithmique intéressant. Ce projet démontre ma capacité à concevoir une application Java complète avec une interface utilisateur fonctionnelle.</p>
                 </section>
                 <!-- GitHub -->
                 <section class="text-center mt-5">
-                    <a href="https://github.com/abdoulaye/animaux-mvcr" 
+                    <a href="https://github.com/Abdoulayefoff/MyProjectsPortfolio/tree/main/navalWar" 
                     class="btn btn-primary btn-lg"
                     target="_blank">
                         <i class="fab fa-github me-2"></i>Code Source

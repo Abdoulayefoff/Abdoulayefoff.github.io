@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --angular-red: #DD0031;
+            --nestjs-pink: #E0234E;
+            --postgre-blue: #336791;
+            --jwt-black: #000000;
+        }
+        
         .project-header {
             background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
                         url('../images/ecommerce-bg.jpg') center/cover;
@@ -23,6 +30,48 @@
             text-transform: uppercase;
         }
         
+        .bg-angular { background: var(--angular-red); color: white; }
+        .bg-nestjs { background: var(--nestjs-pink); color: white; }
+        .bg-postgre { background: var(--postgre-blue); color: white; }
+        .bg-jwt { background: var(--jwt-black); color: white; }
+        
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            padding: 0.3em 0.6em;
+            border-radius: 20px;
+            background-color: #FFC107;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .code-section {
+            margin: 2rem 0;
+            border-left: 4px solid var(--angular-red);
+            padding-left: 1rem;
+        }
+        
+        .terminal {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .terminal .prompt { color: #66D9EF; }
+        .terminal .command { color: #A6E22E; }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -68,110 +117,61 @@
     <!-- Main Content -->
     <main class="container py-5">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <!-- Description -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-info-circle me-2"></i>Description</h2>
-                    <p class="lead">Plateforme e-commerce moderne avec Angular pour le front-end et NestJS pour le back-end.</p>
-                    <p>Ce projet consiste à créer un site de e-commerce moderne et réactif permettant aux utilisateurs de naviguer, de s'inscrire, de se connecter, d’ajouter des produits à leur panier. Le site utilise Angular pour le front-end, NestJS pour le back-end. Les données sont stockées dans une base PostgreSQL sécurisée avec authentification JWT et chiffrement bcrypt.</p>
+            <div class="col-lg-10 mx-auto">
+                <!-- Introduction -->
+                <section class="mb-5 position-relative">
+                    <span class="status-badge">En cours de développement</span>
+                    <h2 class="text-primary mb-4"><i class="fas fa-info-circle me-2"></i>Introduction</h2>
+                    <p class="lead">Plateforme e-commerce moderne développée localement avec Angular et NestJS.</p>
+                    <p>Ce projet personnel en cours de développement vise à créer une solution e-commerce complète en utilisant une architecture moderne. L'application est actuellement en phase active de développement avec de nouvelles fonctionnalités ajoutées régulièrement.</p>
+                    
+                    <div class="alert alert-warning mt-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Projet local en cours :</strong> Cette application est développée en local et évolue constamment avec l'ajout de nouvelles fonctionnalités.
+                    </div>
                 </section>
-
+                
                 <!-- Fonctionnalités -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités principales</h2>
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-user me-2"></i>Utilisateurs</h3>
-                                    <ul class="list-styled">
-                                        <li>Inscription/Connexion sécurisée</li>
-                                        <li>Gestion de profil</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-shopping-cart me-2"></i>Boutique</h3>
-                                    <ul class="list-unstyled">
-                                        <li>Catalogue de produits</li>
-                                        <li>Gestion du panier</li>
-                                        <li>Passage de commande</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Technologies -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Technologies utilisées</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités (actuelles et prévues)</h2>
                     <div class="row g-4">
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h6">Frontend</h3>
-                                    <ul class="list-unstyled">
-                                        <li>Angular 16+</li>
-                                        <li>Angular Material</li>
-                                        <li>NgRx (State management)</li>
-                                        <li>TypeScript</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h6">Backend</h3>
-                                    <ul class="list-unstyled">
-                                        <li>NestJS</li>
-                                        <li>JWT Authentication</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h6">Base de données</h3>
-                                    <ul class="list-unstyled">
-                                        <li>PostgreSQL</li>
-                                        <li>Requêtes préparées</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Sécurité -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-shield-alt me-2"></i>Sécurité</h2>
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card border-success">
-                                <div class="card-body">
-                                    <h3 class="h5 text-success"><i class="fas fa-lock me-2"></i>Authentification</h3>
+                                    <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Implémentées</h3>
                                     <ul>
-                                        <li>Authentification via JWT</li>
-                                        <li>Hachage des mots de passe avec bcrypt</li>
-                                        <li>Validation des entrées</li>
-                                        <li>CSRF Protection</li>
+                                        <li>Authentification JWT</li>
+                                        <li>Catalogue produits</li>
+                                        <li>Panier basique</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card border-danger">
+                        <div class="col-md-4">
+                            <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h5 text-danger"><i class="fas fa-database me-2"></i>Base de données</h3>
+                                    <h3 class="h5"><i class="fas fa-code-branch text-primary me-2"></i>En développement</h3>
                                     <ul>
-                                        <li>Chiffrement des données sensibles</li>
-                                        <li>Protection XSS/SQLi</li>
+                                        <li>Paiement en ligne</li>
+                                        <li>Gestion commandes</li>
+                                        <li>Recherche avancée</li>
+                                        <li>Dashboard admin</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="h5"><i class="fas fa-lightbulb text-warning me-2"></i>Prévues</h3>
+                                    <ul>
+                                        <li>Recommandations produits</li>
+                                        <li>Notifications</li>
+                                        <li>Amélioration de l'UX/UI</li>
+                                        <li>Intégration de GraphQL pour les requêtes API</li>
+                                        <li>Tests unitaires et d'intégration</li>
+                                        <li>Déploiement sur un serveur cloud (AWS, Heroku, etc.)</li>
+                                        <li>Amélioration de la gestion des erreurs et des logs</li>
                                     </ul>
                                 </div>
                             </div>
@@ -181,67 +181,184 @@
 
                 <!-- Architecture -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-project-diagram me-2"></i>Architecture</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-sitemap me-2"></i>Architecture Technique Actuelle</h2>
                     <div class="card">
                         <div class="card-body">
-                            <p>Architecture modulaire séparant clairement les couches :</p>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Architecture en cours d'évolution pour ce projet local.
+                            </div>
+                            
+                            <h3 class="h5">Structure du Projet</h3>
+                            <div class="terminal">
+                                <div class="mb-2"><span class="prompt">$</span> <span class="command">tree -L 2</span></div>
+                                <div>.</div>
+                                <div>├── frontend/</div>
+                                <div>│   ├── src/</div>
+                                <div>│   ├── angular.json</div>
+                                <div>├── backend/</div>
+                                <div>│   ├── src/</div>
+                                <div>│   ├── nest-cli.json</div>
+                                <div>└── docker-compose.yml</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Extrait de code -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Extraits de Code</h2>
+                    
+                    <div class="code-section">
+                        <h3 class="h5">Service Produits (Angular)</h3>
+                        <p>Service Angular pour gérer les produits :</p>
+                        <div class="code-block">
+                            <span class="text-primary">// frontend/src/app/services/product.service.ts</span><br>
+                            @Injectable({ providedIn: 'root' })<br>
+                            export class ProductService {<br>
+                            &nbsp;&nbsp;private apiUrl = 'http://localhost:3000/products';<br><br>
+                            
+                            &nbsp;&nbsp;constructor(private http: HttpClient) {}<br><br>
+                            
+                            &nbsp;&nbsp;getProducts(): Observable&lt;Product[]&gt; {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return this.http.get&lt;Product[]&gt;(this.apiUrl);<br>
+                            &nbsp;&nbsp;}<br><br>
+                            
+                            &nbsp;&nbsp;addToCart(product: Product): void {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Logique d'ajout au panier<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="code-section">
+                        <h3 class="h5">Contrôleur Produits (NestJS)</h3>
+                        <p>Endpoint API pour les produits :</p>
+                        <div class="code-block">
+                            <span class="text-primary">// backend/src/products/products.controller.ts</span><br>
+                            @Controller('products')<br>
+                            export class ProductsController {<br>
+                            &nbsp;&nbsp;constructor(private productsService: ProductsService) {}<br><br>
+                            
+                            &nbsp;&nbsp;@Get()<br>
+                            &nbsp;&nbsp;async findAll(): Promise&lt;Product[]&gt; {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return this.productsService.findAll();<br>
+                            &nbsp;&nbsp;}<br><br>
+                            
+                            &nbsp;&nbsp;@Get(':id')<br>
+                            &nbsp;&nbsp;async findOne(@Param('id') id: string): Promise&lt;Product&gt; {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return this.productsService.findOne(id);<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="code-section">
+                        <h3 class="h5">Component Produits (Angular)</h3>
+                        <p>Affichage des produits dans le frontend :</p>
+                        <div class="code-block">
+                            <span class="text-primary">// frontend/src/app/product-list/product-list.component.ts</span><br>
+                            @Component({<br>
+                            &nbsp;&nbsp;selector: 'app-product-list',<br>
+                            &nbsp;&nbsp;template: `<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="row"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngFor="let product of products" class="col-md-4 mb-4"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="card"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img [src]="product.imageUrl" class="card-img-top"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5&gt;{{product.name}}&lt;/h5&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button (click)="addToCart(product)"&gt;Ajouter au panier&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;`<br>
+                            })<br>
+                            export class ProductListComponent {<br>
+                            &nbsp;&nbsp;products: Product[] = [];<br><br>
+                            
+                            &nbsp;&nbsp;constructor(private productService: ProductService) {}<br><br>
+                            
+                            &nbsp;&nbsp;ngOnInit(): void {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;this.productService.getProducts()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe(products => this.products = products);<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Roadmap -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-road me-2"></i>Feuille de Route</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="h5">Prochaines étapes de développement</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Version</th>
+                                            <th>Fonctionnalités</th>
+                                            <th>Statut</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>0.1</td>
+                                            <td>Authentification + Catalogue</td>
+                                            <td><span class="badge bg-success">Terminé</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.2</td>
+                                            <td>Panier + Commandes</td>
+                                            <td><span class="badge bg-primary">En cours</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.3</td>
+                                            <td>Dashboard admin</td>
+                                            <td><span class="badge bg-secondary">Prévu</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1.0</td>
+                                            <td>Version complète</td>
+                                            <td><span class="badge bg-secondary">Prévu</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>État Actuel et Perspectives</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Ce projet e-commerce local est actuellement en développement actif avec les fonctionnalités suivantes implémentées :</p>
                             <ul>
-                                <li>Frontend Angular (Components/Services)</li>
-                                <li>API RESTful NestJS (Controllers/Services)</li>
-                                <li>Base de données PostgreSQL (TypeORM)</li>
-                                <li>Communication via HTTP/JSON sécurisé</li>
+                                <li>Système complet d'authentification avec JWT</li>
+                                <li>Catalogue de produits avec filtres basiques</li>
+                                <li>Gestion du panier en local storage</li>
+                                <li>API REST avec NestJS et PostgreSQL</li>
                             </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Installation -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-terminal me-2"></i>Installation</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <pre><code>
-# Cloner le dépôt
-git clone https://github.com/abdoulaye/ecommerce-angular-nestjs.git
-
-# Frontend
-cd frontend
-npm install
-ng serve
-
-# Backend
-cd backend
-npm install
-npm run start:dev
-                            </code></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Améliorations -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-rocket me-2"></i>Améliorations futures</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-2">✅ Fonctionnalité de paiement</li>
-                                <li class="mb-2">✅ Système d'avis produits</li>
-                                <li class="mb-2">✅ Algorithmes de recommandation de produits</li>
-                                <li class="mb-2">✅ Développement d'une version mobile</li>
+                            
+                            <h3 class="h5 mt-4">Prochaines étapes</h3>
+                            <p>Les développements en cours et à venir incluent :</p>
+                            <ul>
+                                <li>Implémentation du système de commandes</li>
+                                <li>Création d'un dashboard administrateur</li>
+                                <li>Amélioration des performances et de l'expérience utilisateur</li>
+                                <li>Ajout de tests unitaires et d'intégration</li>
                             </ul>
+                            
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-laptop-code me-2"></i>
+                                <strong>Projet local :</strong> Ce projet est développé en environnement local avec Docker pour la gestion des services.
+                            </div>
                         </div>
                     </div>
                 </section>
-
-                <!-- GitHub -->
-                <section class="text-center mt-5">
-                    <a href="https://github.com/abdoulaye/ecommerce-angular-nestjs" 
-                    class="btn btn-primary btn-lg"
-                    target="_blank">
-                        <i class="fab fa-github me-2"></i>Code Source
-                    </a>
-                </section>
-
             </div>
         </div>
     </main>

@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --vue-green: #42b883;
+            --django-green: #092e20;
+            --jwt-black: #000000;
+            --mysql-blue: #4479A1;
+        }
+        
         .project-header {
             background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), 
                         url('../images/library-bg.jpg') center/cover;
@@ -23,6 +30,48 @@
             text-transform: uppercase;
         }
         
+        .bg-vuejs { background: var(--vue-green); color: white; }
+        .bg-django { background: var(--django-green); color: white; }
+        .bg-jwt { background: var(--jwt-black); color: white; }
+        .bg-mysql { background: var(--mysql-blue); color: white; }
+        
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            padding: 0.3em 0.6em;
+            border-radius: 20px;
+            background-color: #FFC107;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .code-section {
+            margin: 2rem 0;
+            border-left: 4px solid var(--vue-green);
+            padding-left: 1rem;
+        }
+        
+        .terminal {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .terminal .prompt { color: #66D9EF; }
+        .terminal .command { color: #A6E22E; }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -68,60 +117,46 @@
     <!-- Main Content -->
     <main class="container py-5">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <!-- Description -->
-                <section class="mb-5">
+            <div class="col-lg-10 mx-auto">
+                <!-- Introduction -->
+                <section class="mb-5 position-relative">
+                    <span class="status-badge">En cours de développement</span>
                     <h2 class="text-primary mb-4"><i class="fas fa-book me-2"></i>Description</h2>
-                    <p class="lead">Application Web de gestion de bibliothèque avec interface moderne et sécurisée.</p>
-                    <p>
-                        Cette application web permet la gestion d’une bibliothèque en facilitant l’ajout, la modification, la suppression et la consultation des livres. Les utilisateurs peuvent enregistrer de nouveaux livres avec leurs titres, auteurs, descriptions et catégories. L’application permet également d’afficher une liste de tous les livres disponibles, de rechercher un livre spécifique et de mettre à jour ses informations. Un système de suppression est inclus pour retirer des ouvrages. L’interface est conçue pour être intuitive et accessible, rendant la gestion du catalogue simple et efficace.
+                    <p class="lead">Application Web de gestion de bibliothèque en cours de développement avec Vue.js et Django.</p>
+                    <p>Ce projet local permet la gestion complète d'une bibliothèque avec une interface moderne. Le développement est actif avec de nouvelles fonctionnalités ajoutées régulièrement.</p>
+                    
+                    <div class="alert alert-warning mt-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Projet en cours :</strong> Cette application est en développement actif et évolue constamment.
+                    </div>
                 </section>
-
+                
                 <!-- Fonctionnalités -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités clés</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-list-check me-2"></i>Fonctionnalités (actuelles et prévues)</h2>
                     <div class="row g-4">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-users me-2"></i>Utilisateurs</h3>
-                                    <ul class="list-styled">
-                                        <li>Inscription/Connexion sécurisée</li>
-                                        <li>Profil utilisateur</li>
-                                        <li>Deconnexion</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h5"><i class="fas fa-book-open me-2"></i>Gestion des livres</h3>
-                                    <ul class="list-styled">
-                                        <li>Ajout de livres</li>
-                                        <li>Modification des livres</li>
-                                        <li>Suppression des livres</li>
-                                        <li>Consultation des livres</li>
-                                        <li>Recherche multicritères</li>
+                                    <h3 class="h5"><i class="fas fa-check-circle text-success me-2"></i>Implémentées</h3>
+                                    <ul>
+                                        <li>Authentification JWT</li>
+                                        <li>CRUD des livres</li>
+                                        <li>Recherche basique</li>
                                         <li>Gestion des catégories</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-
-                <!-- Technologies -->
-                <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Technologies</h2>
-                    <div class="row g-4">
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h6">Frontend</h3>
-                                    <ul class="list-styled">
-                                        <li>Vue.js</li>
-                                        <li>Vue Router</li>
+                                    <h3 class="h5"><i class="fas fa-code-branch text-primary me-2"></i>En développement</h3>
+                                    <ul>
+                                        <li>Recherche avancée</li>
+                                        <li>Gestion des emprunts</li>
+                                        <li>Dashboard admin</li>
+                                        <li>Export des données</li>
                                     </ul>
                                 </div>
                             </div>
@@ -129,23 +164,11 @@
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h3 class="h6">Backend</h3>
-                                    <ul class="list-styled">
-                                        <li>Django</li>
-                                        <li>Django REST Framework</li>
-                                        <li>Simple JWT</li>
-                                        <li>MySQL</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="h6">Sécurité</h3>
-                                    <ul class="list-styled">
-                                        <li>JWT Authentication</li>
-                                        <li>Validation des entrées</li>
+                                    <h3 class="h5"><i class="fas fa-lightbulb text-warning me-2"></i>Prévues</h3>
+                                    <ul>
+                                        <li>Notifications</li>
+                                        <li>Rapports statistiques</li>
+                                        <li>Multi-langue</li>
                                     </ul>
                                 </div>
                             </div>
@@ -153,62 +176,190 @@
                     </div>
                 </section>
 
-                <!-- Capture d'écran -->
-            <!--     <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-image me-2"></i>Aperçu</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="../images/library-screenshot.jpg" class="img-fluid rounded" alt="Interface de gestion">
-                        </div>
-                    </div>
-                </section> -->
-
-                <!-- Installation -->
+                <!-- Architecture -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-terminal me-2"></i>Installation</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-sitemap me-2"></i>Architecture Technique Actuelle</h2>
                     <div class="card">
                         <div class="card-body">
-                            <pre><code>
-# Cloner le dépôt
-git clone https://github.com/abdoulaye/gestion-bibliotheque.git
-
-# Frontend
-cd frontend
-npm install
-npm run serve
-
-# Backend
-cd backend
-pip install -r requirements.txt
-python manage.py runserver
-                            </code></pre>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Architecture en cours d'évolution pour ce projet local.
+                            </div>
+                            
+                            <h3 class="h5">Structure du Projet</h3>
+                            <div class="terminal">
+                                <div class="mb-2"><span class="prompt">$</span> <span class="command">tree -L 2</span></div>
+                                <div>.</div>
+                                <div>├── frontend/</div>
+                                <div>│   ├── src/</div>
+                                <div>│   ├── package.json</div>
+                                <div>├── backend/</div>
+                                <div>│   ├── manage.py</div>
+                                <div>│   ├── requirements.txt</div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Améliorations -->
+                <!-- Extrait de code -->
                 <section class="mb-5">
-                    <h2 class="text-primary mb-4"><i class="fas fa-rocket me-2"></i>Améliorations futures</h2>
+                    <h2 class="text-primary mb-4"><i class="fas fa-code me-2"></i>Extraits de Code</h2>
+                    
+                    <div class="code-section">
+                        <h3 class="h5">Modèle Livre (Django)</h3>
+                        <p>Définition du modèle Book dans Django :</p>
+                        <div class="code-block">
+                            <span class="text-primary"># backend/library/models.py</span><br>
+                            from django.db import models<br>
+                            from django.contrib.auth.models import User<br><br>
+                            
+                            class Book(models.Model):<br>
+                            &nbsp;&nbsp;title = models.CharField(max_length=200)<br>
+                            &nbsp;&nbsp;author = models.CharField(max_length=100)<br>
+                            &nbsp;&nbsp;description = models.TextField()<br>
+                            &nbsp;&nbsp;category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)<br>
+                            &nbsp;&nbsp;added_by = models.ForeignKey(User, on_delete=models.CASCADE)<br>
+                            &nbsp;&nbsp;added_at = models.DateTimeField(auto_now_add=True)<br><br>
+                            
+                            &nbsp;&nbsp;def __str__(self):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return self.title
+                        </div>
+                    </div>
+
+                    <div class="code-section">
+                        <h3 class="h5">Vue Liste des Livres (Vue.js)</h3>
+                        <p>Component Vue.js pour afficher les livres :</p>
+                        <div class="code-block">
+                            <span class="text-primary">// frontend/src/components/BookList.vue</span><br>
+                            &lt;template&gt;<br>
+                            &nbsp;&nbsp;&lt;div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div v-for="book in books" :key="book.id" class="book-item"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;{{ book.title }}&lt;/h3&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Auteur: {{ book.author }}&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button @click="deleteBook(book.id)"&gt;Supprimer&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            &lt;/template&gt;<br><br>
+                            
+                            &lt;script&gt;<br>
+                            export default {<br>
+                            &nbsp;&nbsp;data() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;books: []<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;},<br>
+                            &nbsp;&nbsp;methods: {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;fetchBooks() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axios.get('/api/books/')<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(response => this.books = response.data)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;}<br>
+                            }<br>
+                            &lt;/script&gt;
+                        </div>
+                    </div>
+
+                    <div class="code-section">
+                        <h3 class="h5">API Livres (Django REST)</h3>
+                        <p>Viewset pour l'API des livres :</p>
+                        <div class="code-block">
+                            <span class="text-primary"># backend/library/views.py</span><br>
+                            from rest_framework import viewsets<br>
+                            from .models import Book<br>
+                            from .serializers import BookSerializer<br><br>
+                            
+                            class BookViewSet(viewsets.ModelViewSet):<br>
+                            &nbsp;&nbsp;queryset = Book.objects.all()<br>
+                            &nbsp;&nbsp;serializer_class = BookSerializer<br><br>
+                            
+                            &nbsp;&nbsp;def perform_create(self, serializer):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;serializer.save(added_by=self.request.user)
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Roadmap -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-road me-2"></i>Feuille de Route</h2>
                     <div class="card">
                         <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-2">✅ Recherche avancée avec suggestions</li>
-                                <li class="mb-2">✅ Affichage en grille & liste </li>
-                                <li class="mb-2">✅ Espace administrateur</li>
-                                <li class="mb-2">✅ Fonctionnalités Emprunts et retours </li>
+                            <h3 class="h5">Prochaines étapes de développement</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Version</th>
+                                            <th>Fonctionnalités prévues</th>
+                                            <th>Statut</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>0.1</td>
+                                            <td>CRUD Livres + Auth</td>
+                                            <td><span class="badge bg-success">Terminé</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.2</td>
+                                            <td>Gestion Emprunts</td>
+                                            <td><span class="badge bg-primary">En cours</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.3</td>
+                                            <td>Dashboard Admin</td>
+                                            <td><span class="badge bg-secondary">Prévu</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1.0</td>
+                                            <td>Version complète</td>
+                                            <td><span class="badge bg-secondary">Prévu</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="mb-5">
+                    <h2 class="text-primary mb-4"><i class="fas fa-check-circle me-2"></i>État Actuel et Perspectives</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Cette application de gestion de bibliothèque est actuellement en développement actif avec les fonctionnalités suivantes implémentées :</p>
+                            <ul>
+                                <li>Système complet d'authentification avec JWT</li>
+                                <li>Gestion CRUD des livres</li>
+                                <li>Recherche et filtrage basique</li>
+                                <li>Interface responsive avec Vue.js</li>
                             </ul>
+                            
+                            <h3 class="h5 mt-4">Prochaines étapes</h3>
+                            <p>Les développements en cours et à venir incluent :</p>
+                            <ul>
+                                <li>Implémentation du système d'emprunts</li>
+                                <li>Création d'un dashboard administrateur</li>
+                                <li>Amélioration des performances de recherche</li>
+                                <li>Export des données en différents formats</li>
+                                <li>Ajout de tests unitaires et d'intégration</li>
+                            </ul>
+                            
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-laptop-code me-2"></i>
+                                <strong>Projet local :</strong> Ce projet est développé en environnement local avec une base de données MySQL.
+                            </div>
                         </div>
                     </div>
                 </section>
+                
                 <!-- GitHub -->
-                <section class="text-center mt-5">
+                <!-- <section class="text-center mt-5">
                     <a href="https://github.com/abdoulaye/gestion-bibliotheque" 
                     class="btn btn-primary btn-lg"
                     target="_blank">
-                        <i class="fab fa-github me-2"></i>Code Source
+                        <i class="fab fa-github me-2"></i>Voir l'avancement
                     </a>
-                </section>
-
+                </section> -->
             </div>
         </div>
     </main>
