@@ -23,6 +23,21 @@
             text-transform: uppercase;
         }
         
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        video.screenshot {
+            max-width: 600px;
+            width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
         
     </style>
 
@@ -190,15 +205,15 @@ npm start
                 <section class="mb-5">
                     <h2 class="text-primary mb-4"><i class="fas fa-desktop me-2"></i>Interface Graphique</h2>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <h3 class="h5">Visualisation de l'application</h3>
-                            <div class="container">
+                            <div class="text-center">
                                 <video class="screenshot" controls>
                                     <source src="demo.mp4" type="video/mp4">
                                     Votre navigateur ne supporte pas la balise vidéo.
                                 </video>
                             </div>
-                            <p>Interface intuitive et moderne pour une expérience utilisateur optimale.</p>
+                            <p class="mt-3">Interface intuitive et moderne pour une expérience utilisateur optimale.</p>
                             <p>Affichage des tâches avec options de filtrage et tri.</p>
                         </div>
                     </div>
